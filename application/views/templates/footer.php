@@ -4,6 +4,22 @@
 	</div>
 	<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
 	reserved.
+	 <!-- Logout Modal-->
+	 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                </div>
+                <div class="modal-body">Apakah anda yakin Logut sekarang?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                </div>
+            </div>
+        </div>
+	</div>
+	
 </footer>
 
 <!-- Control Sidebar -->

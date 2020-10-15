@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 08:19 AM
+-- Generation Time: Oct 15, 2020 at 06:24 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -100,7 +100,8 @@ CREATE TABLE `pegawai` (
   `NIP` varchar(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `No_KTP` varchar(20) NOT NULL,
-  `TTL` date NOT NULL,
+  `tempat_lahir` varchar(50) NOT NULL,
+  `tgl_lahir` date NOT NULL,
   `profesi` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -108,8 +109,11 @@ CREATE TABLE `pegawai` (
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `TTL`, `profesi`) VALUES
-('123456789', 'Ajo Sate', '123456789', '2020-10-04', 'Tukang sate lampu merah');
+INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`) VALUES
+('123456789', 'Ajo Sate', '123456789', '', '2020-10-04', 'Tukang sate lampu merah'),
+('15483321558', 'Pasek', '15466596', 'ROUHUL', '2020-10-12', 'PASEKAN'),
+('4474444', 'roihan', '4444444', 'Toluk', '2019-09-14', 'Mahasiswew'),
+('adwdnnmmwnd', 'Aldiyan Ocu', 'adwadadwwa', 'dada', '2016-08-13', 'Ocu');
 
 -- --------------------------------------------------------
 
@@ -159,9 +163,11 @@ CREATE TABLE `pns` (
   `tmt_pangkat` date NOT NULL,
   `no_sk_pangkat` varchar(45) NOT NULL,
   `tgl_sk_pangkat` date NOT NULL,
+  `jabatan` varchar(100) NOT NULL,
   `no_kerpeg` varchar(45) NOT NULL,
   `fk_id_pangkat` int(11) NOT NULL,
   `fk_id_golongan` int(11) NOT NULL,
+  `fk_id_ruang` int(11) NOT NULL,
   `fk_NIP` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -169,8 +175,30 @@ CREATE TABLE `pns` (
 -- Dumping data for table `pns`
 --
 
-INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pangkat`, `no_kerpeg`, `fk_id_pangkat`, `fk_id_golongan`, `fk_NIP`) VALUES
-(4, '123456789', '2020-10-01', '17/1471/dawjand', '2020-10-02', 'dawdaudw56', 1, 1, '123456789');
+INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pangkat`, `jabatan`, `no_kerpeg`, `fk_id_pangkat`, `fk_id_golongan`, `fk_id_ruang`, `fk_NIP`) VALUES
+(5, '123456789', '2020-10-01', '17/1471/dawjand', '2020-10-01', 'Tukang Sate', '123456789', 1, 1, 1, '123456789'),
+(7, 'adwda', '2020-10-20', '', '2020-10-12', 'dawdawdaw', '', 1, 1, 1, '15483321558'),
+(8, 'dawww', '2018-09-14', '', '2019-09-14', 'adwda', '', 1, 1, 2, '4474444'),
+(9, 'adwadadawd', '2016-08-14', '', '2016-08-13', 'OCU', '', 1, 1, 1, 'adwdnnmmwnd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ruang`
+--
+
+CREATE TABLE `ruang` (
+  `id_ruang` int(11) NOT NULL,
+  `ruang` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ruang`
+--
+
+INSERT INTO `ruang` (`id_ruang`, `ruang`) VALUES
+(1, 'a'),
+(2, 'b');
 
 -- --------------------------------------------------------
 
@@ -272,7 +300,14 @@ ALTER TABLE `pns`
   ADD PRIMARY KEY (`id_PNS`) USING BTREE,
   ADD KEY `fk_PNS_pangkat1_idx` (`fk_id_pangkat`),
   ADD KEY `fk_PNS_golongan1_idx` (`fk_id_golongan`),
-  ADD KEY `fk_PNS_pegawai1_idx` (`fk_NIP`);
+  ADD KEY `fk_PNS_pegawai1_idx` (`fk_NIP`),
+  ADD KEY `fk_id_ruang` (`fk_id_ruang`);
+
+--
+-- Indexes for table `ruang`
+--
+ALTER TABLE `ruang`
+  ADD PRIMARY KEY (`id_ruang`);
 
 --
 -- Indexes for table `skp`
@@ -326,7 +361,13 @@ ALTER TABLE `pengalaman_kerja`
 -- AUTO_INCREMENT for table `pns`
 --
 ALTER TABLE `pns`
-  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `ruang`
+--
+ALTER TABLE `ruang`
+  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `skp`
@@ -381,7 +422,8 @@ ALTER TABLE `pengalaman_kerja`
 ALTER TABLE `pns`
   ADD CONSTRAINT `fk_PNS_pangkat1` FOREIGN KEY (`fk_id_pangkat`) REFERENCES `pangkat` (`id_pangkat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_PNS_pegawai1` FOREIGN KEY (`fk_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pns_ibfk_1` FOREIGN KEY (`fk_id_golongan`) REFERENCES `golongan` (`id_golongan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pns_ibfk_1` FOREIGN KEY (`fk_id_golongan`) REFERENCES `golongan` (`id_golongan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pns_ibfk_2` FOREIGN KEY (`fk_id_ruang`) REFERENCES `ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `skp`

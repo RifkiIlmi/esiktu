@@ -38,24 +38,29 @@
 								<th>No.KTP</th>
 								<th>NPWP</th>
 								<th>Pangkat</th>
-								<th>TTL</th>
+								<th>tempat_lahir</th>
+								<th>tgl_lahir</th>
 								<th>Jabatan</th>
 								<th>Profesi</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
+							
 							<?php $no=0; foreach ($pns as  $value) : $no++?>
+							<tr>
 							<td><?= $no?></td>
 							<td><?= $value->nama?></td>
 							<td><?= $value->NIP?></td>
 							<td><?= $value->No_KTP?></td>
 							<td><?= $value->npwp?></td>
 							<td><?= $value->pangkat?></td>
-							<td><?= $value->TTL?></td>
+							<td><?= $value->tempat_lahir?></td>
+							<td><?= $value->tgl_lahir?></td>
 							<td><?= $value->jabatan?></td>
 							<td><?= $value->profesi?></td>
 							<td><a href="user_management/update/<?= $value->NIP ?>" class="btn btn-md btn-primary ml-0"> Lihat Selengkapnya..</a></td>
+							</tr>
 							<?php endforeach ?>
 						</tbody>
 					</table>

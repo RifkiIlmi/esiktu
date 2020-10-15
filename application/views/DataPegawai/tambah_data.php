@@ -29,13 +29,13 @@
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
-					<form role="form">
+					<form  action=<?= base_url('DataPegawai\input_pns');?> method="POST" role="form">
 						<div class="row">
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>Nama</label>
-									<input type="text" name="name" class="form-control" placeholder="Enter ...">
+									<input type="text" name="nama" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -80,14 +80,14 @@
 									<div class="form-group">
 										<div class="custom-control custom-radio">
 											<div class="kepegawaian">
-												<input class="ini custom-control-input" value="PNS" type="radio" id="PNS"
-													name="kepegawaian">
+												<input class="ini custom-control-input" value="PNS" type="radio"
+													id="PNS" name="kepegawaian">
 												<label for="PNS" class="custom-control-label">PNS</label>
 											</div>
 										</div>
 										<div class="custom-control custom-radio">
-											<input class="ini custom-control-input" value="honorer" type="radio" id="honorer"
-												name="kepegawaian" checked>
+											<input class="ini custom-control-input" value="honorer" type="radio"
+												id="honorer" name="kepegawaian">
 											<label for="honorer" class="custom-control-label">Honorer</label>
 										</div>
 
@@ -101,47 +101,115 @@
 					<div class="card-body">
 
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-4	">
 
 								<div class="form-group">
-									<label>Nama</label>
-									<input type="text" name="name" class="form-control" placeholder="Enter ...">
+									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
+									<input type="text" name="npwp" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-4">
 
 								<div class="form-group">
-									<label>NIP</label>
-									<input type="text" name="NIP" class="form-control" placeholder="Enter ...">
+									<label>TMT Pangkat</label>
+									<input type="date" name="tmt_pangkat" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+							<div class="col-sm-4">
+
+								<div class="form-group">
+									<label>Jabatan</label>
+									<input type="text" name="jabatan" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
 
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<!-- select -->
+								<div class="form-group">
+									<label>Pangkat</label>
+									<select class="custom-select" name="pangkat">
+										<?php foreach($pangkat as $value): ?>
+										<option value='<?=$value->id_pangkat?>'><?=$value->pangkat?></option>
+										<?php endforeach?>
+										<!-- <option>Pembina Utama Muda</option>
+										<option>Pembina Tingkat I</option>
+										<option>Pembina</option>
+										<option>Penata Tingkat I</option>
+										<option>Penata</option>
+										<option>Penata Muda Tingkat I</option>
+										<option>Penata Muda</option>
+										<option>Pengatur Tingkat I</option>
+										<option>Pengatur</option>
+										<option>Pengatur Muda Tingkat I</option>
+										<option>Pengatur Muda</option>
+										<option>Juru Tingkat I</option>
+										<option>Juru</option>
+										<option>Juru Muda Tingkat I</option>
+										<option>Juru Muda</option> -->
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label>Golongan</label>
+									<select class="custom-select" name="golongan">
+									<?php foreach($golongan as $value): ?>
+										<option value='<?=$value->id_golongan?>'><?=$value->golongan?></option>
+										<?php endforeach?>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label>Ruang</label>
+									<select class="custom-select" name="ruang">
+									<?php foreach($ruang as $value): ?>
+										<option value='<?=$value->id_ruang?>'><?=$value->ruang?></option>
+										<?php endforeach?>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-3">
+
+								<div class="form-group">
+									<label>No. Kerpeg</label>
+									<input type="text" name="kerpeg" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
 						</div>
 					</div>
-                </div>
-                <div class="itu" id="show1" style="display:none">
-					<div class="card-body">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-primary">Simpan Data</button>
+					</div>
+					</form>
+				</div>
+			</div>
+			<div class="itu" id="show1" style="display:none">
+				<div class="card-body">
 
-						<div class="row">
-							<div class="col-sm-6">
+					<div class="row">
+						<div class="col-sm-6">
 
-								<div class="form-group">
-									<label>Namdwdwa</label>
-									<input type="text" name="name" class="form-control" >
-								</div>
+							<div class="form-group">
+								<label>Namdwdwa</label>
+								<input type="text" name="name" class="form-control">
 							</div>
-							<div class="col-sm-6">
-
-								<div class="form-group">
-									<label>NIP</label>
-									<input type="text" name="NIP" class="form-control" >
-								</div>
-							</div>
-
 						</div>
+						<div class="col-sm-6">
+
+							<div class="form-group">
+								<label>NIP</label>
+								<input type="text" name="NIP" class="form-control">
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

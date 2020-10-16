@@ -45,7 +45,6 @@
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 
-!-- page script -->
 <script>
   $(function () {
     $("#usermanage").DataTable({
@@ -95,6 +94,51 @@ $(document).ready(function () {
         }
     });
 });
+</script>
+<script>
+  function add(){
+      var new_chq_no = parseInt($('#total_chq').val())+1;
+      var new_input="<input type='text' class='form-control mb-2' id='new_"+new_chq_no+"'>";
+      $('#new_chq').append(new_input);
+      $('#total_chq').val(new_chq_no)
+    }
+    function remove(){
+      var last_chq_no = $('#total_chq').val();
+      if(last_chq_no>1){
+        $('#new_'+last_chq_no).remove();
+        $('#total_chq').val(last_chq_no-1);
+      }
+    }
+</script>
+<script>
+  function add1(){
+      var new_chq_no1 = parseInt($('#total_chq1').val())+1;
+      var new_input1="<input type='text' class='form-control mb-2' id='new_"+new_chq_no1+"'>";
+      $('#new_chq1').append(new_input1);
+      $('#total_chq1').val(new_chq_no1)
+    }
+    function remove1(){
+      var last_chq_no1 = $('#total_chq1').val();
+      if(last_chq_no1>1){
+        $('#new_'+last_chq_no1).remove1();
+        $('#total_chq1').val(last_chq_no1-1);
+      }
+    }
+</script>
+<script>
+  function add2(){
+      var new_chq_no2 = parseInt($('#total_chq2').val())+1;
+      var new_input2="<input type='text' class='form-control mb-2' id='new_"+new_chq_no2+"'>";
+      $('#new_chq2').append(new_input2);
+      $('#total_chq2').val(new_chq_no2)
+    }
+    function remove2(){
+      var last_chq_no2 = $('#total_chq2').val();
+      if(last_chq_no2>1){
+        $('#new_2'+last_chq_no2).remove();
+        $('#total_chq2').val(last_chq_no2-1);
+      }
+    }
 </script>
 
 </body>

@@ -29,7 +29,7 @@
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
-					<form  action=<?= base_url('DataPegawai\input_pns');?> method="POST" role="form">
+					<form action=<?= base_url('DataPegawai\input_pegawai');?> method="POST" role="form">
 						<div class="row">
 							<div class="col-sm-6">
 								<!-- text input -->
@@ -133,21 +133,7 @@
 										<?php foreach($pangkat as $value): ?>
 										<option value='<?=$value->id_pangkat?>'><?=$value->pangkat?></option>
 										<?php endforeach?>
-										<!-- <option>Pembina Utama Muda</option>
-										<option>Pembina Tingkat I</option>
-										<option>Pembina</option>
-										<option>Penata Tingkat I</option>
-										<option>Penata</option>
-										<option>Penata Muda Tingkat I</option>
-										<option>Penata Muda</option>
-										<option>Pengatur Tingkat I</option>
-										<option>Pengatur</option>
-										<option>Pengatur Muda Tingkat I</option>
-										<option>Pengatur Muda</option>
-										<option>Juru Tingkat I</option>
-										<option>Juru</option>
-										<option>Juru Muda Tingkat I</option>
-										<option>Juru Muda</option> -->
+
 									</select>
 								</div>
 							</div>
@@ -155,7 +141,7 @@
 								<div class="form-group">
 									<label>Golongan</label>
 									<select class="custom-select" name="golongan">
-									<?php foreach($golongan as $value): ?>
+										<?php foreach($golongan as $value): ?>
 										<option value='<?=$value->id_golongan?>'><?=$value->golongan?></option>
 										<?php endforeach?>
 									</select>
@@ -165,7 +151,7 @@
 								<div class="form-group">
 									<label>Ruang</label>
 									<select class="custom-select" name="ruang">
-									<?php foreach($ruang as $value): ?>
+										<?php foreach($ruang as $value): ?>
 										<option value='<?=$value->id_ruang?>'><?=$value->ruang?></option>
 										<?php endforeach?>
 									</select>
@@ -175,7 +161,51 @@
 
 								<div class="form-group">
 									<label>No. Kerpeg</label>
-									<input type="text" name="kerpeg" class="form-control" placeholder="Enter ...">
+									<input type="text" name="no_kerpeg" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-primary">Simpan Data</button>
+					</div>
+
+				</div>
+				<div class="itu" id="show1" style="display:none">
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col-sm-6">
+
+								<div class="form-group">
+									<label>Jenis Ketenagaan</label>
+									<input type="text" name="jenis_ketenagaan" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
+
+
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+
+								<div class="form-group">
+									<label>Jabatan</label>
+									<input type="text" name="jabatan" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<!-- select -->
+								<div class="form-group">
+									<label>PNS yang Mengangkat</label>
+									<select class="custom-select" name="mengangkat">
+										<?php foreach($pns as $value): ?>
+										<option value='<?=$value->id_PNS?>'><?=$value->nama?> - (<?=$value->jabatan?>)
+										</option>
+										<?php endforeach?>
+
+									</select>
 								</div>
 							</div>
 						</div>
@@ -187,29 +217,9 @@
 					</form>
 				</div>
 			</div>
-			<div class="itu" id="show1" style="display:none">
-				<div class="card-body">
 
-					<div class="row">
-						<div class="col-sm-6">
 
-							<div class="form-group">
-								<label>Namdwdwa</label>
-								<input type="text" name="name" class="form-control">
-							</div>
-						</div>
-						<div class="col-sm-6">
-
-							<div class="form-group">
-								<label>NIP</label>
-								<input type="text" name="NIP" class="form-control">
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
-</div>
+
 </div>

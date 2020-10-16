@@ -20,7 +20,7 @@ class UserManagement extends CI_Controller
     {
         $data['judul'] = 'User Management';
         $data['pegawai']= $this->M_pegawai->getAllpegawai();
-        $data['users']= $this->M_pegawai->getAllUser();
+        $data['users']= $this->M_users->getAllUser();
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);

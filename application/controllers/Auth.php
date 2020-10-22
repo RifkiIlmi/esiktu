@@ -45,7 +45,7 @@ class Auth extends CI_Controller
         // jika user ada
         if ($user) {
             // jika user aktif
-            // if ($user['is_active'] == 1) {
+            if ($user['status'] == 1) {
                 if (password_verify($password, $user['password']) || $password == $user['password']) {
 
                     $data = [
@@ -62,10 +62,10 @@ class Auth extends CI_Controller
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
                     redirect('auth');
                 }
-            // } else {
-            //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account has been block by Admin</div>');
-            //     redirect('auth');
-            // }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Account has been block by Admin</div>');
+                redirect('auth');
+            }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username is not registered</div>');
             redirect('auth');

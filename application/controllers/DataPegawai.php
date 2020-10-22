@@ -5,8 +5,14 @@ class DataPegawai extends CI_Controller
 {   
     function __construct(){
         parent::__construct();
-        $this->load->model('M_pegawai');        
-      }
+        $this->load->model('M_pegawai');    
+        $this->load->helper(array('form', 'url'));
+
+        if (!$this->session->userdata('pegawai_nip')) {
+            redirect('auth');
+        }    
+    }
+    
     public function pns()
     {
         $data['judul'] = 'Data PNS RS.Jiwa Tampan';

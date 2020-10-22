@@ -45,10 +45,17 @@
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 
-!-- page script -->
 <script>
   $(function () {
     $("#usermanage").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $("#users").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $("#dtgajipns").DataTable({
       "responsive": true,
       "autoWidth": false,
     });

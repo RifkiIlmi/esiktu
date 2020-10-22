@@ -4,7 +4,7 @@
 	<div class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
-				<div class="col-sm-6">
+				<div class="col-sm-6"> 
 					<h1 class="m-0 text-dark">Data Gaji Berkala PNS</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
@@ -56,7 +56,7 @@
                                 <?php
                                     $year = date('Y', strtotime($item->tgl_sk_pangkat));
                                     $selisih = $filter - $year;
-                                    if($selisih%2 == 0)
+                                    if($selisih%2 == 0 && $year != $filter)
                                 : ?>
                                     <tr>
                                         <td><?= $no ?>.</td>

@@ -14,7 +14,7 @@ class DataPensiun extends CI_Controller
         }
     }
 
-    public function pns()
+    public function pns_pensiun()
     {
         $data['judul'] = 'Gaji Pegawai PNS';
 

@@ -17,7 +17,7 @@
 		</div><!-- /.container-fluid -->
 	</div>
 	<!-- /.content-header -->
-    <a href="tambah_data" class="btn btn-md btn-primary ml-0 p-md-2">Tambah Data</a>
+
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
@@ -46,20 +46,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							
-							<?php $no=0; foreach ($pns as  $value) : $no++?>
+
+							<?php  $no=0; foreach ($pns as  $value) : $no++; ?>
 							<tr>
-							<td><?= $no?></td>
-							<td><?= $value->nama?></td>
-							<td><?= $value->NIP?></td>
-							<td><?= $value->No_KTP?></td>
-							<td><?= $value->npwp?></td>
-							<td><?= $value->pangkat?></td>
-							<td><?= $value->tempat_lahir?></td>
-							<td><?= $value->tgl_lahir?></td>
-							<td><?= $value->jabatan?></td>
-							<td><?= $value->profesi?></td>
-							<td><a href="user_management/update/<?= $value->NIP ?>" class="btn btn-md btn-primary ml-0"> Lihat Selengkapnya..</a></td>
+
+								<td><?= $no?></td>
+								<td><?= $value->nama?></td>
+								<td><?= $value->NIP?></td>
+								<td><?= $value->No_KTP?></td>
+								<td><?= $value->npwp?></td>
+								<td><?= $value->pangkat?></td>
+								<td><?= $value->tempat_lahir?></td>
+								<td><?= $value->tgl_lahir?></td>
+								<td><?= $value->jabatan?></td>
+								<td><?= $value->profesi?></td>
+								
+								<td><a href="<?= base_url('DataPegawai/selengkapnya/'); echo $value->NIP ?>"><button class="btn btn-md btn-primary ml-0 m-2"><i class="fas fa-angle-double-right"></i></button></a>
+									<a href="user_management/update/C"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->NIP?>"> <i class="far fa-trash-alt"></i></button>
+								</td>
 							</tr>
 							<?php endforeach ?>
 						</tbody>
@@ -75,3 +80,28 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<?php foreach ($pns as  $value) : ?>
+<div class="modal fade" id="modal-default<?= $value->NIP?>">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Default Modal</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>One fine body&hellip;</p>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+				<a href="delete_pns/<?= $value->NIP?>"><button
+						type="button" class="btn btn-primary">Save changes</button></a>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>	
+</div>
+<?php endforeach ?>

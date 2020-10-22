@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 06:24 PM
+-- Generation Time: Oct 16, 2020 at 07:25 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -67,7 +67,6 @@ INSERT INTO `golongan` (`id_golongan`, `golongan`) VALUES
 CREATE TABLE `honorer` (
   `id_honorer` int(11) NOT NULL,
   `jenis_ketenagaan` varchar(45) NOT NULL,
-  `profesi` varchar(45) NOT NULL,
   `pegawai_NIP` varchar(11) NOT NULL,
   `fk_id_PNS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -110,10 +109,9 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`) VALUES
-('123456789', 'Ajo Sate', '123456789', '', '2020-10-04', 'Tukang sate lampu merah'),
-('15483321558', 'Pasek', '15466596', 'ROUHUL', '2020-10-12', 'PASEKAN'),
-('4474444', 'roihan', '4444444', 'Toluk', '2019-09-14', 'Mahasiswew'),
-('adwdnnmmwnd', 'Aldiyan Ocu', 'adwadadwwa', 'dada', '2016-08-13', 'Ocu');
+('48444879616', 'Ilmi', '484841516548', 'RUMBAI', '2018-09-15', 'programmer'),
+('aadawd', 'adawxxx', 'dawdw', 'xxx', '2020-10-21', 'xx'),
+('aafc', 'cca', 'zdad', 'awdz', '2019-09-15', 'zsdza');
 
 -- --------------------------------------------------------
 
@@ -176,10 +174,8 @@ CREATE TABLE `pns` (
 --
 
 INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pangkat`, `jabatan`, `no_kerpeg`, `fk_id_pangkat`, `fk_id_golongan`, `fk_id_ruang`, `fk_NIP`) VALUES
-(5, '123456789', '2020-10-01', '17/1471/dawjand', '2020-10-01', 'Tukang Sate', '123456789', 1, 1, 1, '123456789'),
-(7, 'adwda', '2020-10-20', '', '2020-10-12', 'dawdawdaw', '', 1, 1, 1, '15483321558'),
-(8, 'dawww', '2018-09-14', '', '2019-09-14', 'adwda', '', 1, 1, 2, '4474444'),
-(9, 'adwadadawd', '2016-08-14', '', '2016-08-13', 'OCU', '', 1, 1, 1, 'adwdnnmmwnd');
+(12, 'awdw', '2020-10-13', 'dddd', '2019-09-15', 'profesor', '12111', 1, 2, 1, 'aafc'),
+(13, 'xxx', '2020-10-07', '', '2020-10-21', '', '', 1, 1, 1, 'aadawd');
 
 -- --------------------------------------------------------
 
@@ -226,13 +222,6 @@ CREATE TABLE `user` (
   `hak_akses` varchar(45) NOT NULL,
   `pegawai_NIP` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`, `pegawai_NIP`) VALUES
-(1, 'ajo', '123456789', 'admin', '123456789');
 
 --
 -- Indexes for dumped tables
@@ -337,7 +326,7 @@ ALTER TABLE `golongan`
 -- AUTO_INCREMENT for table `honorer`
 --
 ALTER TABLE `honorer`
-  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pangkat`
@@ -361,7 +350,7 @@ ALTER TABLE `pengalaman_kerja`
 -- AUTO_INCREMENT for table `pns`
 --
 ALTER TABLE `pns`
-  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ruang`
@@ -395,33 +384,33 @@ ALTER TABLE `cuti`
 -- Constraints for table `honorer`
 --
 ALTER TABLE `honorer`
-  ADD CONSTRAINT `fk_honorer_PNS1` FOREIGN KEY (`fk_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_honorer_pegawai1` FOREIGN KEY (`pegawai_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_honorer_PNS1` FOREIGN KEY (`fk_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_honorer_pegawai1` FOREIGN KEY (`pegawai_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pendidikan_formal`
 --
 ALTER TABLE `pendidikan_formal`
-  ADD CONSTRAINT `fk_pendidikan_formal_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pendidikan_formal_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pendidikan_j_t`
 --
 ALTER TABLE `pendidikan_j_t`
-  ADD CONSTRAINT `fk_pendidikan_J_T_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pendidikan_J_T_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pengalaman_kerja`
 --
 ALTER TABLE `pengalaman_kerja`
-  ADD CONSTRAINT `fk_pengalaman_kerja_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pengalaman_kerja_PNS1` FOREIGN KEY (`PNS_id_PNS`) REFERENCES `pns` (`id_PNS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pns`
 --
 ALTER TABLE `pns`
-  ADD CONSTRAINT `fk_PNS_pangkat1` FOREIGN KEY (`fk_id_pangkat`) REFERENCES `pangkat` (`id_pangkat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_PNS_pegawai1` FOREIGN KEY (`fk_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_PNS_pangkat1` FOREIGN KEY (`fk_id_pangkat`) REFERENCES `pangkat` (`id_pangkat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_PNS_pegawai1` FOREIGN KEY (`fk_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pns_ibfk_1` FOREIGN KEY (`fk_id_golongan`) REFERENCES `golongan` (`id_golongan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pns_ibfk_2` FOREIGN KEY (`fk_id_ruang`) REFERENCES `ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -429,13 +418,13 @@ ALTER TABLE `pns`
 -- Constraints for table `skp`
 --
 ALTER TABLE `skp`
-  ADD CONSTRAINT `fk_skp_honorer1` FOREIGN KEY (`fk_id_honorer`) REFERENCES `honorer` (`id_honorer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_skp_honorer1` FOREIGN KEY (`fk_id_honorer`) REFERENCES `honorer` (`id_honorer`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `fk_user_pegawai` FOREIGN KEY (`pegawai_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_user_pegawai` FOREIGN KEY (`pegawai_NIP`) REFERENCES `pegawai` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

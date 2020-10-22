@@ -44,6 +44,12 @@
 						</p>
 					</a>
 					<ul class="nav nav-treeview">
+					<li class="nav-item">
+							<a href="<?php echo base_url('DataPegawai/tambah_data') ?>" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Tambah Pegawai</p>
+							</a>
+						</li>
 						<li class="nav-item">
 							<a href="<?php echo base_url('DataPegawai/pns') ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
@@ -51,7 +57,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="../tables/data.html" class="nav-link">
+							<a href="<?php echo base_url('DataPegawai/honorer') ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Honor</p>
 							</a>

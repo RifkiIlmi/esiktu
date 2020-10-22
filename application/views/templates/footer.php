@@ -51,6 +51,14 @@
       "responsive": true,
       "autoWidth": false,
     });
+    $("#users").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $("#dtgajipns").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

@@ -68,6 +68,12 @@
 								<p>Kenaikan Pangkat</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?php echo base_url('DataPegawai/satia_lencana') ?>" class="nav-link <?php if($this->uri->segment(2)=="satia_lencana"){echo "active";}?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Satia Lencana</p>
+							</a>
+						</li>
 					</ul>
 				</li>
 

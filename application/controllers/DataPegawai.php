@@ -137,6 +137,27 @@ class DataPegawai extends CI_Controller
         redirect('DataPegawai/pangkat');
     }
 
+    public function satia_lencana()
+    {
+        $data['judul'] = 'Satia Lencana';
+        $data['pns']= $this->M_pegawai->data_pns();
+
+        $filterTh = $this->input->post('filter');
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+        }else{
+            $data['filter'] =  date("Y");
+        }
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/satia_lencana',$data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_data()
     {
         $data['judul'] = 'Tambah data pegawai';

@@ -8,6 +8,8 @@ class DataPensiun extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('form', 'url'));
+        $this->load->model('M_pegawai');    
+
 
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');
@@ -17,10 +19,21 @@ class DataPensiun extends CI_Controller
     public function pns_pensiun()
     {
         $data['judul'] = 'Gaji Pegawai PNS';
+        $data['pns']= $this->M_pegawai->data_pns();
+
+        $filterTh = $this->input->post('filter');
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+        }else{
+            $data['filter'] =  date("Y");
+        }
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);
-        $this->load->view('pensiunPegawai/pns',$data);
+        $this->load->view('pensiunPegawai/pns_pensiun',$data);
         $this->load->view('templates/footer');
     }
 }

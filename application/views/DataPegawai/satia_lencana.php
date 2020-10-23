@@ -5,12 +5,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6"> 
-					<h1 class="m-0 text-dark">Data Gaji Berkala PNS</h1>
+					<h1 class="m-0 text-dark">Satia Lencana</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Data Gaji Berkala PNS</li>
+						<li class="breadcrumb-item active">Satia Lencana</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -21,7 +21,7 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-			<?php echo form_open_multipart('DataGaji/gaji_pns/', 'role="form" class="form" id="filter" '); ?>
+			<?php echo form_open_multipart('DataPegawai/satia_lencana/', 'role="form" class="form" id="filter" '); ?>
 			<div class="row mx-auto">
 				<div class="col-lg-2">
 					<input type="date" name="filter" id="filter" class="form-control">
@@ -35,7 +35,7 @@
 			
             <div class="card">
 				<div class="card-header p-2">
-					<h3>Data Gaji Berkala Tahun <?= $filter ?></h3>
+					<h3>Pegawai Yang Mendapatkan Satia Lencana Tahun <?= $filter ?></h3>
 				</div><!-- /.card-header -->
 				<div class="card-body">
 					<div class="tab-content">
@@ -56,7 +56,7 @@
                                 <?php
                                     $year = date('Y', strtotime($item->tgl_sk_pangkat));
                                     $selisih = $filter - $year;
-                                    if($selisih%2 == 0 && $year != $filter)
+                                    if($selisih%10 == 0 && $year != $filter)
                                 : ?>
                                     <tr>
                                         <td><?= $no ?>.</td>

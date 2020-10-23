@@ -174,8 +174,7 @@ class DataPegawai extends CI_Controller
     public function selengkapnya($id)
     {
         $id= $this->uri->segment('3');
-        
-            // var_dump($id);
+
         $data ['selengkapnya_pns'] = $this->M_pegawai->selengkapnya_pns($id);
         $data ['pengalaman_kerja'] = $this->M_pegawai->pengalaman_kerja($id);
         $data ['pendidikan_formal'] = $this->M_pegawai->pendidikan_formal($id);
@@ -183,6 +182,45 @@ class DataPegawai extends CI_Controller
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);
         $this->load->view('DataPegawai/pns_lengkap',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function selengkapnya_honorer($id)
+    {
+        $id= $this->uri->segment('4');
+        $id_honorer= $this->uri->segment('3');
+        $data ['selengkapnya_honorer'] = $this->M_pegawai->selengkapnya_honorer($id);
+        $data['pns']= $this->M_pegawai->data_pns();
+        $data['skp']= $this->M_pegawai->data_skp($id_honorer);
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/honorer_lengkap',$data);
+        $this->load->view('templates/footer');
+    }
+    public function edit_lengkap_honorer($id)
+    {
+        $id= $this->uri->segment('4');
+        $id_honorer= $this->uri->segment('3');
+
+        $data ['selengkapnya_honorer'] = $this->M_pegawai->selengkapnya_honorer($id);
+        $data['pns']= $this->M_pegawai->data_pns();
+        $data['skp']= $this->M_pegawai->data_skp($id_honorer);
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/edit_lengkap_honorer',$data);
+        $this->load->view('templates/footer');
+    }
+    public function edit_lengkap_pns($id)
+    {
+        $id= $this->uri->segment('3');
+
+        $data ['selengkapnya_pns'] = $this->M_pegawai->selengkapnya_pns($id);
+        $data ['pengalaman_kerja'] = $this->M_pegawai->pengalaman_kerja($id);
+        $data ['pendidikan_formal'] = $this->M_pegawai->pendidikan_formal($id);
+        $data ['pendidikan_j_t'] = $this->M_pegawai->pendidikan_j_t($id);
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/edit_lengkap_pns',$data);
         $this->load->view('templates/footer');
     }
 
@@ -232,6 +270,7 @@ class DataPegawai extends CI_Controller
         $tambah_honorer = array(
             'jenis_ketenagaan' => $jenis_ketenagaan,
             'fk_id_PNS' => $mengangkat,
+            'jabatan_honorer'=> $jabatan,
             'pegawai_NIP' => $NIP,
         );
 
@@ -256,5 +295,194 @@ class DataPegawai extends CI_Controller
         $data = $this->M_pegawai->delete_pns($id);
         redirect('DataPegawai/pns');
     }
+    public function delete_honorer()
+    {
+        $id= $this->uri->segment('3');
+            // var_dump($id);
+        $data = $this->M_pegawai->delete_honorer($id);
+        redirect('DataPegawai/honorer');
+    }
+    public function input_lengkap()
+    {
+        $kepegawaian = $this->input->post('kepegawaian');
+        $nama = $this->input->post('nama');
+        $NIP = $this->input->post('NIP');
+        $KTP = $this->input->post('No_KTP');
+        $profesi = $this->input->post('profesi');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tgl_lahir = $this->input->post('tgl_lahir');
+        
+        
+        $npwp = $this->input->post('npwp');
+        $tmt_pangkat= $this->input->post('tmt_pangkat');
+        $tgl_sk_pangkat = $this->input->post('tgl_sk_pangkat');
+        $jabatan = $this->input->post('jabatan');
+        $fk_id_pangkat = $this->input->post('pangkat');
+        $fk_id_golongan = $this->input->post('golongan');
+        $fk_id_ruang = $this->input->post('ruang');
+        $no_kerpeg = $this->input->post('no_kerpeg');
+        $no_sk_pangkat = $this->input->post('no_sk_pangkat');
+        $id_PNS = $this->input->post('id');
+        $pendidikan_formal = $this->input->post('a1');
+        $pendidikan_j_t= $this->input->post('b1');
+        $pengalaman_kerja = $this->input->post('c1');
+        
+        // var_dump($pendidikan_formal);
+        // die;
+
+        $jumlah = $this->input->post('jumlah');
+        $jumlah1 = $this->input->post('jumlah1');
+        $jumlah2 = $this->input->post('jumlah2');
+
+        if($pendidikan_formal !== ""){
+            if ($jumlah == 1){
+                $pendidikan_formal = $this->input->post('a1');
+
+                $input_pendidikan_formal= array(  
+                'pendidikan' => $pendidikan_formal,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pendidikan_formal($input_pendidikan_formal);
+
+            }elseif($jumlah >1){
+                for ($a=1; $a<=$jumlah; $a++){
+                $c=1;
+                $pendidikan_formal = $this->input->post('a'.$a);
+                $c++;
+                $input_pendidikan_formal= array( 
+                'pendidikan' => $pendidikan_formal,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pendidikan_formal($input_pendidikan_formal);
+
+                }
+            
+            }
+        }
+        if($pendidikan_j_t !== ""){
+            if ($jumlah1 == 1){
+                $pendidikan_j_t= $this->input->post('b1');
+
+                $input_pendidikan_j_t= array(  
+                'pelatihan' => $pendidikan_j_t,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pendidikan_j_t($input_pendidikan_j_t);
+
+            }elseif($jumlah1 >1){
+                for ($a=1; $a<=$jumlah1; $a++){
+                $c=1;
+                $pendidikan_j_t = $this->input->post('b'.$a);
+                $c++;
+                $input_pendidikan_j_t= array( 
+                'pelatihan' => $pendidikan_j_t,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pendidikan_j_t($input_pendidikan_j_t);
+
+                }
+            
+            } 
+        }
+        if( $pengalaman_kerja !== ""){
+            if ($jumlah2 == 1){
+                $pengalaman_kerja = $this->input->post('c1');
+
+                $input_pengalaman_kerja= array(  
+                'pengalaman_kerja' => $pengalaman_kerja,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pengalaman_kerja($input_pengalaman_kerja);
+
+            }elseif($jumlah1 >1){
+                for ($a=1; $a<=$jumlah1; $a++){
+                $c=1;
+                $pengalaman_kerja = $this->input->post('c'.$a);
+                $c++;
+                $input_pengalaman_kerja= array( 
+                'pengalaman_kerja' => $pengalaman_kerja,
+                'PNS_id_PNS' => $id_PNS,
+                );
+                $data = $this->M_pegawai->input_pengalaman_kerja($input_pengalaman_kerja);
+
+                }
+            
+            } 
+        }
+        
+    
+
+        $update_pegawai = array (
+            //'id_surat_masuk'=>$id_surat_masuk,
+            'nama'=>$nama,
+            'NIP' =>$NIP,
+            'No_KTP'=>$KTP,
+            'profesi'=>$profesi,
+            'tempat_lahir'=>$tempat_lahir,
+            'tgl_lahir'=>$tgl_lahir,
+        );
+        $update_pns = array (
+            'npwp' => $npwp,
+            'tmt_pangkat' => $tmt_pangkat,
+            'tgl_sk_pangkat' => $tgl_lahir,
+            'jabatan' => $jabatan,
+            'fk_id_pangkat' => $fk_id_pangkat,
+            'fk_id_golongan' => $fk_id_golongan,
+            'fk_id_ruang' => $fk_id_ruang,
+            'fk_NIP' =>$NIP,
+            'no_kerpeg'=>$no_kerpeg,
+            'no_sk_pangkat'=>$no_sk_pangkat,
+            
+        );  
+        $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
+        $data = $this->M_pegawai->update_pns($update_pns,$id_PNS);
+        redirect('DataPegawai/selengkapnya/'.$NIP);
+    }
+    public function input_lengkap_honorer()
+    {
+        $kepegawaian = $this->input->post('kepegawaian');
+        $nama = $this->input->post('nama');
+        $NIP = $this->input->post('NIP');
+        $KTP = $this->input->post('No_KTP');
+        $profesi = $this->input->post('profesi');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tgl_lahir = $this->input->post('tgl_lahir');
+        
+        $jenis_ketenagaan = $this->input->post('jenis_ketenagaan');
+        $jabatan_honorer = $this->input->post('jabatan_honorer');
+        $id_honorer = $this->input->post('id_honorer');
+
+        $no_sk = $this->input->post('no_sk');
+        $tgl_sk = $this->input->post('tgl_sk');
+        $update_pegawai = array (
+            //'id_surat_masuk'=>$id_surat_masuk,
+            'nama'=>$nama,
+            'NIP' =>$NIP,
+            'No_KTP'=>$KTP,
+            'profesi'=>$profesi,
+            'tempat_lahir'=>$tempat_lahir,
+            'tgl_lahir'=>$tgl_lahir,
+        );
+        $update_honorer = array(
+            'jenis_ketenagaan' => $jenis_ketenagaan,
+            // 'fk_id_honorer' => $id_honorer,
+            'jabatan_honorer'=> $jabatan_honorer,
+
+        );
+        $input_skp = array(
+            'no_skp' => $no_sk,
+ 
+            'tgl_skp'=> $tgl_sk,
+            'fk_id_honorer' => $id_honorer,
+
+        );
+        var_dump($id_honorer);
+        
+        $data = $this->M_pegawai->input_skp($input_skp);
+        $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
+        $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
+        redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);
+    }
+
 
 }

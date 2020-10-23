@@ -35,12 +35,10 @@
 								<!-- text input -->
 								<div class="form-group">
 									<label>Nama</label>
-									<input type="text" disabled name="nama" value="<?= $value->nama?>" class="form-control"
+									<input type="text"  name="nama" value="<?= $value->nama?>" class="form-control"
 										placeholder="Enter ...">
-										<input type="hidden" name="nama" value="<?= $value->nama?>" class="form-control"
-										placeholder="Enter ...">
-										<input type="hidden" name="id" value="<?= $value->id_PNS?>" >
-										
+										<input type="hidden" name="id" value="<?= $value->id_PNS?>"  >
+
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -49,18 +47,15 @@
 									<label>NIP</label>
 									<input disabled type="text" name="NIP" value="<?= $value->NIP?>" class="form-control"
 										placeholder="Enter ...">
-										<input  type="hidden" name="NIP" value="<?= $value->NIP?>" class="form-control"
+                                        <input  type="hidden" name="NIP" value="<?= $value->NIP?>" class="form-control"
 										placeholder="Enter ...">
-										<?php $id = $value->NIP?>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>No. KTP</label>
-									<input disabled type="text" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
-										placeholder="Enter ...">
-										<input  type="hidden" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
+									<input  type="text" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
 										placeholder="Enter ...">
 								</div>
 							</div>
@@ -68,9 +63,7 @@
 								<!-- text input -->
 								<div class="form-group">
 									<label>Profesi</label>
-									<input disabled type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
-										placeholder="Enter ...">
-										<input  type="hidden" name="profesi" value="<?= $value->profesi?>" class="form-control"
+									<input  type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
 										placeholder="Enter ...">
 								</div>
 							</div>
@@ -78,9 +71,7 @@
 								<!-- text input -->
 								<div class="form-group">
 									<label>Tempat Lahir</label>
-									<input disabled type="text" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
-										class="form-control" placeholder="Enter ...">
-										<input  type="hidden" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
+									<input  type="text" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
 										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
@@ -88,9 +79,7 @@
 								<!-- text input -->
 								<div class="form-group">
 									<label>Tanggal Lahir</label>
-									<input disabled type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
-										class="form-control">
-										<input  type="hidden" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+									<input type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
 										class="form-control">
 								</div>
 							</div>
@@ -101,9 +90,7 @@
 
 								<div class="form-group">
 									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
-									<input disabled type="text" name="npwp" value="<?= $value->npwp?>" class="form-control"
-										placeholder="Enter ...">
-										<input type="hidden" name="npwp" value="<?= $value->npwp?>" class="form-control"
+									<input  type="text" name="npwp" value="<?= $value->npwp?>" class="form-control"
 										placeholder="Enter ...">
 								</div>
 							</div>
@@ -111,9 +98,7 @@
 
 								<div class="form-group">
 									<label>TMT Pangkat</label>
-									<input disabled type="date" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
-										class="form-control" placeholder="Enter ...">
-										<input  type="hidden" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
+									<input  type="date" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
 										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
@@ -121,9 +106,7 @@
 
 								<div class="form-group">
 									<label>Jabatan</label>
-									<input disabled type="text" name="jabatan" class="form-control" value="<?= $value->jabatan?>"
-										placeholder="Enter ...">
-										<input  type="hidden" name="jabatan" class="form-control" value="<?= $value->jabatan?>"
+									<input  type="text" name="jabatan" class="form-control" value="<?= $value->jabatan?>"
 										placeholder="Enter ...">
 								</div>
 							</div>
@@ -134,40 +117,34 @@
 								<!-- select -->
 								<div class="form-group">
 									<label>Pangkat</label>
-									<input disabled   name="pangkat" class="form-control" value="<?= $value->pangkat?>"
-										placeholder="Enter ...">
-										<input type="hidden"  name="pangkat" class="form-control" value="<?= $value->fk_id_pangkat?>"
-										placeholder="Enter ...">
-									
+									<select  class="custom-select" name="pangkat">
+										<option value='<?=$value->id_pangkat?>'><?=$value->pangkat?></option>
+
+
+									</select>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
 									<label>Golongan</label>
-									<input  disabled name="golongan" class="form-control" value="<?= $value->golongan?>"
-										placeholder="Enter ...">
-										<input type="hidden" name="golongan" class="form-control" value="<?= $value->fk_id_golongan?>"
-										placeholder="Enter ...">
-									
+									<select  class="custom-select" name="golongan">
+										<option value='<?=$value->id_golongan?>'><?=$value->golongan?></option>
+									</select>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
 									<label>Ruang</label>
-									<input  disabled name="ruang" class="form-control" value="<?= $value->ruang?>"
-										placeholder="Enter ...">
-										<input  type="hidden" name="ruang" class="form-control" value="<?= $value->fk_id_ruang?>"
-										placeholder="Enter ...">
-									
+									<select  class="custom-select" name="ruang">
+										<option value='<?=$value->id_ruang?>'><?=$value->ruang?></option>
+									</select>
 								</div>
 							</div>
 							<div class="col-sm-3">
 
 								<div class="form-group">
 									<label>No. Kerpeg</label>
-									<input  type="hidden" name="no_kerpeg" value='<?=$value->no_kerpeg?>'
-										class="form-control" placeholder="Enter ...">
-										<input disabled type="text" name="no_kerpeg" value='<?=$value->no_kerpeg?>'
+									<input  type="text" name="no_kerpeg" value='<?=$value->no_kerpeg?>'
 										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
@@ -209,7 +186,7 @@
 							<div class="form-group">
 								<label>Data Pendidikan Formal</label>
 								<?php foreach ($pendidikan_formal as  $value) :  ?>
-								<input disabled type="text" name="123" value="<?= $value->pendidikan?>"class="form-control">
+								<input disabled  type="text" name="123" value="<?= $value->pendidikan?>"class="form-control">
 								<?php endforeach?>
 							</div>
 						</div>
@@ -218,7 +195,7 @@
 							<div class="form-group">
 								<label>Data Pendidikan Perjenjangan Teknis/Tahun</label>
 								<?php foreach ($pendidikan_j_t as  $value) :  ?>
-								<input disabled  type="text" name="231" value="<?=$value->pelatihan?>"class="form-control" >
+								<input disabled type="text" name="231" value="<?=$value->pelatihan?>"class="form-control" >
 								<?php endforeach?>
 							</div>
 						</div>
@@ -290,7 +267,6 @@
 			<!-- /.card -->
 			<div class="modal-footer">
 			<a href="<?php echo base_url('DataPegawai/pns') ?>"><button type="button" class="btn btn-danger" >Kembali</button></a>
-			<a href="<?php echo base_url('DataPegawai/edit_lengkap_pns/').$id ?>"><button type="button" class="btn btn-success" >Edit semua data</button></a>
 				<button type="submit" class="btn btn-primary">Simpan Data</button>
 			</div>
 		</div>

@@ -62,7 +62,7 @@
 								<td><?= $value->profesi?></td>
 								
 								<td><a href="<?= base_url('DataPegawai/selengkapnya/'); echo $value->NIP ?>"><button class="btn btn-md btn-primary ml-0 m-2"><i class="fas fa-angle-double-right"></i></button></a>
-									<a href="user_management/update/C"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<a href="<?php echo base_url('DataPegawai/edit_lengkap_pns/'); echo $value->NIP ?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
 									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->NIP?>"> <i class="far fa-trash-alt"></i></button>
 								</td>
 							</tr>

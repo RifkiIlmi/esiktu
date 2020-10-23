@@ -106,7 +106,9 @@ $(document).ready(function () {
 <script>
   function add(){
       var new_chq_no = parseInt($('#total_chq').val())+1;
-      var new_input="<input type='text' class='form-control mb-2' id='new_"+new_chq_no+"'>";
+      var jumlah = new_chq_no;
+
+      var new_input="<input type='text' class='form-control mb-2' name='a"+new_chq_no+"' id='new_"+new_chq_no+"'>";
       $('#new_chq').append(new_input);
       $('#total_chq').val(new_chq_no)
     }
@@ -121,14 +123,17 @@ $(document).ready(function () {
 <script>
   function add1(){
       var new_chq_no1 = parseInt($('#total_chq1').val())+1;
-      var new_input1="<input type='text' class='form-control mb-2' id='new_"+new_chq_no1+"'>";
+      var jumlah1 = new_chq_no1;
+      document.cookie='jumlah1='+jumlah1;
+
+      var new_input1="<input type='text' class='form-control mb-2' name='b"+new_chq_no1+"' id='new_1"+new_chq_no1+"'>";
       $('#new_chq1').append(new_input1);
       $('#total_chq1').val(new_chq_no1)
     }
     function remove1(){
       var last_chq_no1 = $('#total_chq1').val();
       if(last_chq_no1>1){
-        $('#new_'+last_chq_no1).remove1();
+        $('#new_1'+last_chq_no1).remove();
         $('#total_chq1').val(last_chq_no1-1);
       }
     }
@@ -136,7 +141,10 @@ $(document).ready(function () {
 <script>
   function add2(){
       var new_chq_no2 = parseInt($('#total_chq2').val())+1;
-      var new_input2="<input type='text' class='form-control mb-2' id='new_"+new_chq_no2+"'>";
+      var jumlah2 = new_chq_no2;
+
+
+      var new_input2="<input type='text' class='form-control mb-2'  name='c"+new_chq_no2+"' id='new_2"+new_chq_no2+"'>";
       $('#new_chq2').append(new_input2);
       $('#total_chq2').val(new_chq_no2)
     }
@@ -145,6 +153,24 @@ $(document).ready(function () {
       if(last_chq_no2>1){
         $('#new_2'+last_chq_no2).remove();
         $('#total_chq2').val(last_chq_no2-1);
+      }
+    }
+</script>
+<script>
+  function addsk(){
+      var new_chq_nosk = parseInt($('#total_chqsk').val())+1;
+      var jumlahsk = new_chq_nosk;
+
+
+      var new_inputsk="<input type='text' class='form-control mb-2'  name='c"+new_chq_nosk+"' id='new_sk"+new_chq_nosk+"'>";
+      $('#new_chqsk').append(new_inputsk);
+      $('#total_chqsk').val(new_chq_nosk)
+    }
+    function removesk(){
+      var last_chq_nosk = $('#total_chqsk').val();
+      if(last_chq_nosk>1){
+        $('#new_sk'+last_chq_nosk).remove();
+        $('#total_chqsk').val(last_chq_nosk-1);
       }
     }
 </script>

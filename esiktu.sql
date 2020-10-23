@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 07:25 PM
+-- Generation Time: Oct 23, 2020 at 03:15 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -67,9 +67,18 @@ INSERT INTO `golongan` (`id_golongan`, `golongan`) VALUES
 CREATE TABLE `honorer` (
   `id_honorer` int(11) NOT NULL,
   `jenis_ketenagaan` varchar(45) NOT NULL,
+  `jabatan_honorer` varchar(100) NOT NULL,
   `pegawai_NIP` varchar(11) NOT NULL,
   `fk_id_PNS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `honorer`
+--
+
+INSERT INTO `honorer` (`id_honorer`, `jenis_ketenagaan`, `jabatan_honorer`, `pegawai_NIP`, `fk_id_PNS`) VALUES
+(5, 'xxx', '', 'xxx', 12),
+(6, '', 'dw', 'dw', 12);
 
 -- --------------------------------------------------------
 
@@ -101,17 +110,20 @@ CREATE TABLE `pegawai` (
   `No_KTP` varchar(20) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `profesi` varchar(100) NOT NULL
+  `profesi` varchar(100) NOT NULL,
+  `akun` varchar(25) DEFAULT 'nonaktif'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`) VALUES
-('48444879616', 'Ilmi', '484841516548', 'RUMBAI', '2018-09-15', 'programmer'),
-('aadawd', 'adawxxx', 'dawdw', 'xxx', '2020-10-21', 'xx'),
-('aafc', 'cca', 'zdad', 'awdz', '2019-09-15', 'zsdza');
+INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`, `akun`) VALUES
+('48444879616', 'Ilmi', '484841516548', 'RUMBAI', '2018-09-15', 'programmer', 'aktif'),
+('aadawd', 'adam malik nasution', '123', 'pekanbaru', '2020-10-21', 'bos', 'nonaktif'),
+('aafc', 'iqbal', '124578', 'dumai', '2019-09-15', 'OB', 'nonaktif'),
+('dw', 'dw', 'dw', 'dw1', '0000-00-00', 'dw', 'nonaktif'),
+('xxx', 'xxxx', 'xxx', 'xxxx', '2020-10-07', 'xxx', 'nonaktif');
 
 -- --------------------------------------------------------
 
@@ -125,6 +137,19 @@ CREATE TABLE `pendidikan_formal` (
   `PNS_id_PNS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pendidikan_formal`
+--
+
+INSERT INTO `pendidikan_formal` (`id_pendidikan_formal`, `pendidikan`, `PNS_id_PNS`) VALUES
+(21, '123', 13),
+(22, 'adw', 13),
+(23, 'aadw', 13),
+(24, 'ww', 13),
+(25, 'dd', 13),
+(26, 'dadw', 13),
+(27, 'ww', 13);
+
 -- --------------------------------------------------------
 
 --
@@ -137,6 +162,20 @@ CREATE TABLE `pendidikan_j_t` (
   `PNS_id_PNS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pendidikan_j_t`
+--
+
+INSERT INTO `pendidikan_j_t` (`id_pendidikan_J_T`, `pelatihan`, `PNS_id_PNS`) VALUES
+(9, '123', 13),
+(10, 'adawd', 13),
+(11, 'dd', 13),
+(12, 'w', 13),
+(13, 'ddd', 13),
+(14, 'dd', 13),
+(15, 'ass', 13),
+(16, 'dsa', 13);
+
 -- --------------------------------------------------------
 
 --
@@ -148,6 +187,20 @@ CREATE TABLE `pengalaman_kerja` (
   `pengalaman_kerja` varchar(45) NOT NULL,
   `PNS_id_PNS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pengalaman_kerja`
+--
+
+INSERT INTO `pengalaman_kerja` (`id_pengalaman_kerja`, `pengalaman_kerja`, `PNS_id_PNS`) VALUES
+(7, '123', 13),
+(8, 'adwad', 13),
+(9, 'ddd', 13),
+(10, '1', 13),
+(11, 'awd', 13),
+(12, 'ccc', 13),
+(13, 'ddw', 13),
+(14, 'ww', 13);
 
 -- --------------------------------------------------------
 
@@ -174,8 +227,8 @@ CREATE TABLE `pns` (
 --
 
 INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pangkat`, `jabatan`, `no_kerpeg`, `fk_id_pangkat`, `fk_id_golongan`, `fk_id_ruang`, `fk_NIP`) VALUES
-(12, 'awdw', '2020-10-13', 'dddd', '2019-09-15', 'profesor', '12111', 1, 2, 1, 'aafc'),
-(13, 'xxx', '2020-10-07', '', '2020-10-21', '', '', 1, 1, 1, 'aadawd');
+(12, '448848', '2020-10-13', '123', '2019-09-15', 'profesor', '12111', 1, 2, 1, 'aafc'),
+(13, '123', '2020-10-07', '123456789', '2020-10-21', 'BOS', '123', 1, 1, 1, 'aadawd');
 
 -- --------------------------------------------------------
 
@@ -205,9 +258,20 @@ INSERT INTO `ruang` (`id_ruang`, `ruang`) VALUES
 CREATE TABLE `skp` (
   `id_skp` int(11) NOT NULL,
   `no_skp` varchar(45) NOT NULL,
-  `tgl_skp` varchar(45) NOT NULL,
+  `tgl_skp` date NOT NULL,
   `fk_id_honorer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `skp`
+--
+
+INSERT INTO `skp` (`id_skp`, `no_skp`, `tgl_skp`, `fk_id_honorer`) VALUES
+(9, 'dwdwd', '2020-10-06', 6),
+(10, 'awddw', '2020-10-12', 6),
+(11, 'adwda', '2020-10-08', 6),
+(12, '111', '2020-10-29', 6),
+(13, '', '0000-00-00', 6);
 
 -- --------------------------------------------------------
 
@@ -220,8 +284,16 @@ CREATE TABLE `user` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `hak_akses` varchar(45) NOT NULL,
-  `pegawai_NIP` varchar(11) NOT NULL
+  `pegawai_NIP` varchar(11) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`, `pegawai_NIP`, `status`) VALUES
+(2, '123456789', '123456789', 'admin', '48444879616', 1);
 
 --
 -- Indexes for dumped tables
@@ -326,7 +398,7 @@ ALTER TABLE `golongan`
 -- AUTO_INCREMENT for table `honorer`
 --
 ALTER TABLE `honorer`
-  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pangkat`
@@ -338,13 +410,19 @@ ALTER TABLE `pangkat`
 -- AUTO_INCREMENT for table `pendidikan_formal`
 --
 ALTER TABLE `pendidikan_formal`
-  MODIFY `id_pendidikan_formal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pendidikan_formal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `pendidikan_j_t`
+--
+ALTER TABLE `pendidikan_j_t`
+  MODIFY `id_pendidikan_J_T` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pengalaman_kerja`
 --
 ALTER TABLE `pengalaman_kerja`
-  MODIFY `id_pengalaman_kerja` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengalaman_kerja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `pns`
@@ -362,13 +440,13 @@ ALTER TABLE `ruang`
 -- AUTO_INCREMENT for table `skp`
 --
 ALTER TABLE `skp`
-  MODIFY `id_skp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_skp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

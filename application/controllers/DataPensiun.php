@@ -18,7 +18,7 @@ class DataPensiun extends CI_Controller
 
     public function pns_pensiun()
     {
-        $data['judul'] = 'Gaji Pegawai PNS';
+        $data['judul'] = 'Pegawai Pensiun';
         $data['pns']= $this->M_pegawai->data_pns();
 
         $filterTh = $this->input->post('filter');

@@ -37,7 +37,6 @@
 								<th>NIP</th>
 								<th>No.KTP</th>
 								<th>Jenis Ketenagaan</th>
-								<th>Jabatan</th>
                                 <th>PNS yang Mengangkat</th>
 								<th>Aksi</th>
 							</tr>
@@ -56,7 +55,6 @@
 							<td><?= $value->pegawai_NIP?></td>
 							<td><?= $value->No_KTP?></td>
                             <td><?= $value->jenis_ketenagaan?></td>
-							<td><?= $value->jabatan_honorer?></td>
                             <td><?= $nama_PNS?></td>
 							
 							

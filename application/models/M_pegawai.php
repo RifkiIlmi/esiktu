@@ -354,4 +354,11 @@ class M_pegawai extends CI_model
         $this->db->update('pns');
     }
 
+    function search_pegawai($nama){
+        $this->db->like('nama', $nama , 'both');
+        $this->db->order_by('nama', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('pegawai')->result();
+    }
+
 }

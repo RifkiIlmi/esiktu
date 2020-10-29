@@ -42,7 +42,7 @@
 								<!-- text input -->
 								<div class="form-group">
 									<label>NIP</label>
-									<input type="text" name="NIP" class="form-control" placeholder="Enter ...">
+									<input type="number" name="NIP" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -101,11 +101,24 @@
 					<div class="card-body">
 
 						<div class="row">
-							<div class="col-sm-4	">
+							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
 									<input type="text" name="npwp" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>No. Kerpeg</label>
+									<input type="text" name="no_kerpeg" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+							<div class="col-sm-4">
+
+								<div class="form-group">
+									<label>Jabatan</label>
+									<input type="text" name="jabatan_pns" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
 							<div class="col-sm-4">
@@ -118,14 +131,22 @@
 							<div class="col-sm-4">
 
 								<div class="form-group">
-									<label>Jabatan</label>
-									<input type="text" name="jabatan" class="form-control" placeholder="Enter ...">
+									<label>No SK Pangkat</label>
+									<input type="text" name="no_sk_pangkat" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
+							<div class="col-sm-4">
 
+								<div class="form-group">
+									<label>Tanggal SK Pangkat</label>
+									<input type="date" name="tgl_sk_pangkat" class="form-control" placeholder="Enter ...">
+								</div>
+							</div>
+							
 						</div>
+						
 						<div class="row">
-							<div class="col-sm-3">
+							<div class="col-sm-4">
 								<!-- select -->
 								<div class="form-group">
 									<label>Pangkat</label>
@@ -137,7 +158,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-4">
 								<div class="form-group">
 									<label>Golongan</label>
 									<select class="custom-select" name="golongan">
@@ -147,7 +168,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-4">
 								<div class="form-group">
 									<label>Ruang</label>
 									<select class="custom-select" name="ruang">
@@ -155,13 +176,6 @@
 										<option value='<?=$value->id_ruang?>'><?=$value->ruang?></option>
 										<?php endforeach?>
 									</select>
-								</div>
-							</div>
-							<div class="col-sm-3">
-
-								<div class="form-group">
-									<label>No. Kerpeg</label>
-									<input type="text" name="no_kerpeg" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
 						</div>
@@ -185,16 +199,6 @@
 								</div>
 							</div>
 
-
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-
-								<div class="form-group">
-									<label>Jabatan</label>
-									<input type="text" name="jabatan" class="form-control" placeholder="Enter ...">
-								</div>
-							</div>
 							<div class="col-sm-6">
 								<!-- select -->
 								<div class="form-group">
@@ -208,6 +212,7 @@
 									</select>
 								</div>
 							</div>
+
 						</div>
 					</div>
 					<div class="modal-footer">

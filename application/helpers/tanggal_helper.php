@@ -126,6 +126,25 @@ if (!function_exists('mediumdate_indo')) {
     }
 }
 
+//Count Days of two dates
+if (!function_exists('count_days')) {
+    
+    function count_days($from,$to)
+    {
+        $startTimeStamp = strtotime($from);
+        $endTimeStamp = strtotime($to);
+
+        $timeDiff = abs($endTimeStamp - $startTimeStamp);
+
+        $numberDays = $timeDiff/86400;  // 86400 seconds in one day
+
+        // and you might want to convert to integer
+        $numberDays = intval($numberDays);
+
+        return $numberDays;
+    }
+}
+
 if (!function_exists('medium_bulan')) {
     function medium_bulan($bln)
     {

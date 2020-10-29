@@ -236,8 +236,9 @@ class DataPegawai extends CI_Controller
         
         $npwp = $this->input->post('npwp');
         $tmt_pangkat= $this->input->post('tmt_pangkat');
+        $no_sk_pangkat = $this->input->post('no_sk_pangkat');
         $tgl_sk_pangkat = $this->input->post('tgl_sk_pangkat');
-        $jabatan = $this->input->post('jabatan');
+        $jabatan_pns = $this->input->post('jabatan_pns');
         $fk_id_pangkat = $this->input->post('pangkat');
         $fk_id_golongan = $this->input->post('golongan');
         $fk_id_ruang = $this->input->post('ruang');
@@ -245,6 +246,7 @@ class DataPegawai extends CI_Controller
         
         $jenis_ketenagaan = $this->input->post('jenis_ketenagaan');
         $mengangkat = $this->input->post('mengangkat');
+
         
 		$tambah_pegawai = array (
             //'id_surat_masuk'=>$id_surat_masuk,
@@ -258,8 +260,9 @@ class DataPegawai extends CI_Controller
         $tambah_pns = array (
             'npwp' => $npwp,
             'tmt_pangkat' => $tmt_pangkat,
-            'tgl_sk_pangkat' => $tgl_lahir,
-            'jabatan' => $jabatan,
+            'no_sk_pangkat' => $no_sk_pangkat,
+            'tgl_sk_pangkat' => $tgl_sk_pangkat,
+            'jabatan' => $jabatan_pns,
             'fk_id_pangkat' => $fk_id_pangkat,
             'fk_id_golongan' => $fk_id_golongan,
             'fk_id_ruang' => $fk_id_ruang,
@@ -267,10 +270,10 @@ class DataPegawai extends CI_Controller
             'no_kerpeg'=>$no_kerpeg,
             
         );
+
         $tambah_honorer = array(
             'jenis_ketenagaan' => $jenis_ketenagaan,
             'fk_id_PNS' => $mengangkat,
-            'jabatan_honorer'=> $jabatan,
             'pegawai_NIP' => $NIP,
         );
 

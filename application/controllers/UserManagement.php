@@ -28,30 +28,6 @@ class UserManagement extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function detail()
-    {
-        $id = $this->uri->segment('3');
-        
-        $data['judul'] = 'User Management - Detail';
-        
-        $cek = $this->M_pegawai->cekPns($id);
-
-        
-        if ($cek == true) {
-            $data['details']= $this->M_pegawai->getPnsByID($id)->row_array();
-        }else{
-            $data['details']= $this->M_pegawai->getHonorerByID($id)->row_array();
-        }
-
-        // var_dump($data['details']);
-        // die;
-        
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/sidebar',$data);
-        $this->load->view('userManagement/detail',$data);
-        $this->load->view('templates/footer');
-    }
-
     public function register()
     {
         $id = $this->uri->segment('3');
@@ -69,6 +45,7 @@ class UserManagement extends CI_Controller
         // die;
         $this->M_pegawai->aktivasiPegawaiAkun($id);
         $this->M_users->createUser($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Pegawai Berhasil Didaftarkan!</div>');
         redirect('UserManagement/index');
     }
 
@@ -88,12 +65,23 @@ class UserManagement extends CI_Controller
         redirect('UserManagement/index');
     }
 
+    public function edit()
+    {
+        $id = $this->uri->segment('3');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Berhasil Di Update!</div>');
+
+        $data = $this->M_users->update_user($data,$id);
+        redirect('UserManagement');
+    }
+
     public function delete()
     {
         $id = $this->uri->segment('3');
 
         $this->M_pegawai->nonaktifPegawaiAkun($id);
         $this->M_users->deleteUser($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-stop"></i> Alert!</h5> Data Berhasil Dihapus!</div>');
         redirect('UserManagement/index');
     }
 }

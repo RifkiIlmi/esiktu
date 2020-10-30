@@ -1,3 +1,7 @@
+<?php 
+	$id = $this->session->userdata('pegawai_nip');
+	$userdata = $this->M_pegawai->getPegawaiById($id);
+?>
 <footer class="main-footer">
 	<div class="float-right d-none d-sm-block">
 		<b>Version</b> 3.0.5
@@ -79,6 +83,14 @@
 			"autoWidth": false,
 		});
 		$("#putama").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$("#pmadya").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$("#pumum").DataTable({
 			"responsive": true,
 			"autoWidth": false,
 		});

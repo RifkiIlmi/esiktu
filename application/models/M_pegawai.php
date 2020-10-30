@@ -361,4 +361,45 @@ class M_pegawai extends CI_model
         return $this->db->get('pegawai')->result();
     }
 
+    public function pnsUtama()
+    {
+        $this->db->like('jabatan', 'direktur', 'both');
+        $this->db->join('pegawai', 'pegawai.NIP=pns.fk_NIP');
+        $this->db->order_by('id_PNS', 'ASC');
+        // $this->db->where(array('tim.id_detail_surat' => $id));
+        $query = $this->db->get('pns')->result();
+        return $query;
+    }
+
+    public function pnsMadya()
+    {
+        $this->db->like('jabatan', 'madya', 'both');
+        $this->db->order_by('id_PNS', 'ASC');
+        $this->db->join('pegawai', 'pegawai.NIP=pns.fk_NIP');
+        // $this->db->where(array('tim.id_detail_surat' => $id));
+        $query = $this->db->get('pns')->result();
+        return $query;
+    }
+
+    public function pnsUmum()
+    {
+        $this->db->not_like('jabatan', 'direktur', 'both');
+        $this->db->not_like('jabatan', 'madya', 'both');
+        $this->db->order_by('id_PNS', 'ASC');
+        $this->db->join('pegawai', 'pegawai.NIP=pns.fk_NIP');
+        // $this->db->where(array('tim.id_detail_surat' => $id));
+        $query = $this->db->get('pns')->result();
+        return $query;
+    }
+
+    public function getPegawaiById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->order_by('pegawai.nama', 'ASC');
+        $this->db->where('NIP', $id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
 }

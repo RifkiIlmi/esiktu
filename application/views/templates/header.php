@@ -1,3 +1,7 @@
+<?php 
+	$id = $this->session->userdata('pegawai_nip');
+	$userdata = $this->M_pegawai->getPegawaiById($id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
+	<link rel="shortcut icon" href="<?= base_url();?>public/img/logoHead.png" type="image/x-icon">
+
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url();?>public/assets/AdminLTE3/plugins/fontawesome-free/css/all.min.css">
 
@@ -43,6 +49,17 @@
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<!-- Messages Dropdown Menu -->
+				<li class="nav-item">
+				<?php if ($this->session->userdata('hak_akses') == 'admin') : ?>
+					<a class="nav-link" href="<?= base_url('home')?>">
+						<?= $userdata['nama'] ?>
+					</a>
+				<?php else:?>
+					<a class="nav-link" href="<?= base_url('homeUser')?>">
+						<?= $userdata['nama'] ?>
+					</a>
+				<?php endif; ?>
+				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link" data-toggle="dropdown" href="#">
 						<i class="far fa-user"></i>
@@ -51,22 +68,23 @@
 						<a href="#" class="dropdown-item">
 							<!-- Message Start -->
 							<div class="media">
-								<img src="<?= base_url();?>public/assets/AdminLTE3/dist/img/user1-128x128.jpg" alt="User Avatar"
+								<img src="<?= base_url();?>public/assets/AdminLTE3/dist/img/defaultavatar.png" alt="User Avatar"
 									class="img-size-50 mr-3 img-circle">
 								<div class="media-body">
 									<h3 class="dropdown-item-title">
-										Brad Diesel
+									
+										<?= $userdata['nama'] ?>
 										<span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
 									</h3>
-									<p class="text-sm">Call me whenever you can...</p>
-									<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+									<p class="text-sm"><?= $userdata['NIP'] ?></p>
+									<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> online</p>
 								</div>
 							</div>
 							<!-- Message End -->
 						</a>
 						<div class="dropdown-divider"></div>
 						
-						<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+						<a href="#" data-toggle="modal" data-target="#logoutModal" class="dropdown-item dropdown-footer">Logout</a>
 					</div>
 				</li>
 			</ul>

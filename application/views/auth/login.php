@@ -1,7 +1,5 @@
+<img class="img-responsive img-fluid" src="<?= base_url();?>public/img/logo.png" alt="Esiktu Logo">
 <div class="login-box"> 
-  <div class="login-logo">
-    <a href="../../index2.html"><b>E-</b>SIKTU</a>
-  </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">

@@ -57,7 +57,7 @@
 								<td><?= $value->npwp?></td>
 								<td><?= $value->pangkat?></td>
 								<td><?= $value->tempat_lahir?></td>
-								<td><?= $value->tgl_lahir?></td>
+								<td><?= formaldate_indo($value->tgl_lahir)?></td>
 								<td><?= $value->jabatan?></td>
 								<td><?= $value->profesi?></td>
 								

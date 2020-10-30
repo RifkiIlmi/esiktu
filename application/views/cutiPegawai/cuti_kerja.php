@@ -64,7 +64,10 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
-										<td>Detail,  edit, lihat file, delete</td>
+										<td>lihat file
+											<a href="<?= base_url()?>DataCuti/edit/<?= $value->id_cuti?>" class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-eye"></i></a>
+											<a href="<?= base_url()?>DataCuti/delete/<?= $value->id_cuti?>" class="btn btn-sm btn-danger mr-1" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
+										</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>
@@ -96,7 +99,11 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
-										<td>Detail,  edit, lihat file, delete</td>
+										<td>
+											lihat file
+											<a href="<?= base_url()?>DataCuti/edit/<?= $value->id_cuti?>" class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-eye"></i></a>
+											<a href="<?= base_url()?>DataCuti/delete/<?= $value->id_cuti?>" class="btn btn-sm btn-danger mr-1" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
+										</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>

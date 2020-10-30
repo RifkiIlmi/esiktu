@@ -8,6 +8,8 @@ class HomeUser extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('form', 'url'));
+        $this->load->model('M_pegawai');    
+        $this->load->model('M_users');
 
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');

@@ -132,6 +132,14 @@ class M_pegawai extends CI_model
         return $query->result();
 
     }
+    public function data_skp_noid()
+    {
+        $this->db->select('*');
+        $this->db->from('skp');
+        $query = $this->db->get();
+        return $query->result();
+
+    }
   
     public function pegawai()
     {
@@ -273,6 +281,36 @@ class M_pegawai extends CI_model
         $this->db->from('pendidikan_j_t');
         $this->db->join('pns', 'pns.id_PNS=pendidikan_j_t.pns_id_PNS');
         $this->db->where('fk_NIP', $id);
+        $query = $this->db->get();
+        return $query->result();
+        
+    }
+    public function pengalaman_kerja_noid()
+    {   
+        $this->db->select('*');
+        $this->db->from('pengalaman_kerja');
+        $this->db->join('pns', 'pns.id_PNS=pengalaman_kerja.pns_id_PNS');
+
+        $query = $this->db->get();
+        return $query->result();
+        
+    }
+    public function pendidikan_formal_noid()
+    {
+        $this->db->select('*');
+        $this->db->from('pendidikan_formal');
+        $this->db->join('pns', 'pns.id_PNS=pendidikan_formal.pns_id_PNS');
+
+        $query = $this->db->get();
+        return $query->result();
+        
+    }
+    public function pendidikan_j_t_noid()
+    {
+        $this->db->select('*');
+        $this->db->from('pendidikan_j_t');
+        $this->db->join('pns', 'pns.id_PNS=pendidikan_j_t.pns_id_PNS');
+ 
         $query = $this->db->get();
         return $query->result();
         

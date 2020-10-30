@@ -53,24 +53,7 @@
 <script src="<?= base_url();?>public/assets/AdminLTE3/dist/js/demo.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/dist/js/pages/dashboard3.js"></script>
 <script src="<?= base_url();?>public/jquery-ui-1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-	$(document).ready(function () {
-		$('#nama_pegawai').autocomplete({
-			source: "<?php echo site_url('DataCuti/get_autocomplete');?>",
 
-			select: function (event, ui) {
-			console.log(ui.item)
-					$('[name="nama"]').val(ui.item.label);
-					$('[name="NIP"]').val(ui.item.nip);
-			},
-			response: function(event, ui){
-				if(ui.content.length === 0){
-					console.log('No results loaded!');
-				}else{
-					console.log('success!');
-				}
-			},
-		});
 
 <script type="text/javascript">
 	$(document).ready(function () {

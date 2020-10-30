@@ -306,6 +306,48 @@ class DataCuti extends CI_Controller
        $data = $this->M_cuti->delete_cuti($id);
      
     }
+    public function print_cuti_pns()
+    {
+        $data['judul'] = 'Pegawai Cuti';
+        $filterTh= $this->uri->segment('3');
+     
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+            $data['cutiPns'] = $this->M_cuti->getCutiPnsFil($filterTh);
+            $data['cutiHonorer'] = $this->M_cuti->getCutihonorerFil($filterTh);
+        }else{
+            $data['filter'] = "";
+            $data['filter'] = $tahunFilter ;
+            $data['cutiPns'] = $this->M_cuti->getCutiPns();
+            $data['cutiHonorer'] = $this->M_cuti->getCutihonorer();
+        }
+
+        $this->load->view('cutiPegawai/print_cuti_pns',$data);
+    }
+    public function print_cuti_honorer()
+    {
+        $data['judul'] = 'Pegawai Cuti';
+        $filterTh= $this->uri->segment('3');
+     
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+            $data['cutiPns'] = $this->M_cuti->getCutiPnsFil($filterTh);
+            $data['cutiHonorer'] = $this->M_cuti->getCutihonorerFil($filterTh);
+        }else{
+            $data['filter'] = "";
+            $data['filter'] = $tahunFilter ;
+            $data['cutiPns'] = $this->M_cuti->getCutiPns();
+            $data['cutiHonorer'] = $this->M_cuti->getCutihonorer();
+        }
+
+        $this->load->view('cutiPegawai/print_cuti_honorer',$data);
+    }
  
 }
 

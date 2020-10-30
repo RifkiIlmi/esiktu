@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Data Pegawai Cuti</h1>
+					<h1 class="m-0 text-dark">Data Pegawai Cuti <?php echo $filter?></h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -29,6 +29,7 @@
 			</a>
 
 			<?php echo form_open_multipart('DataCuti/cuti_kerja/', 'role="form" class="form" id="filter" '); ?>
+
 				<div class="row mx-auto pb-3">
 					<div class="col-lg-2">
 						<input type="date" name="filter" id="filter" class="form-control">
@@ -37,6 +38,7 @@
 					<button class="btn btn-primary" type="submit">Filter Tahun</button>
 				</div>
 			</div>
+			</form>
 			</form>
 
 			<div class="card">
@@ -49,8 +51,12 @@
 					</ul>
 				</div><!-- /.card-header -->
 				<div class="card-body">
+				
 					<div class="tab-content">
 						<div class="active tab-pane" id="pns">
+						<div class="card-header">
+				<a href="<?php echo base_url('DataCuti/print_cuti_pns/').$filter?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print Data cuti PNS to Excel</button></a>
+				</div>
 							<table id="cutipns" class="table table-bordered table-striped">
 								<thead>
 									<tr>
@@ -88,6 +94,9 @@
 							</table>
 						</div>
 						<div class="tab-pane" id="honorer">
+						<div class="card-header">
+				<a href="<?php echo base_url('DataCuti/print_cuti_honorer/').$filter?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print Data Cuti Honorer to Excel</button></a>
+				</div>
 						<table id="cutihnr" class="table table-bordered table-striped">
 								<thead>
 									<tr>

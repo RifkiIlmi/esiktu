@@ -144,7 +144,7 @@
 														<label class="h3">Tambah data SK</label>
 
 														<label>No SKP</label>
-														<input required type="text" name="no_sk" class="form-control tambah"
+														<input  type="text" name="no_sk" class="form-control tambah"
 															placeholder="No SK">
 														<label>Tanggal SKP</label>
 														<input type="date" name="tgl_sk" class="form-control tambah"

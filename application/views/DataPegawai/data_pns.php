@@ -57,7 +57,7 @@
 								<td><?= $value->npwp?></td>
 								<td><?= $value->pangkat?></td>
 								<td><?= $value->tempat_lahir?></td>
-								<td><?= $value->tgl_lahir?></td>
+								<td><?= formaldate_indo($value->tgl_lahir)?></td>
 								<td><?= $value->jabatan?></td>
 								<td><?= $value->profesi?></td>
 								
@@ -91,13 +91,13 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>One fine body&hellip;</p>
+				<p>Apakah kamu Yakin?&hellip;</p>
 			</div>
 			<div class="modal-footer justify-content-between">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
 				<a href="delete_pns/<?= $value->NIP?>"><button
-						type="button" class="btn btn-primary">Save changes</button></a>
+						type="button" class="btn btn-primary">Yakin!</button></a>
 
 			</div>
 		</div>

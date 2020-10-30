@@ -8,6 +8,8 @@ class Home extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('form', 'url'));
+        $this->load->model('M_pegawai');    
+        $this->load->model('M_users');    
 
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');
@@ -20,7 +22,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Dashboard';
-
+        
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);
         $this->load->view('home/index',$data);

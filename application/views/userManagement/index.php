@@ -21,7 +21,7 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-		<?= $this->session->flashdata('message'); ?>
+			<?= $this->session->flashdata('message'); ?>
 			<div class="card">
 				<div class="card-header p-2">
 					<ul class="nav nav-pills">
@@ -59,20 +59,20 @@
 										<td><?= $value->tgl_lahir?></td>
 										<td>
 											<?php if( $value->status == 1):?>
-												<a href="<?= base_url()?>UserManagement/nonaktifkan/<?= $value->NIP ?>"
-													class="btn btn-sm btn-outline-warning text-dark mr-1"
-													data-toggle="tooltip" title="Non Aktifkan">
-													<i class="fas fa-user-lock"></i> Non Aktifkan</a>
+											<a href="<?= base_url()?>UserManagement/nonaktifkan/<?= $value->NIP ?>"
+												class="btn btn-sm btn-outline-warning text-dark mr-1"
+												data-toggle="tooltip" title="Non Aktifkan">
+												<i class="fas fa-user-lock"></i> Non Aktifkan</a>
 											<?php else:?>
-												<a href="<?= base_url()?>UserManagement/aktifkan/<?= $value->NIP ?>"
-													class="btn btn-sm btn-outline-info text-dark mr-1"
-													data-toggle="tooltip" title="Aktifkan">
-													<i class="fas fa-user-check"></i> Aktifkan</a>
+											<a href="<?= base_url()?>UserManagement/aktifkan/<?= $value->NIP ?>"
+												class="btn btn-sm btn-outline-info text-dark mr-1" data-toggle="tooltip"
+												title="Aktifkan">
+												<i class="fas fa-user-check"></i> Aktifkan</a>
 											<?php endif;?>
-												<a href="<?= base_url()?>UserManagement/detail/<?= $value->NIP ?>"
-												class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Detail">
-												<i class="fas fa-eye"></i></a>
-											<a href="<?= base_url()?>UserManagement/delete/<?= $value->NIP ?>"
+											<a href="#" data-toggle="modal" data-target="#edit<?= $value->NIP ?>"
+												class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Edit">
+												<i class="fas fa-edit"></i></a>
+											<a href="#" data-toggle="modal" data-target="#delete<?= $value->NIP ?>"
 												class="btn btn-sm btn-danger mr-1" data-toggle="tooltip" title="Delete">
 												<i class="fas fa-trash"></i></a>
 										</td>
@@ -106,13 +106,12 @@
 										<td><?= $value->NIP ?></td>
 										<td><?= $value->No_KTP?></td>
 										<td><?= $value->tempat_lahir?></td>
-										<td><?= $value->tgl_lahir?></td>
+										<td><?= formaldate_indo($value->tgl_lahir)?></td>
 										<td>
 											<?php if( $value->akun === "aktif"):?>
 											<?php else : ?>
 											<a href="#" data-toggle="modal" data-target="#register<?= $value->NIP ?>"
-												class="btn btn-sm btn-primary mr-1" data-toggle="tooltip"
-												title=>
+												class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" title=>
 												<i class="fas fa-key"></i> Daftarkan User</a>
 											<?php endif; ?>
 										</td>
@@ -135,6 +134,7 @@
 </div>
 <!-- /.content-wrapper -->
 
+<!-- modal register akun -->
 <?php foreach ($pegawai as  $value) :?>
 <div class="modal fade" id="register<?= $value->NIP?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 	aria-hidden="true">
@@ -163,6 +163,69 @@
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 				<button class="btn btn-primary" type="submit">Daftarkan!</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+<?php endforeach; ?>
+
+<!-- modal delete -->
+<?php foreach ($pegawai as  $value) :?>
+<div class="modal fade" id="delete<?= $value->NIP?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Delete data user <?= $value->NIP ?> ?</h5>
+			</div>
+			<div class="modal-body">
+				<div class="mx-auto">
+					<h4>Apakah Anda Yakin?</h4>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<a href="<?= base_url('UserManagement/delete/'.$value->NIP)?>" class="btn btn-warning"
+					type="submit">Yakin!</a>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endforeach; ?>
+
+<!-- modal edit -->
+<?php foreach ($users as  $value) :?>
+<div class="modal fade" id="edit<?= $value->NIP?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<?php
+			echo form_open_multipart('UserManagement/edit/'.$value->NIP, 'role="form" class="form" id="edit" ');
+			?>
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Edit data user <?= $value->NIP ?> ?</h5>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Username</label>
+					<input type="text" name="username" class="form-control" value="<?= $value->username?>">
+				</div>
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" value="<?= $value->password?>" name="password" class="form-control" placeholder="Masukkan Password Baru / (kosongkan)">
+				</div>
+				<div class="form-group">
+					<label>Hak Akses</label>
+					<select class="form-control" name="hak_akses">
+					<option value="admin" <?php if($value->hak_akses=="admin") echo 'selected="selected"'; ?> >Admin</option>
+					<option value="pegawai" <?php if($value->hak_akses=="pegawai") echo 'selected="selected"'; ?> >Pegawai</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-primary" type="submit">Edit!</button>
 			</div>
 			</form>
 		</div>

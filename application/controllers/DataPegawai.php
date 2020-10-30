@@ -197,6 +197,7 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/honorer_lengkap',$data);
         $this->load->view('templates/footer');
     }
+    
     public function edit_lengkap_honorer($id)
     {
         $id= $this->uri->segment('4');
@@ -210,6 +211,7 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/edit_lengkap_honorer',$data);
         $this->load->view('templates/footer');
     }
+
     public function edit_lengkap_pns($id)
     {
         $id= $this->uri->segment('3');

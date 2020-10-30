@@ -68,15 +68,22 @@ class DataCuti extends CI_Controller
 
     private function _save()
     {
-
-        $config['upload_path']          = './public/surat_cuti';
+        // windows
+        // $config['upload_path']          = './public/surat_cuti';
+        // linux
+        $image_path = realpath(APPPATH . '../public/surat_cuti');
+        $config['upload_path']          = $image_path;
+        
         $config['allowed_types']        = 'gif|jpg|png';
-
+        
         // $config['overwrite']			= true;
         $config['max_size']             = 1024; // 1MB
         // $config['max_width']            = 1024;
         // $config['max_height']           = 768;
-    
+
+        // var_dump($image_path);
+        // die;
+        
         $this->load->library('upload', $config);
         if($this->upload->do_upload("file")){
         $data1 = array('upload_data' => $this->upload->data());
@@ -91,7 +98,7 @@ class DataCuti extends CI_Controller
         // cek rentang tangal yang diinputkan
         if ($tgl_mulai >= $tgl_akhir || $tgl_akhir <= $tgl_mulai) {
             $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-ban"></i> MAAF!</h5> Rentang Waktu Yang Anda Masukkan Salah!</div>');
-            redirect('DataCuti/tambahCuti');
+            redirect('DataCuti/cuti_kerja');
         } else {
             $data = [
                 'jenis_cuti' => $this->input->post('jenis_cuti'),

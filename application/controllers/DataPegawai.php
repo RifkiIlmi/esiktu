@@ -307,6 +307,7 @@ class DataPegawai extends CI_Controller
         $data = $this->M_pegawai->delete_honorer($id);
         redirect('DataPegawai/honorer');
     }
+
     public function input_lengkap()
     {
         $kepegawaian = $this->input->post('kepegawaian');
@@ -443,6 +444,7 @@ class DataPegawai extends CI_Controller
         $data = $this->M_pegawai->update_pns($update_pns,$id_PNS);
         redirect('DataPegawai/selengkapnya/'.$NIP);
     }
+    
     public function input_lengkap_honorer()
     {
         $kepegawaian = $this->input->post('kepegawaian');

@@ -37,7 +37,7 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>Nama</label>
+									<label>Nama <sup>Ketik lalu pilih <i class="text-danger">autocomplete name</i></sup></label>
 									<input type="text" id="nama_pegawai" name="nama" class="form-control" placeholder="Masukkan Nama ..." required>
 								</div>
 							</div>
@@ -108,8 +108,6 @@
 
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 

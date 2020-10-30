@@ -154,96 +154,21 @@
 						</p>
 					</a>
 				</li>
-
-				<li class="nav-item has-treeview <?php if($this->uri->segment(1)=="DataPegawai"){echo "menu-open";}?>">
-					<a href="#" class="nav-link <?php if($this->uri->segment(1)=="DataPegawai"){echo "active";}?>">
-						<i class="nav-icon fas fa-user-friends"></i>
+				<li class="nav-item">
+					<a href="<?= base_url('informasiPribadi');?>" class="nav-link <?php if($this->uri->segment(1)=="informasiPribadi"){echo "active";}?>">
+						<i class="nav-icon fas fa-user"></i>
 						<p>
-							Data Pegawai
-							<i class="fas fa-angle-left right"></i>
+							Informasi Pribadi
 						</p>
 					</a>
-					<ul class="nav nav-treeview">
-					
-						<li class="nav-item">
-							<a href="<?php echo base_url('DataPegawai/pns') ?>" class="nav-link <?php if($this->uri->segment(2)=="pns"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>PNS</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo base_url('DataPegawai/honorer') ?>" class="nav-link <?php if($this->uri->segment(2)=="honorer"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Honor</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo base_url('DataPegawai/pangkat') ?>" class="nav-link <?php if($this->uri->segment(2)=="pangkat"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Kenaikan Pangkat</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?php echo base_url('DataPegawai/satia_lencana') ?>" class="nav-link <?php if($this->uri->segment(2)=="satia_lencana"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Satia Lencana</p>
-							</a>
-						</li>
-					</ul>
 				</li>
-
-				<li class="nav-item has-treeview <?php if($this->uri->segment(1)=="DataGaji"){echo "menu-open";}?>">
-					<a href="#" class="nav-link <?php if($this->uri->segment(1)=="DataGaji"){echo "active";}?>">
-						<i class="nav-icon fas fa-money-check"></i>
-						<p>
-							Data Gaji Pegawai
-							<i class="fas fa-angle-left right"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url('DataGaji/gaji_pns');?>" class="nav-link <?php if($this->uri->segment(2)=="gaji_pns"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Gaji Berkala PNS</p>
-							</a>
-						</li>
-					</ul>
-				</li>
-
-				<li class="nav-item has-treeview <?php if($this->uri->segment(1)=="DataCuti"){echo "menu-open";}?>">
-					<a href="#" class="nav-link <?php if($this->uri->segment(1)=="DataCuti"){echo "active";}?>">
+				<li class="nav-item">
+					<a href="<?= base_url('riwayatCuti');?>" class="nav-link <?php if($this->uri->segment(1)=="riwayatCuti"){echo "active";}?>">
 						<i class="nav-icon fas fa-plane"></i>
 						<p>
-							Data Pegawai Cuti
-							<i class="fas fa-angle-left right"></i>
+							Riwayat Cuti
 						</p>
 					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url('DataCuti/cuti_kerja');?>" class="nav-link <?php if($this->uri->segment(2)=="cuti_kerja"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Cuti Kerja</p>
-							</a>
-						</li>
-					</ul>
-				</li>
-
-				<li class="nav-item has-treeview <?php if($this->uri->segment(1)=="DataPensiun"){echo "menu-open";}?>">
-					<a href="#" class="nav-link <?php if($this->uri->segment(1)=="DataPensiun"){echo "active";}?>">
-						<i class="nav-icon fas fa-bed"></i>
-						<p>
-							Data Pegawai Pensiun
-							<i class="fas fa-angle-left right"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url('DataPensiun/pns_pensiun');?>" class="nav-link <?php if($this->uri->segment(2)=="pns_pensiun"){echo "active";}?>">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Pensiun PNS</p>
-							</a>
-						</li>
-					</ul>
 				</li>
 
 				<?php endif; ?>

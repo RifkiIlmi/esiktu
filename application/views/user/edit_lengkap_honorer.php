@@ -20,7 +20,7 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-			<form action=<?= base_url('DataPegawai\input_lengkap_honorer');?> method="POST" role="form">
+			<form action=<?= base_url('informasiPribadi\input_lengkap_honorer');?> method="POST" role="form">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card card-primary">
@@ -37,7 +37,7 @@
 											<label>Nama</label>
 
 											<input type="text" name="nama" value="<?= $value->nama?>"
-												class="form-control" placeholder="Enter ...">
+												class="form-control">
 											<input type="hidden" name="id" value="<?= $value->id_PNS?>">
 											<input type="hidden" name="id_honorer" value="<?= $value->id_honorer?>">
 
@@ -47,28 +47,9 @@
 										<!-- text input -->
 										<div class="form-group">
 											<label>NIP</label>
-											<input type="text" name="NIP" value="<?= $value->NIP?>" class="form-control"
-												placeholder="Enter ...">
-
+											<input type="text" name="NIP" value="<?= $value->NIP?>"
+												class="form-control">
 											<?php $id = $value->NIP?>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>No. KTP</label>
-											<input type="text" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control" placeholder="Enter ...">
-
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>Profesi</label>
-											<input type="text" name="profesi" value="<?= $value->profesi?>"
-												class="form-control" placeholder="Enter ...">
-
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -76,7 +57,7 @@
 										<div class="form-group">
 											<label>Tempat Lahir</label>
 											<input type="text" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
-												class="form-control" placeholder="Enter ...">
+												class="form-control">
 
 										</div>
 									</div>
@@ -84,19 +65,44 @@
 										<!-- text input -->
 										<div class="form-group">
 											<label>Tanggal Lahir</label>
-											<input type="date" name="tanggal_lahir" value="<?= $value->tgl_lahir?>"
-												class="form-control" placeholder="Enter ...">
+											<input type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+												class="form-control">
 
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<!-- text input -->
+										<div class="form-group">
+											<label>No. KTP</label>
+											<input type="text" name="No_KTP" value="<?= $value->No_KTP?>"
+												class="form-control">
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<!-- text input -->
+										<div class="form-group">
+											<label>Profesi</label>
+											<input type="text" name="profesi" value="<?= $value->profesi?>"
+												class="form-control">
 										</div>
 									</div>
 
 									<div class="col-sm-4">
 										<!-- text input -->
 										<div class="form-group">
+											<label>Pendidikan Terakhir</label>
+											<input type="text" name="pendidikan_terakhir"
+												value="<?= $value->pendidikan_terakhir?>" class="form-control">
+										</div>
+									</div>
+
+
+									<div class="col-sm-4">
+										<!-- text input -->
+										<div class="form-group">
 											<label>Jenis Ketenagaan</label>
-											<input type="text" name="tempat_lahir"
-												value="<?= $value->jenis_ketenagaan?>" class="form-control"
-												placeholder="Enter ...">
+											<input type="text" name="jenis_ketenagaan"
+												value="<?= $value->jenis_ketenagaan?>" class="form-control">
 
 										</div>
 									</div>
@@ -128,62 +134,11 @@
 						</div>
 						<!-- /.card -->
 					</div>
-
-					<div class="col-md-12">
-						<div class="card card-secondary">
-							<div class="card-header">
-								<h3 class="card-title">Input data SK</h3>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="card">
-											<div class="card card-primary card-outline">
-												<div class="card-body">
-													<div class="form-group">
-														<label class="h3">Tambah data SK</label>
-
-														<label>No SKP</label>
-														<input required type="text" name="no_sk" class="form-control tambah"
-															placeholder="No SK">
-														<label>Tanggal SKP</label>
-														<input type="date" name="tgl_sk" class="form-control tambah"
-															placeholder="tgl SK">
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Data SKP yg di input</label>
-											<?php foreach ($skp as  $value) :  ?>
-											<div class="card">
-												<div class="card card-primary card-outline">
-													<label>No SKP</label>
-													<input disabled type="text" name="no_sk" value="<?=$value->no_skp?>"
-														class="form-control tambah" placeholder="No SK">
-													<label>Tanggal SK</label>
-													<input disabled type="date" name="tgl_sk"
-														value="<?=$value->tgl_skp?>" class="form-control tambah"
-														placeholder="tgl SK">
-												</div>
-											</div>
-											<?php endforeach ?>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<!-- /.card-body -->
-					</div>
 					<?php endforeach ?>
 				</div>
 				<!-- /.card -->
 				<div class="modal-footer">
-					<a href="<?php echo base_url('DataPegawai/honorer') ?>"><button type="button"
+					<a href="<?php echo base_url('informasiPribadi') ?>"><button type="button"
 							class="btn btn-danger">Kembali</button></a>
 
 					<button type="submit" class="btn btn-primary">Simpan Data</button>

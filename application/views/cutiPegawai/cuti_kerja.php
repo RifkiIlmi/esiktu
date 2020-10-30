@@ -21,11 +21,23 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-			<?= $this->session->flashdata('message'); ?>
+
+		<?= $this->session->flashdata('message'); ?>
 			<a href="<?= base_url('DataCuti/tambahCuti');?>" class="btn btn-app">
 				<i class="fas fa-plus text-dark"></i>
 				<p class="text-dark">Tambah</p>
 			</a>
+
+			<?php echo form_open_multipart('DataCuti/cuti_kerja/', 'role="form" class="form" id="filter" '); ?>
+				<div class="row mx-auto pb-3">
+					<div class="col-lg-2">
+						<input type="date" name="filter" id="filter" class="form-control">
+					</div>
+					<div class="col-md-2">
+					<button class="btn btn-primary" type="submit">Filter Tahun</button>
+				</div>
+			</div>
+			</form>
 
 			<div class="card">
 				<div class="card-header p-2">
@@ -49,6 +61,7 @@
 										<th>Akhir Cuti</th>
 										<th>Jumlah Hari</th>
 										<th>Jenis Cuti</th>
+										<th>File (Scan)</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -56,7 +69,6 @@
 
 									<?php  $no=0; foreach ($cutiPns as  $value) : $no++; ?>
 									<tr>
-
 										<td><?= $no?></td>
 										<td><?= $value->nama?></td>
 										<td><?= $value->NIP?></td>
@@ -64,11 +76,13 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
-										<td>lihat file
-											<a href="<?= base_url()?>DataCuti/edit/<?= $value->id_cuti?>" class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-eye"></i></a>
-											<a href="<?= base_url()?>DataCuti/delete/<?= $value->id_cuti?>" class="btn btn-sm btn-danger mr-1" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
-										</td>
+										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>"> <i class="fas fa-eye"></i></button></td>
+										<td>
+									<a href="<?php echo base_url('DataCuti/edit_cuti/'); echo $value->id_cuti ?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default1<?= $value->id_cuti?>"> <i class="far fa-trash-alt"></i></button>
+									</td>
 									</tr>
+	
 									<?php endforeach ?>
 								</tbody>
 							</table>
@@ -84,6 +98,7 @@
 										<th>Akhir Cuti</th>
 										<th>Jumlah Hari</th>
 										<th>Jenis Cuti</th>
+										<th>File (Scan)</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -99,11 +114,11 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
+										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>"> <i class="fas fa-eye"></i></button></td>
 										<td>
-											lihat file
-											<a href="<?= base_url()?>DataCuti/edit/<?= $value->id_cuti?>" class="btn btn-sm btn-info mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-eye"></i></a>
-											<a href="<?= base_url()?>DataCuti/delete/<?= $value->id_cuti?>" class="btn btn-sm btn-danger mr-1" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i></a>
-										</td>
+									<a href="<?php echo base_url('DataCuti/edit_cuti_honorer/'); echo $value->id_cuti ?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default2<?= $value->id_cuti?>"> <i class="far fa-trash-alt"></i></button>
+									</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>
@@ -121,3 +136,73 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<?php foreach ($cutiPns as  $value) : ?>
+<div class="modal fade" id="modal-default<?= $value->id_cuti?>">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Foto Hasil Scan</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body mx-auto">
+				<image class="img-fluid" src="<?php echo base_url('/public/surat_cuti/'); echo $value->file ?>"></image>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>	
+</div>
+<?php endforeach ?>
+<?php foreach ($cutiPns as  $value) : ?>
+<div class="modal fade" id="modal-default1<?= $value->id_cuti?>">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Hapus data Cuti??</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body mx-auto">
+				<p>Anda Yakin Ingin meghapus data Cuti?</p>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<a href="delete_cuti/<?= $value->id_cuti?>"><button
+						type="button" class="btn btn-primary">Yakin!</button></a>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>	
+</div>
+<?php endforeach ?>
+
+<?php foreach ($cutiHonorer as  $value) : ?>
+<div class="modal fade" id="modal-default2<?= $value->id_cuti?>">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Hapus data Cuti??</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body mx-auto">
+				<p>Anda Yakin Ingin meghapus data Cuti?</p>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<a href="delete_cuti/<?= $value->id_cuti?>"><button
+						type="button" class="btn btn-primary">Yakin!</button></a>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>	
+</div>
+<?php endforeach ?>

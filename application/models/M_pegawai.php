@@ -361,6 +361,7 @@ class M_pegawai extends CI_model
         return $this->db->get('pegawai')->result();
     }
 
+
     public function pnsUtama()
     {
         $this->db->like('jabatan', 'direktur', 'both');
@@ -401,5 +402,6 @@ class M_pegawai extends CI_model
         $query = $this->db->get();
         return $query->row_array();
     }
+
 
 }

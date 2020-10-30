@@ -46,13 +46,31 @@
 <!-- DataTables -->
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js">
-</script>
-<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
-</script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- OPTIONAL SCRIPTS -->
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/chart.js/Chart.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/dist/js/demo.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/dist/js/pages/dashboard3.js"></script>
 <script src="<?= base_url();?>public/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#nama_pegawai').autocomplete({
+			source: "<?php echo site_url('DataCuti/get_autocomplete');?>",
 
-
+			select: function (event, ui) {
+			console.log(ui.item)
+					$('[name="nama"]').val(ui.item.label);
+					$('[name="NIP"]').val(ui.item.nip);
+			},
+			response: function(event, ui){
+				if(ui.content.length === 0){
+					console.log('No results loaded!');
+				}else{
+					console.log('success!');
+				}
+			},
+		});
 
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -120,7 +138,6 @@
 			"responsive": true,
 		});
 	});
-
 </script>
 
 <script>
@@ -241,10 +258,12 @@
 		if (last_chq_nosk > 1) {
 			$('#new_sk' + last_chq_nosk).remove();
 			$('#total_chqsk').val(last_chq_nosk - 1);
+
 		}
 	}
 
 </script>
+
 
 </body>
 

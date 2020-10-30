@@ -24,6 +24,7 @@
 			<?= $this->session->flashdata('message'); ?>
 
 			<?php echo form_open_multipart('DataPensiun/pns_pensiun/', 'role="form" class="form" id="filter" '); ?>
+
 			<div class="row mx-auto">
 				<div class="col-lg-2">
 					<input type="date" name="filter" id="filter" class="form-control">

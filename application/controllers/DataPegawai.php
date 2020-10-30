@@ -490,4 +490,5 @@ class DataPegawai extends CI_Controller
     }
 
 
+
 }

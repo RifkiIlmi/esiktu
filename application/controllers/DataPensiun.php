@@ -19,9 +19,13 @@ class DataPensiun extends CI_Controller
     public function pns_pensiun()
     {
         $data['judul'] = 'Pegawai Pensiun';
+
+        $data['pns']= $this->M_pegawai->data_pns();
+
         $data['pnsUtama']= $this->M_pegawai->pnsUtama();
         $data['pnsMadya']= $this->M_pegawai->pnsMadya();
         $data['pnsUmum']= $this->M_pegawai->pnsUmum();
+
 
         $filterTh = $this->input->post('filter');
         

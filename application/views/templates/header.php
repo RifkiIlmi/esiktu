@@ -32,6 +32,13 @@
 	<title>
 		<?= $judul ?>
 	</title>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -90,3 +97,4 @@
 			</ul>
 		</nav>
 		<!-- /.navbar -->
+		

@@ -22,6 +22,11 @@ class Home extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Dashboard';
+
+        $data['count_pns']=count( $this->M_pegawai->data_pns());
+        $data['count_honorer']=count( $this->M_pegawai->data_honorer());
+        $data['count_users']= count($this->M_users->getAllUser());
+
         
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);

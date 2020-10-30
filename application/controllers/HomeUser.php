@@ -21,6 +21,10 @@ class HomeUser extends CI_Controller
 
     public function index()
     {
+        $id = $this->session->userdata('pegawai_nip');
+
+        $data['user'] = $this->M_pegawai->getPegawaiById($id);
+
         $data['judul'] = 'Dashboard';
 
         $this->load->view('templates/header',$data);

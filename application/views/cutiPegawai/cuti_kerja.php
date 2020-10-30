@@ -159,6 +159,7 @@
 	</div>	
 </div>
 <?php endforeach ?>
+
 <?php foreach ($cutiPns as  $value) : ?>
 <div class="modal fade" id="modal-default1<?= $value->id_cuti?>">
 	<div class="modal-dialog modal-lg">

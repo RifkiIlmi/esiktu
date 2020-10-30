@@ -25,6 +25,7 @@ class M_cuti extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
+
     public function getCutiPns()
     {
         $this->db->select('*');
@@ -35,6 +36,7 @@ class M_cuti extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
+
     public function getCutiPnsWhere($id)
     {
         $this->db->select('*');
@@ -58,6 +60,7 @@ class M_cuti extends CI_model
         return $query->result();
     }
 
+
     public function getCutiHonorer()
     {
         $this->db->select('*');
@@ -68,6 +71,7 @@ class M_cuti extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
+
     public function getCutiHonorerFil($filter)
     {
         $this->db->select('*');

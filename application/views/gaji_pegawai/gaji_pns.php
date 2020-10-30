@@ -63,7 +63,7 @@
                                         <td><?= $item->nama ?></td>
                                         <td><?= $item->NIP ?></td>
                                         <td><?= $item->no_sk_pangkat ?></td>
-                                        <td><?= $item->tgl_sk_pangkat ?></td>
+                                        <td><?= formaldate_indo($item->tgl_sk_pangkat) ?></td>
                                     </tr>
                                 <?php endif;?>
                                 <?php endforeach; ?>

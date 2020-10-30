@@ -21,11 +21,13 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
+
 		<?= $this->session->flashdata('message'); ?>
 			<a href="<?= base_url('DataCuti/tambahCuti');?>" class="btn btn-app">
 				<i class="fas fa-plus text-dark"></i>
 				<p class="text-dark">Tambah</p>
 			</a>
+
 			<?php echo form_open_multipart('DataCuti/cuti_kerja/', 'role="form" class="form" id="filter" '); ?>
 				<div class="row mx-auto pb-3">
 					<div class="col-lg-2">
@@ -36,7 +38,6 @@
 				</div>
 			</div>
 			</form>
-			
 
 			<div class="card">
 				<div class="card-header p-2">
@@ -67,11 +68,8 @@
 								<tbody>
 
 									<?php  $no=0; foreach ($cutiPns as  $value) : $no++; ?>
-										
-								
-                                    <tr>
-									<td><?= $no?></td>
-									
+									<tr>
+										<td><?= $no?></td>
 										<td><?= $value->nama?></td>
 										<td><?= $value->NIP?></td>
 										<td><?= formaldate_indo($value->mulai_cuti) ?></td>
@@ -84,8 +82,7 @@
 									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default1<?= $value->id_cuti?>"> <i class="far fa-trash-alt"></i></button>
 									</td>
 									</tr>
-									
-									
+	
 									<?php endforeach ?>
 								</tbody>
 							</table>

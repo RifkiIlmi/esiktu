@@ -79,6 +79,7 @@
 								</div>
 							</div>
 							<div class="col-sm-4">
+
 								<div class="form-group">
 									<label>Alasan Cuti</label>
 									<?= form_error('alasan_cuti', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -86,18 +87,21 @@
 								</div>
 							</div>
 							<div class="col-sm-4">
+
 								<div class="form-group">
 									<label>Alamat Selama Cuti</label>
 									<?= form_error('alamat_cuti', '<small class="text-danger pl-3">', '</small>'); ?>
 									<textarea class="form-control" name="alamat_cuti" id="alamat_cuti" cols="10" rows="2"></textarea>
 								</div>
 							</div>
+
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label>Input File Scan Surat</label>
 									<input type="file" class="form-control" name="file" id="file">
 								</div>
 							</div>
+
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan Data</button>
                     </form>

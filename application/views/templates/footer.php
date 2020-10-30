@@ -1,3 +1,7 @@
+<?php 
+	$id = $this->session->userdata('pegawai_nip');
+	$userdata = $this->M_pegawai->getPegawaiById($id);
+?>
 <footer class="main-footer">
 	<div class="float-right d-none d-sm-block">
 		<b>Version</b> 3.0.5
@@ -68,6 +72,25 @@
 			},
 		});
 
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#nama_pegawai').autocomplete({
+			source: "<?php echo site_url('DataCuti/get_autocomplete');?>",
+
+			select: function (event, ui) {
+			console.log(ui.item)
+					$('[name="nama"]').val(ui.item.label);
+					$('[name="NIP"]').val(ui.item.nip);
+			},
+			response: function(event, ui){
+				if(ui.content.length === 0){
+					console.log('No results loaded!');
+				}else{
+					console.log('success!');
+				}
+			},
+		});
+
 	});
 </script>
 
@@ -78,6 +101,14 @@
 			"autoWidth": false,
 		});
 		$("#putama").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$("#pmadya").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$("#pumum").DataTable({
 			"responsive": true,
 			"autoWidth": false,
 		});
@@ -107,7 +138,6 @@
 			"responsive": true,
 		});
 	});
-
 </script>
 
 <script>
@@ -206,6 +236,29 @@
 		if (last_chq_no2 > 1) {
 			$('#new_2' + last_chq_no2).remove();
 			$('#total_chq2').val(last_chq_no2 - 1);
+		}
+	}
+
+</script>
+
+<script>
+	function addsk() {
+		var new_chq_nosk = parseInt($('#total_chqsk').val()) + 1;
+		var jumlahsk = new_chq_nosk;
+
+
+		var new_inputsk = "<input type='text' class='form-control mb-2'  name='c" + new_chq_nosk + "' id='new_sk" +
+			new_chq_nosk + "'>";
+		$('#new_chqsk').append(new_inputsk);
+		$('#total_chqsk').val(new_chq_nosk)
+	}
+
+	function removesk() {
+		var last_chq_nosk = $('#total_chqsk').val();
+		if (last_chq_nosk > 1) {
+			$('#new_sk' + last_chq_nosk).remove();
+			$('#total_chqsk').val(last_chq_nosk - 1);
+
 		}
 	}
 

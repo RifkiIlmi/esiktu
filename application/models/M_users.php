@@ -63,6 +63,27 @@ class M_users extends CI_model
 		}
     }
 
+    public function update_user($data,$id)
+    {
+        
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $akses = $this->input->post('hak_akses');
+        
+        $this->db->set('username',$username);
+        $this->db->set('password',$password);
+        $this->db->set('hak_akses',$akses);
+        
+        $this->db->where('pegawai_NIP', $id);
+        $query= $this->db->update('user');
+        if($query){
+			return true;
+			return $query;
+		}else{
+			return false;
+		}
+    }
+
     
 
     public function deleteUser($id)

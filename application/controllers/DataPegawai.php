@@ -483,13 +483,41 @@ class DataPegawai extends CI_Controller
             'fk_id_honorer' => $id_honorer,
 
         );
-        var_dump($id_honorer);
+        if($no_sk == "" && $tgl_sk == ""){
+            $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
+            $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
+            redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);    
+        }else{
+            $data = $this->M_pegawai->input_skp($input_skp);
+            $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
+            $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
+            redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);
+        }
         
-        $data = $this->M_pegawai->input_skp($input_skp);
-        $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
-        $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
-        redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);
     }
+    public function print_pns()
+    {
+        $data['judul'] = 'Data PNS RS.Jiwa Tampan';
+        $data['pns']= $this->M_pegawai->data_pns();
+        $data ['pengalaman_kerja'] = $this->M_pegawai->pengalaman_kerja_noid();
+        $data ['pendidikan_formal'] = $this->M_pegawai->pendidikan_formal_noid();
+        $data ['pendidikan_j_t'] = $this->M_pegawai->pendidikan_j_t_noid();
+        
+        $this->load->view('DataPegawai/print_pns',$data);
+      
+        
+    }
+    public function print_honorer()
+    {
+        $data['judul'] = 'Data Honorer RS.Jiwa Tampan';
+        $data['honorer']= $this->M_pegawai->data_honorer();
+        $data['pns']= $this->M_pegawai->data_pns();
+        $data['skp']= $this->M_pegawai->data_skp_noid();
+        $this->load->view('DataPegawai/print_honorer',$data);
+      
+        
+    }
+    
 
 
 

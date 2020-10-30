@@ -116,27 +116,48 @@
 							<div class="col-sm-3">
 								<!-- select -->
 								<div class="form-group">
-									<label>Pangkat</label>
-									<select  class="custom-select" name="pangkat">
-										<option value='<?=$value->id_pangkat?>'><?=$value->pangkat?></option>
-
-
+									<label>Pangkat</label>							
+									<select name="pangkat" id="pangkat" class="form-control" required>
+										<option value="1"<?php if($value->fk_id_pangkat=="1") echo 'selected="selected"'; ?> >Pembina Utama</option>
+										<option value="2"<?php if($value->fk_id_pangkat=="2") echo 'selected="selected"'; ?> >Pembina Utama Madya</option>
+										<option value="3"<?php if($value->fk_id_pangkat=="3") echo 'selected="selected"'; ?> >Pembina Utama Muda</option>
+										<option value="4"<?php if($value->fk_id_pangkat=="4") echo 'selected="selected"'; ?> >Pembina Tingkat 1</option>
+										<option value="5"<?php if($value->fk_id_pangkat=="5") echo 'selected="selected"'; ?> >Pembina</option>
+										<option value="6"<?php if($value->fk_id_pangkat=="6") echo 'selected="selected"'; ?> >Penata Tingkat 1</option>
+										<option value="7"<?php if($value->fk_id_pangkat=="7") echo 'selected="selected"'; ?> >Penata</option>
+										<option value="8"<?php if($value->fk_id_pangkat=="8") echo 'selected="selected"'; ?> >Penata Muda Tingkat 1</option>
+										<option value="9"<?php if($value->fk_id_pangkat=="9") echo 'selected="selected"'; ?> >Penata Muda</option>
+										<option value="10"<?php if($value->fk_id_pangkat=="10") echo 'selected="selected"'; ?> >Pengatur Tingkat 1</option>
+										<option value="11"<?php if($value->fk_id_pangkat=="11") echo 'selected="selected"'; ?> >Pengatur</option>
+										<option value="12"<?php if($value->fk_id_pangkat=="12") echo 'selected="selected"'; ?> >Pengatur Muda Tingkat 1</option>
+										<option value="13"<?php if($value->fk_id_pangkat=="13") echo 'selected="selected"'; ?> >Pengatur Muda</option>
+										<option value="14"<?php if($value->fk_id_pangkat=="14") echo 'selected="selected"'; ?> >Juru Tingkat 1</option>
+										<option value="15"<?php if($value->fk_id_pangkat=="15") echo 'selected="selected"'; ?> >Juru</option>
+										<option value="16"<?php if($value->fk_id_pangkat=="16") echo 'selected="selected"'; ?> >Juru Muda Tingkat 1</option>
+										<option value="17"<?php if($value->fk_id_pangkat=="17") echo 'selected="selected"'; ?> >Juru Muda</option>
 									</select>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
 									<label>Golongan</label>
-									<select  class="custom-select" name="golongan">
-										<option value='<?=$value->id_golongan?>'><?=$value->golongan?></option>
+									<select name="golongan" id="golongan" class="form-control" required>
+										<option value="1"<?php if($value->fk_id_golongan=="1") echo 'selected="selected"'; ?> >I</option>
+										<option value="2" <?php if($value->fk_id_golongan=="2") echo 'selected="selected"'; ?>>II</option>
+										<option value="3" <?php if($value->fk_id_golongan=="3") echo 'selected="selected"'; ?>>III</option>
+										<option value="4" <?php if($value->fk_id_golongan=="4") echo 'selected="selected"'; ?>>IV</option>	
 									</select>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
 									<label>Ruang</label>
-									<select  class="custom-select" name="ruang">
-										<option value='<?=$value->id_ruang?>'><?=$value->ruang?></option>
+									<select name="ruang" id="ruang" class="form-control" required>
+										<option value="1"<?php if($value->fk_id_golongan=="1") echo 'selected="selected"'; ?> >a</option>
+										<option value="2" <?php if($value->fk_id_golongan=="2") echo 'selected="selected"'; ?>>b</option>
+										<option value="3" <?php if($value->fk_id_golongan=="3") echo 'selected="selected"'; ?>>c</option>
+										<option value="4" <?php if($value->fk_id_golongan=="4") echo 'selected="selected"'; ?>>d</option>
+										<option value="5	" <?php if($value->fk_id_golongan=="5") echo 'selected="selected"'; ?>>e</option>	
 									</select>
 								</div>
 							</div>

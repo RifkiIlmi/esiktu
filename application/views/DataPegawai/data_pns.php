@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Dashboard</h1>
+					<h1 class="m-0 text-dark">Data PNS</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
 
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">DataTable with default features</h3>
+				<a href="<?php echo base_url('DataPegawai/print_pns');?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print to Excel</button></a>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">

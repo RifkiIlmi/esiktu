@@ -24,8 +24,8 @@
 
 
 			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">DataTable with default features</h3>
+			<div class="card-header">
+				<a href="<?php echo base_url('DataPegawai/print_honorer');?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print to Excel</button></a>
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">

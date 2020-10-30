@@ -124,7 +124,7 @@ class DataCuti extends CI_Controller
             }
         }
     }
-
+}
 
     public function update_cuti()
     {

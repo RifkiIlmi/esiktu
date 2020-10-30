@@ -7,16 +7,17 @@ class M_pegawai extends CI_model
     {
         $this->db->select('*');
         $this->db->from('pegawai');
-        $this->db->join('pns', 'PNS.fk_NIP=pegawai.NIP');
-        $this->db->join('pangkat', 'pangkat.id_pangkat=PNS.fk_id_pangkat');
-        $this->db->join('golongan', 'golongan.id_golongan=PNS.fk_id_golongan'); 
+        $this->db->join('pns', 'pns.fk_NIP=pegawai.NIP');
+        $this->db->join('pangkat', 'pangkat.id_pangkat=pns.fk_id_pangkat');
+        $this->db->join('golongan', 'golongan.id_golongan=pns.fk_id_golongan'); 
+        $this->db->join('ruang', 'ruang.id_ruang=pns.fk_id_ruang'); 
         $this->db->order_by('pegawai.nama', 'ASC');
         $query = $this->db->get();
         return $query->result();
 
     }
 
-    public function cekPns($id)
+    public function cekpns($id)
     {
         $checked = $this->db->get_where('pns', [
             'fk_NIP' => $id,
@@ -41,7 +42,7 @@ class M_pegawai extends CI_model
         return $query;
     }
 
-    public function getPnsByID($id)
+    public function getpnsByID($id)
     {
         $this->db->select('*');
         $this->db->from('pegawai');
@@ -91,6 +92,7 @@ class M_pegawai extends CI_model
         $this->db->join('pns', 'pns.fk_NIP=pegawai.NIP');
         $this->db->join('pangkat', 'pangkat.id_pangkat=pns.fk_id_pangkat');
         $this->db->join('golongan', 'golongan.id_golongan=pns.fk_id_golongan');
+        $this->db->join('ruang', 'ruang.id_ruang=pns.fk_id_ruang'); 
         $this->db->order_by('pegawai.nama', 'ASC');
         $query = $this->db->get();
         return $query->result();
@@ -113,9 +115,9 @@ class M_pegawai extends CI_model
         $this->db->from('pegawai');
         $this->db->join('honorer', 'honorer.pegawai_NIP=pegawai.NIP');
         $this->db->join('pns', 'pns.id_PNS=honorer.fk_id_PNS');
-        // $this->db->join('pengalaman_kerja', 'pengalaman_kerja.id_pengalaman_kerja=PNS.fk_id_pengalaman_kerja');
-        // $this->db->join('pendidikan_formal', 'pendidikan_formal.PNS_id_PNS=PNS.id_PNS');
-        // $this->db->join('pendidikan_j_t', 'pendidikan_j_t.PNS_id_PNS=PNS.id_PNS');
+        // $this->db->join('pengalaman_kerja', 'pengalaman_kerja.id_pengalaman_kerja=pns.fk_id_pengalaman_kerja');
+        // $this->db->join('pendidikan_formal', 'pendidikan_formal.pns_id_PNS=pns.id_PNS');
+        // $this->db->join('pendidikan_j_t', 'pendidikan_j_t.pns_id_PNS=pns.id_PNS');
         $this->db->order_by('pegawai.nama', 'ASC');
         $query = $this->db->get();
         return $query->result();
@@ -220,10 +222,10 @@ class M_pegawai extends CI_model
     public function selengkapnya_pns($id)
     {
         $this->db->from('pegawai');
-        $this->db->join('pns', 'PNS.fk_NIP=pegawai.NIP');
-        $this->db->join('pangkat', 'pangkat.id_pangkat=PNS.fk_id_pangkat');
-        $this->db->join('golongan', 'golongan.id_golongan=PNS.fk_id_golongan');
-        $this->db->join('ruang', 'ruang.id_ruang=PNS.fk_id_ruang');
+        $this->db->join('pns', 'pns.fk_NIP=pegawai.NIP');
+        $this->db->join('pangkat', 'pangkat.id_pangkat=pns.fk_id_pangkat');
+        $this->db->join('golongan', 'golongan.id_golongan=pns.fk_id_golongan');
+        $this->db->join('ruang', 'ruang.id_ruang=pns.fk_id_ruang');
         $this->db->order_by('pegawai.nama', 'ASC');
         $this->db->where('NIP', $id);
         $query = $this->db->get();
@@ -249,7 +251,8 @@ class M_pegawai extends CI_model
     public function pengalaman_kerja($id)
     {
         $this->db->from('pengalaman_kerja');
-        $this->db->join('pns', 'PNS.id_PNS=pengalaman_kerja.PNS_id_PNS');
+        $this->db->join('pns', 'pns.id_PNS=pengalaman_kerja.pns_id_PNS');
+
         $this->db->where('fk_NIP', $id);
         $query = $this->db->get();
         return $query->result();
@@ -258,7 +261,8 @@ class M_pegawai extends CI_model
     public function pendidikan_formal($id)
     {
         $this->db->from('pendidikan_formal');
-        $this->db->join('pns', 'PNS.id_PNS=pendidikan_formal.PNS_id_PNS');
+        $this->db->join('pns', 'pns.id_PNS=pendidikan_formal.pns_id_PNS');
+
         $this->db->where('fk_NIP', $id);
         $query = $this->db->get();
         return $query->result();
@@ -267,7 +271,7 @@ class M_pegawai extends CI_model
     public function pendidikan_j_t($id)
     {
         $this->db->from('pendidikan_j_t');
-        $this->db->join('pns', 'PNS.id_PNS=pendidikan_j_t.PNS_id_PNS');
+        $this->db->join('pns', 'pns.id_PNS=pendidikan_j_t.pns_id_PNS');
         $this->db->where('fk_NIP', $id);
         $query = $this->db->get();
         return $query->result();
@@ -322,6 +326,7 @@ class M_pegawai extends CI_model
 			return false;
 		}
 
+
     }
     public function input_skp($data)
     {
@@ -334,4 +339,26 @@ class M_pegawai extends CI_model
 		}
 
     }
+
+    public function updatePangkat($id,$pangkat,$golongan,$ruang)
+    {
+
+        $dateNow = date("Y/m/d");
+
+        $this->db->set('fk_id_pangkat', $pangkat);
+        $this->db->set('fk_id_golongan', $golongan);
+        $this->db->set('fk_id_ruang', $ruang);
+        $this->db->set('last_update_pangkat', $dateNow);
+
+        $this->db->where('id_PNS', $id);
+        $this->db->update('pns');
+    }
+
+    function search_pegawai($nama){
+        $this->db->like('nama', $nama , 'both');
+        $this->db->order_by('nama', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('pegawai')->result();
+    }
+
 }

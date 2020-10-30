@@ -21,9 +21,9 @@ class DataPegawai extends CI_Controller
         $this->load->view('templates/sidebar',$data);
         $this->load->view('DataPegawai/data_pns',$data);
         $this->load->view('templates/footer');
-
         
     }
+
     public function honorer()
     {
         $data['judul'] = 'Data PNS RS.Jiwa Tampan';
@@ -37,6 +37,127 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/data_honorer',$data);
         $this->load->view('templates/footer');
     }
+
+    public function pangkat()
+    {
+        $data['judul'] = 'Kenaikan Pangkat PNS';
+        $data['pns']= $this->M_pegawai->data_pns();
+
+        $filterTh = $this->input->post('filter');
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+        }else{
+            $data['filter'] =  date("Y");
+        }
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/k_pangkat',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function updatePangkat()
+    {
+        $pangkat = $this->uri->segment(3);
+        $id = $this->uri->segment(4);
+
+        $actualPangkat = 0;
+        $golongan = 0;
+        $ruang = 0;
+
+        if ($pangkat=='ia') {
+            $actualPangkat = 17;
+            $golongan = 1;
+            $ruang = 1;
+        } elseif($pangkat=='ib') {
+            $actualPangkat = 16;
+            $golongan = 1;
+            $ruang = 2;
+        } elseif($pangkat=='ic') {
+            $actualPangkat = 15;
+            $golongan = 1;
+            $ruang = 3;
+        } elseif($pangkat=='id') {
+            $actualPangkat = 14;
+            $golongan = 1;
+            $ruang = 4;
+        } elseif($pangkat=='iia') {
+            $actualPangkat = 13;
+            $golongan = 2;
+            $ruang = 1;
+        } elseif($pangkat=='iib') {
+            $actualPangkat = 12;
+            $golongan = 2;
+            $ruang = 2;
+        } elseif($pangkat=='iic') {
+            $actualPangkat = 11;
+            $golongan = 2;
+            $ruang = 3;
+        } elseif($pangkat=='iid') {
+            $actualPangkat = 10;
+            $golongan = 2;
+            $ruang = 4;
+        } elseif($pangkat=='iiia') {
+            $actualPangkat = 9;
+            $golongan = 3;
+            $ruang = 1;
+        } elseif($pangkat=='iiib') {
+            $actualPangkat = 8;
+            $golongan = 3;
+            $ruang = 2;
+        } elseif($pangkat=='iiic') {
+            $actualPangkat = 7;
+            $golongan = 3;
+            $ruang = 3;
+        } elseif($pangkat=='iiid') {
+            $actualPangkat = 6;
+            $golongan = 3;
+            $ruang = 4;
+        } elseif($pangkat=='iva') {
+            $actualPangkat = 5;
+            $golongan = 4;
+            $ruang = 1;
+        } elseif($pangkat=='ivb') {
+            $actualPangkat = 4;
+            $golongan = 4;
+            $ruang = 2;
+        } elseif($pangkat=='ivc') {
+            $actualPangkat = 3;
+            $golongan = 4;
+            $ruang = 3;
+        }
+        
+        // echo $actualPangkat." ".$id." ".$golongan." ".$ruang;
+        // die;
+        $this->M_pegawai->updatePangkat($id,$actualPangkat,$golongan,$ruang);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pegawai Naik Pangkat!</div>');
+        redirect('DataPegawai/pangkat');
+    }
+
+    public function satia_lencana()
+    {
+        $data['judul'] = 'Satia Lencana';
+        $data['pns']= $this->M_pegawai->data_pns();
+
+        $filterTh = $this->input->post('filter');
+        
+        $tahunFilter = date('Y', strtotime($filterTh));
+        
+        if ($tahunFilter > 1970) {
+            $data['filter'] = $tahunFilter ;
+        }else{
+            $data['filter'] =  date("Y");
+        }
+
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar',$data);
+        $this->load->view('DataPegawai/satia_lencana',$data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambah_data()
     {
         $data['judul'] = 'Tambah data pegawai';
@@ -49,6 +170,7 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/tambah_data',$data);
         $this->load->view('templates/footer');
     }
+
     public function selengkapnya($id)
     {
         $id= $this->uri->segment('3');
@@ -62,6 +184,7 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/pns_lengkap',$data);
         $this->load->view('templates/footer');
     }
+
     public function selengkapnya_honorer($id)
     {
         $id= $this->uri->segment('4');
@@ -100,6 +223,7 @@ class DataPegawai extends CI_Controller
         $this->load->view('DataPegawai/edit_lengkap_pns',$data);
         $this->load->view('templates/footer');
     }
+
     public function input_pegawai()
     {   
         $kepegawaian = $this->input->post('kepegawaian');
@@ -112,8 +236,9 @@ class DataPegawai extends CI_Controller
         
         $npwp = $this->input->post('npwp');
         $tmt_pangkat= $this->input->post('tmt_pangkat');
+        $no_sk_pangkat = $this->input->post('no_sk_pangkat');
         $tgl_sk_pangkat = $this->input->post('tgl_sk_pangkat');
-        $jabatan = $this->input->post('jabatan');
+        $jabatan_pns = $this->input->post('jabatan_pns');
         $fk_id_pangkat = $this->input->post('pangkat');
         $fk_id_golongan = $this->input->post('golongan');
         $fk_id_ruang = $this->input->post('ruang');
@@ -121,6 +246,7 @@ class DataPegawai extends CI_Controller
         
         $jenis_ketenagaan = $this->input->post('jenis_ketenagaan');
         $mengangkat = $this->input->post('mengangkat');
+
         
 		$tambah_pegawai = array (
             //'id_surat_masuk'=>$id_surat_masuk,
@@ -134,8 +260,9 @@ class DataPegawai extends CI_Controller
         $tambah_pns = array (
             'npwp' => $npwp,
             'tmt_pangkat' => $tmt_pangkat,
-            'tgl_sk_pangkat' => $tgl_lahir,
-            'jabatan' => $jabatan,
+            'no_sk_pangkat' => $no_sk_pangkat,
+            'tgl_sk_pangkat' => $tgl_sk_pangkat,
+            'jabatan' => $jabatan_pns,
             'fk_id_pangkat' => $fk_id_pangkat,
             'fk_id_golongan' => $fk_id_golongan,
             'fk_id_ruang' => $fk_id_ruang,
@@ -143,10 +270,10 @@ class DataPegawai extends CI_Controller
             'no_kerpeg'=>$no_kerpeg,
             
         );
+
         $tambah_honorer = array(
             'jenis_ketenagaan' => $jenis_ketenagaan,
             'fk_id_PNS' => $mengangkat,
-            'jabatan_honorer'=> $jabatan,
             'pegawai_NIP' => $NIP,
         );
 
@@ -163,6 +290,7 @@ class DataPegawai extends CI_Controller
         
         
     }
+
     public function delete_pns()
     {
         $id= $this->uri->segment('3');
@@ -358,6 +486,7 @@ class DataPegawai extends CI_Controller
         $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
         redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);
     }
+
 
 
 }

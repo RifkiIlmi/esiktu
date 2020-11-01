@@ -41,7 +41,7 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>NIP</label>
+									<label>NIP <sup class="text-red">Masukkan NIK Untuk Pegawai Honorer</sup></label>
 									<input type="number" name="NIP" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>

@@ -46,9 +46,8 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">
-											<label>NIP</label>
-											<input type="text" name="NIP" value="<?= $value->NIP?>" class="form-control"
-												placeholder="Enter ...">
+											<label>NIP/NIK</label>
+											<input type="text" name="NIP" value="<?= $value->NIP?>" class="form-control" disabled placeholder="Enter ...">
 
 											<?php $id = $value->NIP?>
 										</div>

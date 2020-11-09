@@ -9,7 +9,7 @@
       <form action="<?= base_url('auth') ?>" method="post">
         <?= form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="nip" placeholder="NIP">
+          <input type="number" class="form-control" name="nip" placeholder="NIP">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-key"></span>

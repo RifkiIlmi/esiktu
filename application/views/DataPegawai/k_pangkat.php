@@ -48,6 +48,8 @@
 								<th>No</th>
 								<th>Nama</th>
 								<th>NIP</th>
+								<th>NO.SK</th>
+								<th>Tanggal SK</th>
 								<th>Pangkat/Golongan Awal</th>
 								<th>Pangkat/Golongan Selanjutnya</th>
 							</tr>
@@ -66,6 +68,8 @@
 								<td><?= $no?></td>
 								<td><?= $value->nama?></td>
 								<td><?= $value->NIP?></td>
+								<td><?= $value->no_sk_pangkat?></td>
+								<td><?= formaldate_indo($value->tgl_sk_pangkat)?></td>
                                 <td><?= $value->pangkat?>/<?= $value->golongan?><?= $value->ruang?></td>
                             <?php if($value->pangkat=='Juru Muda'): ?>
                                 <td>Juru Muda Tk 1/Ib

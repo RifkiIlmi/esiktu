@@ -46,8 +46,8 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">
-											<label>NIP/NIK</label>
-											<input type="text" disabled name="NIP" value="<?= $value->NIP?>"
+											<label>NIP</label>
+											<input type="text" name="NIP" value="<?= $value->NIP?>"
 												class="form-control">
 											<?php $id = $value->NIP?>
 										</div>

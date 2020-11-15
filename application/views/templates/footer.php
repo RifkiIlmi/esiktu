@@ -4,9 +4,9 @@
 ?>
 <footer class="main-footer">
 	<div class="float-right d-none d-sm-block">
-		<b>E-Siktu Version</b> 0.7.1 BETA
+		<b>Version</b> 3.0.5
 	</div>
-	<strong>Copyright &copy; 2020.</strong> All rights
+	<strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
 	reserved.
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -46,10 +46,8 @@
 <!-- DataTables -->
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js">
-</script>
-<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js">
-</script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/chart.js/Chart.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/dist/js/demo.js"></script>
@@ -63,18 +61,19 @@
 			source: "<?php echo site_url('DataCuti/get_autocomplete');?>",
 
 			select: function (event, ui) {
-				console.log(ui.item)
-				$('[name="nama"]').val(ui.item.label);
-				$('[name="NIP"]').val(ui.item.nip);
+			console.log(ui.item)
+					$('[name="nama"]').val(ui.item.label);
+					$('[name="NIP"]').val(ui.item.nip);
 			},
-			response: function (event, ui) {
-				if (ui.content.length === 0) {
+			response: function(event, ui){
+				if(ui.content.length === 0){
 					console.log('No results loaded!');
-				} else {
+				}else{
 					console.log('success!');
 				}
 			},
 		});
+
 	});
 </script>
 
@@ -140,6 +139,7 @@
 			"responsive": true,
 		});
 	});
+
 </script>
 
 <script>
@@ -156,6 +156,7 @@
 			}
 		});
 	});
+
 </script>
 
 <script>
@@ -176,6 +177,7 @@
 			$('#total_chq').val(last_chq_no - 1);
 		}
 	}
+
 </script>
 
 <script>
@@ -184,8 +186,7 @@
 		var jumlah1 = new_chq_no1;
 		document.cookie = 'jumlah1=' + jumlah1;
 
-		var new_input1 = "<input type='text' class='form-control mb-2' name='b" + new_chq_no1 + "' id='new_1" +
-			new_chq_no1 +
+		var new_input1 = "<input type='text' class='form-control mb-2' name='b" + new_chq_no1 + "' id='new_1" + new_chq_no1 +
 			"'>";
 		$('#new_chq1').append(new_input1);
 		$('#total_chq1').val(new_chq_no1)
@@ -198,6 +199,7 @@
 			$('#total_chq1').val(last_chq_no1 - 1);
 		}
 	}
+
 </script>
 
 <script>
@@ -219,6 +221,7 @@
 			$('#total_chq2').val(last_chq_no2 - 1);
 		}
 	}
+
 </script>
 
 <script>
@@ -241,6 +244,7 @@
 
 		}
 	}
+
 </script>
 
 

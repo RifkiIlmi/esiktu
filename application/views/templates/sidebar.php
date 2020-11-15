@@ -145,7 +145,7 @@
 				</li>
 				<?php endif; ?>
 
-				<?php if ($this->session->userdata('hak_akses') == 'user') : ?>
+				<?php if ($this->session->userdata('hak_akses') == 'pegawai') : ?>
 				<li class="nav-item">
 					<a href="<?= base_url('HomeUser');?>" class="nav-link <?php if($this->uri->segment(1)=="HomeUser"){echo "active";}?>">
 						<i class="nav-icon fas fa-home"></i>

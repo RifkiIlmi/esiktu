@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Data Pegawai Cuti <?= $filter > 1970 ? $filter : '' ?></h1>
+					<h1 class="m-0 text-dark">Data Pegawai Cuti <?php echo $filter?></h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -22,7 +22,7 @@
 	<div class="content">
 		<div class="container-fluid">
 
-			<?= $this->session->flashdata('message'); ?>
+		<?= $this->session->flashdata('message'); ?>
 			<a href="<?= base_url('DataCuti/tambahCuti');?>" class="btn btn-app">
 				<i class="fas fa-plus text-dark"></i>
 				<p class="text-dark">Tambah</p>
@@ -30,11 +30,11 @@
 
 			<?php echo form_open_multipart('DataCuti/cuti_kerja/', 'role="form" class="form" id="filter" '); ?>
 
-			<div class="row mx-auto pb-3">
-				<div class="col-lg-2">
-					<input type="date" name="filter" id="filter" class="form-control">
-				</div>
-				<div class="col-md-2">
+				<div class="row mx-auto pb-3">
+					<div class="col-lg-2">
+						<input type="date" name="filter" id="filter" class="form-control">
+					</div>
+					<div class="col-md-2">
 					<button class="btn btn-primary" type="submit">Filter Tahun</button>
 				</div>
 			</div>
@@ -51,12 +51,12 @@
 					</ul>
 				</div><!-- /.card-header -->
 				<div class="card-body">
-
+				
 					<div class="tab-content">
 						<div class="active tab-pane" id="pns">
-								<a href="<?php echo base_url('DataCuti/print_cuti_pns/').$filter?>"><button
-										class="btn btn-md btn-success mb-2"><i class="fas fa-print"></i> Print Data Cuti PNS
-										to Excel</button></a>
+						<div class="card-header">
+				<a href="<?php echo base_url('DataCuti/print_cuti_pns/').$filter?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print Data cuti PNS to Excel</button></a>
+				</div>
 							<table id="cutipns" class="table table-bordered table-striped">
 								<thead>
 									<tr>
@@ -82,29 +82,22 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
-										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2"
-												data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>">
-												<i class="fas fa-eye"></i></button></td>
+										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>"> <i class="fas fa-eye"></i></button></td>
 										<td>
-											<a
-												href="<?php echo base_url('DataCuti/edit_cuti/'); echo $value->id_cuti ?>"><button
-													class="btn btn-md btn-success ml-0 m-2"><i
-														class="far fa-edit"></i></button></a>
-											<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal"
-												data-target="#modal-default1<?= $value->id_cuti?>"> <i
-													class="far fa-trash-alt"></i></button>
-										</td>
+									<a href="<?php echo base_url('DataCuti/edit_cuti/'); echo $value->id_cuti ?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default1<?= $value->id_cuti?>"> <i class="far fa-trash-alt"></i></button>
+									</td>
 									</tr>
-
+	
 									<?php endforeach ?>
 								</tbody>
 							</table>
 						</div>
 						<div class="tab-pane" id="honorer">
-								<a href="<?php echo base_url('DataCuti/print_cuti_honorer/').$filter?>"><button
-										class="btn btn-md btn-success mb-2"><i class="fas fa-print"></i> Print Data
-										Cuti Honorer to Excel</button></a>
-							<table id="cutihnr" class="table table-bordered table-striped">
+						<div class="card-header">
+				<a href="<?php echo base_url('DataCuti/print_cuti_honorer/').$filter?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print Data Cuti Honorer to Excel</button></a>
+				</div>
+						<table id="cutihnr" class="table table-bordered table-striped">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -130,18 +123,11 @@
 										<td><?= formaldate_indo($value->akhir_cuti) ?></td>
 										<td><?= count_days($value->mulai_cuti,$value->akhir_cuti) ?></td>
 										<td><?= $value->jenis_cuti?></td>
-										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2"
-												data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>">
-												<i class="fas fa-eye"></i></button></td>
+										<td class="text-center"><button class="btn btn-md btn-primary ml-0 m-2" data-toggle="modal" data-target="#modal-default<?= $value->id_cuti?>"> <i class="fas fa-eye"></i></button></td>
 										<td>
-											<a
-												href="<?php echo base_url('DataCuti/edit_cuti_honorer/'); echo $value->id_cuti ?>"><button
-													class="btn btn-md btn-success ml-0 m-2"><i
-														class="far fa-edit"></i></button></a>
-											<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal"
-												data-target="#modal-default2<?= $value->id_cuti?>"> <i
-													class="far fa-trash-alt"></i></button>
-										</td>
+									<a href="<?php echo base_url('DataCuti/edit_cuti_honorer/'); echo $value->id_cuti ?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="far fa-edit"></i></button></a>
+									<button class="btn btn-md btn-danger ml-0 m-2" data-toggle="modal" data-target="#modal-default2<?= $value->id_cuti?>"> <i class="far fa-trash-alt"></i></button>
+									</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>
@@ -179,10 +165,9 @@
 			</div>
 		</div>
 		<!-- /.modal-content -->
-	</div>
+	</div>	
 </div>
 <?php endforeach ?>
-
 <?php foreach ($cutiPns as  $value) : ?>
 <div class="modal fade" id="modal-default1<?= $value->id_cuti?>">
 	<div class="modal-dialog modal-lg">
@@ -198,12 +183,12 @@
 			</div>
 			<div class="modal-footer justify-content-between">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<a href="delete_cuti/<?= $value->id_cuti?>"><button type="button"
-						class="btn btn-primary">Yakin!</button></a>
+				<a href="delete_cuti/<?= $value->id_cuti?>"><button
+						type="button" class="btn btn-primary">Yakin!</button></a>
 			</div>
 		</div>
 		<!-- /.modal-content -->
-	</div>
+	</div>	
 </div>
 <?php endforeach ?>
 
@@ -222,11 +207,11 @@
 			</div>
 			<div class="modal-footer justify-content-between">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<a href="delete_cuti/<?= $value->id_cuti?>"><button type="button"
-						class="btn btn-primary">Yakin!</button></a>
+				<a href="delete_cuti/<?= $value->id_cuti?>"><button
+						type="button" class="btn btn-primary">Yakin!</button></a>
 			</div>
 		</div>
 		<!-- /.modal-content -->
-	</div>
+	</div>	
 </div>
 <?php endforeach ?>

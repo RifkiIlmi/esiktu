@@ -14,9 +14,6 @@ class Home extends CI_Controller
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');
         }
-        if ($this->session->userdata('hak_akses') == 'pegawai') {
-            redirect('auth/blocked');
-        }
     }
 
     public function index()

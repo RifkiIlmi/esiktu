@@ -14,6 +14,9 @@ class UserManagement extends CI_Controller
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');
         }
+        if ($this->session->userdata('hak_akses') == 'user') {
+            redirect('auth/blocked');
+        }
     }
 
     public function index()

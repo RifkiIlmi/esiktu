@@ -19,7 +19,6 @@
 	<!-- /.content-header -->
 
 	<!-- Main content -->
-	<form action=<?= base_url('DataPegawai\input_lengkap');?> method="POST" role="form">
 	<section class="content">
 		<div class="row">
 			<div class="col-md-12">
@@ -232,57 +231,6 @@
 						</div>
 						
 					</div>
-
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="card">
-								<div class="card card-primary card-outline">
-									<div class="card-body">
-										<div class="form-group">
-                                            <label>Riwayat Pendidikan Formal</label><a onclick="remove()" class="btn btn-primary ml-2 float-right"><i class="fas fa-minus-circle"></i></a>
-                                            <a onclick="add()" class="btn btn-primary float-right"><i class="fas fa-plus-circle"></i></a>
-                                            <div id="new_chq"></div>
-                                            
-                                            <input type="text"   name="a1" class="form-control tambah">
-                                            <input type="hidden" value="1" id="total_chq" name="jumlah" class="form-control tambah">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="card">
-								<div class="card card-primary card-outline">
-									<div class="card-body">
-										<div class="form-group">
-                                            <label>Pendidikan Perjenjangan Teknis/Tahun</label><a onclick="remove1()" class="btn btn-primary ml-2 float-right"><i class="fas fa-minus-circle"></i></a>
-                                            <a onclick="add1()" class="btn btn-primary float-right"><i class="fas fa-plus-circle"></i></a>
-                                            <div id="new_chq1"></div>
-                                            
-                                            <input type="text"   name="b1" class="form-control tambah">
-                                            <input type="hidden" value="1" id="total_chq1" name="jumlah1" class="form-control tambah">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="card">
-								<div class="card card-primary card-outline">
-									<div class="card-body">
-										<div class="form-group">
-                                            <label>Pengalaman Kerja</label><a onclick="remove2()" class="btn btn-primary ml-2 float-right"><i class="fas fa-minus-circle"></i></a>
-                                            <a onclick="add2()" class="btn btn-primary float-right"><i class="fas fa-plus-circle"></i></a>
-                                            <div id="new_chq2"></div>
-                                            <input type="text"   name="c1" class="form-control tambah">
-											<input type="hidden" value="1" id="total_chq2" name="jumlah2" class="form-control tambah">
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
 						
 				</div>
 				<!-- /.card-body -->
@@ -291,11 +239,9 @@
 			<div class="modal-footer">
 			<a href="<?php echo base_url('DataPegawai/pns') ?>"><button type="button" class="btn btn-danger" >Kembali</button></a>
 			<a href="<?php echo base_url('DataPegawai/edit_lengkap_pns/').$id ?>"><button type="button" class="btn btn-success" >Edit semua data</button></a>
-				<button type="submit" class="btn btn-primary">Simpan Data</button>
+			
 			</div>
 		</div>
-
-		</form>
 
 	</section>
 	<!-- /.content -->

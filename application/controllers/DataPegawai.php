@@ -175,6 +175,7 @@ class DataPegawai extends CI_Controller
     {
         $id= $this->uri->segment('3');
 
+        $data['judul'] = 'Detail PNS';
         $data ['selengkapnya_pns'] = $this->M_pegawai->selengkapnya_pns($id);
         $data ['pengalaman_kerja'] = $this->M_pegawai->pengalaman_kerja($id);
         $data ['pendidikan_formal'] = $this->M_pegawai->pendidikan_formal($id);
@@ -187,9 +188,10 @@ class DataPegawai extends CI_Controller
 
     public function selengkapnya_honorer($id)
     {
+        $data['judul'] = 'Detail Honorer';
         $id= $this->uri->segment('4');
         $id_honorer= $this->uri->segment('3');
-        $data ['selengkapnya_honorer'] = $this->M_pegawai->selengkapnya_honorer($id);
+        $data['selengkapnya_honorer'] = $this->M_pegawai->selengkapnya_honorer($id);
         $data['pns']= $this->M_pegawai->data_pns();
         $data['skp']= $this->M_pegawai->data_skp($id_honorer);
         $this->load->view('templates/header',$data);
@@ -200,6 +202,7 @@ class DataPegawai extends CI_Controller
     
     public function edit_lengkap_honorer($id)
     {
+        $data['judul'] = 'Edit Honorer';
         $id= $this->uri->segment('4');
         $id_honorer= $this->uri->segment('3');
 

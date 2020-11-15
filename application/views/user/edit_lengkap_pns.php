@@ -21,7 +21,7 @@
 	<div class="content">
 		<div class="container-fluid">
 			<!-- Main content -->
-			<form action=<?= base_url('informasiPribadi\input_lengkap_pns');?> method="POST" role="form">
+			<form action=<?= base_url('DataPegawai\input_lengkap');?> method="POST" role="form">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card card-primary">
@@ -150,8 +150,6 @@
 										</div>
 									</div>
 								</div>
-								<?php endforeach ?>
-
 							</div>
 							<!-- /.card-body -->
 						</div>
@@ -162,9 +160,27 @@
 					<div class="col-md-12">
 						<div class="card card-secondary">
 							<div class="card-header">
-								<h3 class="card-title">Input Pengalaman dan Pendidikan</h3>
+								<h3 class="card-title">Input Pengalaman dan SK</h3>
 							</div>
 							<div class="card-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>No. Sk Pangkat </label>
+											<input type="text" name="no_sk_pangkat" value="<?= $value->no_sk_pangkat?>"
+												class="form-control" placeholder="Enter ...">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Tanggal SK Pangkat </label>
+											<input type="date" name="tgl_sk_pangkat" value="<?=$value->tgl_sk_pangkat?>"
+												class="form-control" placeholder="Enter ...">
+										</div>
+									</div>
+									<?php endforeach ?>
+
+								</div>
 								<div class="row">
 									<div class="col-sm-4">
 										<div class="form-group">
@@ -266,7 +282,7 @@
 						</div>
 						<!-- /.card -->
 						<div class="modal-footer">
-							<a href="<?php echo base_url('informasiPribadi') ?>"><button type="button"
+							<a href="<?php echo base_url('DataPegawai/pns') ?>"><button type="button"
 									class="btn btn-danger">Kembali</button></a>
 							<button type="submit" class="btn btn-primary">Simpan Data</button>
 						</div>

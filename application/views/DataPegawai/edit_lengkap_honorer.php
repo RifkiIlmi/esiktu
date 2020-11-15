@@ -46,8 +46,9 @@
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">
-											<label>NIP/NIK</label>
-											<input type="text" name="NIP" value="<?= $value->NIP?>" class="form-control" disabled placeholder="Enter ...">
+											<label>NIP</label>
+											<input type="text" name="NIP" value="<?= $value->NIP?>" class="form-control"
+												placeholder="Enter ...">
 
 											<?php $id = $value->NIP?>
 										</div>
@@ -93,7 +94,7 @@
 										<!-- text input -->
 										<div class="form-group">
 											<label>Jenis Ketenagaan</label>
-											<input type="text" name="tempat_lahir"
+											<input type="text" name="jenis_ketenagaan"
 												value="<?= $value->jenis_ketenagaan?>" class="form-control"
 												placeholder="Enter ...">
 

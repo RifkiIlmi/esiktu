@@ -42,9 +42,8 @@
 										<th>Nama</th>
 										<th>NIP</th>
 										<th>No.KTP</th>
-										<th>Tempat Lahir</th>
-										<th>Tanggal Lahir</th>
-										<th>Hak Akses</th>
+										<th>tempat_lahir</th>
+										<th>tgl_lahir</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -57,8 +56,7 @@
 										<td><?= $value->NIP?></td>
 										<td><?= $value->No_KTP?></td>
 										<td><?= $value->tempat_lahir?></td>
-										<td><?= formaldate_indo($value->tgl_lahir) ?></td>
-										<td><?= $value->hak_akses?></td>
+										<td><?= $value->tgl_lahir?></td>
 										<td>
 											<?php if( $value->status == 1):?>
 											<a href="<?= base_url()?>UserManagement/nonaktifkan/<?= $value->NIP ?>"
@@ -156,8 +154,8 @@
 						</label>
 					</div>
 					<div class="icheck-primary">
-						<input type="radio" name="hak_akses" value="user" id="user">
-						<label for="user">User
+						<input type="radio" name="hak_akses" value="pegawai" id="pegawai">
+						<label for="pegawai">Pegawai
 						</label>
 					</div>
 				</div>
@@ -221,7 +219,7 @@
 					<label>Hak Akses</label>
 					<select class="form-control" name="hak_akses">
 					<option value="admin" <?php if($value->hak_akses=="admin") echo 'selected="selected"'; ?> >Admin</option>
-					<option value="user" <?php if($value->hak_akses=="user") echo 'selected="selected"'; ?> >User</option>
+					<option value="pegawai" <?php if($value->hak_akses=="pegawai") echo 'selected="selected"'; ?> >Pegawai</option>
 					</select>
 				</div>
 			</div>

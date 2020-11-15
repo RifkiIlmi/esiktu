@@ -148,6 +148,7 @@
 				<?php if ($this->session->userdata('hak_akses') == 'user') : ?>
 					<li class="nav-item">
 					<a href="<?= base_url('home');?>" class="nav-link <?php if($this->uri->segment(1)=="home"){echo "active";}?>">
+
 						<i class="nav-icon fas fa-home"></i>
 						<p>
 							Dashboard

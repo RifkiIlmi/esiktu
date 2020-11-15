@@ -41,7 +41,7 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>NIP</label>
+									<label>NIP <sup class="text-red">*Masukkan NiK jika honorer</sup></label>
 									<input type="number" name="NIP" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
@@ -190,7 +190,7 @@
 					<div class="card-body">
 
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>Jenis Ketenagaan</label>
@@ -198,8 +198,16 @@
 										placeholder="Enter ...">
 								</div>
 							</div>
+							<div class="col-sm-4">
+								<!-- select -->
+								<div class="form-group">
+									<label>Pendidikan</label>
+									<input type="text" name="pendidikan_terakhir" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
 
-							<div class="col-sm-6">
+							<div class="col-sm-4">
 								<!-- select -->
 								<div class="form-group">
 									<label>PNS yang Mengangkat</label>

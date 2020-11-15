@@ -48,7 +48,6 @@ class M_cuti extends CI_model
         $query = $this->db->get();
         return $query->result();
     }
-
     public function getCutiHonorerWhere($id)
     {
         $this->db->select('*');
@@ -57,17 +56,6 @@ class M_cuti extends CI_model
         $this->db->join('honorer', 'honorer.pegawai_NIP=pegawai.NIP');
         $this->db->order_by('cuti.mulai_cuti', 'ASC');
         $this->db->where(array('id_cuti' => $id));
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    public function getCutibyNIP($id)
-    {
-        $this->db->select('*');
-        $this->db->from('cuti');
-        $this->db->join('pegawai', 'pegawai.NIP=cuti.pegawai_NIP');
-        $this->db->order_by('cuti.mulai_cuti', 'ASC');
-        $this->db->where(array('cuti.pegawai_NIP' => $id));
         $query = $this->db->get();
         return $query->result();
     }

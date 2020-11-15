@@ -41,7 +41,7 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>NIP <sup class="text-red">Masukkan NIK Untuk Pegawai Honorer</sup></label>
+									<label>NIP</label>
 									<input type="number" name="NIP" class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
@@ -210,6 +210,22 @@
 										<?php endforeach?>
 
 									</select>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<!-- select -->
+								<div class="form-group">
+									<label>No SPK</label>
+									<input type="text" name="no_skp" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<!-- select -->
+								<div class="form-group">
+									<label>Tanggal SPK</label>
+									<input type="date" name="tgl_skp" class="form-control"
+										placeholder="Enter ...">
 								</div>
 							</div>
 

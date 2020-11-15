@@ -5,12 +5,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Data Honorer</h1>
+					<h1 class="m-0 text-dark">Dashboard</h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Honorer</li>
+						<li class="breadcrumb-item active">Dashboard</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -83,19 +83,19 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Default Modal</h4>
+				<h4 class="modal-title">Konfirmasi Penghapusan</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>One fine body&hellip;</p>
+				<p>Yakin Ingin Menghapus??</p>
 			</div>
 			<div class="modal-footer justify-content-between">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 
 				<a href="delete_honorer/<?= $value->pegawai_NIP?>"><button
-						type="button" class="btn btn-primary">Save changes</button></a>
+						type="button" class="btn btn-primary">Ya, Hapus</button></a>
 
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-<script src="<?= base_url()?>public/js/canvasjs.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->

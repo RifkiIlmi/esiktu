@@ -10,7 +10,6 @@ class RiwayatCuti extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model('M_pegawai');    
         $this->load->model('M_users');
-        $this->load->model('M_cuti');
 
         if (!$this->session->userdata('pegawai_nip')) {
             redirect('auth');
@@ -22,13 +21,7 @@ class RiwayatCuti extends CI_Controller
 
     public function index()
     {
-        $id = $this->session->userdata('pegawai_nip');
-
-
-        $data['judul'] = 'Riwayat Cuti Pegawai';
-
-        $data['cuti'] = $this->M_cuti->getCutibyNIP($id);
-        
+        $data['judul'] = 'Dashboard';
 
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);

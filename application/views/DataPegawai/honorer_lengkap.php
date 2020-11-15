@@ -101,7 +101,7 @@
 									<!-- text input -->
 									<div class="form-group">
 										<label>Jenis Ketenagaan</label>
-										<input disabled type="text" name="tempat_lahir"
+										<input disabled type="text" name="jenis_ketenagaan"
 											value="<?= $value->jenis_ketenagaan?>" class="form-control"
 											placeholder="Enter ...">
 										<input type="hidden" name="jenis_ketenagaan"
@@ -154,36 +154,33 @@
 					</div>
 					<div class="card-body">
 						<div class="row">
-                        <div class="col-sm-6">
-							<div class="card">
-								<div class="card card-primary card-outline">
-									<div class="card-body">
-										<div class="form-group">
-                                            <label class="h3">Tambah data SK</label>
-                                            
-                                            <label>No SKP</label>
-                                            <input type="text"   name="no_sk" class="form-control tambah" placeholder="No SK">
-                                            <label>Tanggal SKP</label>
-                                            <input type="date"   name="tgl_sk" class="form-control tambah" placeholder="tgl SK">
-                                            
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <div class="col-sm-6">
+
+                        <div class="col-sm-12">
 							<div class="form-group">
 								<label>Data SKP yg di input</label>
-								<?php foreach ($skp as  $value) :  ?>
+								
                                 <div class="card">
                                 <div class="card card-primary card-outline">
-                                    <label>No SKP</label>
-                                            <input disabled type="text"   name="no_sk" value="<?=$value->no_skp?>" class="form-control tambah" placeholder="No SK">
-                                    <label>Tanggal SK</label>
-                                            <input disabled type="date"   name="tgl_sk" value="<?=$value->tgl_skp?>" class="form-control tambah" placeholder="tgl SK">
-                                        </div>    
-                                        </div>
-                                <?php endforeach ?>
+								
+									
+								<div class="table">
+								<table>
+								<tr>
+								<th>NO</th>
+								<th>No. SKP</th>
+								<th>Tanggal SK</th>
+								</tr>
+								
+								<?php $no = 0; foreach ($skp as  $value) : $no++; ?>
+								<tr>
+								<td><?=$no;  ?></td>
+								<td><?= $value->no_skp?></td>
+								<td><?=$value->tgl_skp?></td>
+								</tr>
+								<?php endforeach ?>
+								</table>
+								</div>
+                                
 							</div>
 						</div>
 							

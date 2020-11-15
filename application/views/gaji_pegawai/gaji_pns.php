@@ -35,7 +35,7 @@
 			
             <div class="card">
 				<div class="card-header p-2">
-					<h3>Data Gaji Berkala Tahun <?= $filter ?></h3>
+					<h3>Pegawai Yang Mendapatkan Gaji Berkala Tahun <?= $filter ?></h3>
 				</div><!-- /.card-header -->
 				<div class="card-body">
 					<div class="tab-content">

@@ -29,7 +29,7 @@
 							</div>
 							<div class="card-body">
 
-								<?php foreach ($selengkapnya_honorer as  $value) :  ?>
+								<?php foreach ($selengkapnya_honorer as $value) :  ?>
 								<div class="row">
 									<div class="col-sm-6">
 										<!-- text input -->
@@ -103,9 +103,9 @@
 									<div class="col-sm-4">
 										<!-- text input -->
 										<div class="form-group">
-											<label>Jabatan</label>
-											<input type="text" name="jabatan_honorer"
-												value="<?= $value->jabatan_honorer?>" class="form-control">
+											<label>Pendidikan</label>
+											<input type="text" name="pendidikan_terakhir"
+												value="<?= $value->pendidikan_terakhir?>" class="form-control">
 
 										</div>
 									</div>

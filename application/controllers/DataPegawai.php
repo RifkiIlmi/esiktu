@@ -254,6 +254,7 @@ class DataPegawai extends CI_Controller
         $mengangkat = $this->input->post('mengangkat');
         $no_skp =$this->input->post('no_skp');
         $tgl_skp=$this->input->post('tgl_skp');
+        $pendidikan_terakhir = $this->input->post('pendidikan_terakhir');
         
 		$tambah_pegawai = array (
             //'id_surat_masuk'=>$id_surat_masuk,
@@ -282,6 +283,7 @@ class DataPegawai extends CI_Controller
             'jenis_ketenagaan' => $jenis_ketenagaan,
             'fk_id_PNS' => $mengangkat,
             'pegawai_NIP' => $NIP,
+            'pendidikan_terakhir' =>$pendidikan_terakhir,
            
         );
 

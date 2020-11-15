@@ -18,8 +18,7 @@
 	</div>
 	<!-- /.content-header -->
 
-	<!-- Main content -->
-	<form action=<?= base_url('DataPegawai\input_lengkap_honorer');?> method="POST" role="form">
+
 		<section class="content">
 			<div class="row">
 				<div class="col-md-12">
@@ -112,11 +111,9 @@
 								<div class="col-sm-4">
 									<!-- text input -->
 									<div class="form-group">
-										<label>Jabatan</label>
-										<input disabled type="text" name="jabatan_honorer"
-											value="<?= $value->jabatan_honorer?>" class="form-control">
-										<input type="hidden" name="jabatan_honorer"
-											value="<?= $value->jabatan_honorer?>" class="form-control">
+										<label>Pendidikan</label>
+										<input disabled type="text" name="pendidikan_terakhir"
+											value="<?= $value->pendidikan_terakhir?>" class="form-control">
 									</div>
 								</div>
                                 <div class="col-sm-4">
@@ -202,11 +199,10 @@
 						class="btn btn-danger">Kembali</button></a>
 				<a href="<?php echo base_url('DataPegawai/edit_lengkap_honorer/').$id_honorer.'/'.$id ?>"><button type="button"
 						class="btn btn-success">Edit semua data</button></a>
-				<button type="submit" class="btn btn-primary">Simpan Data</button>
+	
 			</div>
 </div>
 
-</form>
 
 </section>
 <!-- /.content -->

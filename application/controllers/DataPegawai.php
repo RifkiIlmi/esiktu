@@ -173,6 +173,7 @@ class DataPegawai extends CI_Controller
 
     public function selengkapnya($id)
     {
+        $data['judul'] = 'Detail PNS';
         $id= $this->uri->segment('3');
 
         $data ['selengkapnya_pns'] = $this->M_pegawai->selengkapnya_pns($id);
@@ -187,6 +188,7 @@ class DataPegawai extends CI_Controller
 
     public function selengkapnya_honorer($id)
     {
+        $data['judul'] = 'Detail Honorer';
         $id= $this->uri->segment('4');
         $id_honorer= $this->uri->segment('3');
         $data ['selengkapnya_honorer'] = $this->M_pegawai->selengkapnya_honorer($id);
@@ -200,6 +202,7 @@ class DataPegawai extends CI_Controller
     
     public function edit_lengkap_honorer($id)
     {
+        $data['judul'] = 'Edit Honorer';
         $id= $this->uri->segment('4');
         $id_honorer= $this->uri->segment('3');
 
@@ -214,6 +217,7 @@ class DataPegawai extends CI_Controller
 
     public function edit_lengkap_pns($id)
     {
+        $data['judul'] = 'Edit PNS';
         $id= $this->uri->segment('3');
 
         $data ['selengkapnya_pns'] = $this->M_pegawai->selengkapnya_pns($id);
@@ -467,7 +471,7 @@ class DataPegawai extends CI_Controller
         $tgl_lahir = $this->input->post('tanggal_lahir');
         
         $jenis_ketenagaan = $this->input->post('jenis_ketenagaan');
-        $jabatan_honorer = $this->input->post('jabatan_honorer');
+        $pendidikan_terakhir = $this->input->post('pendidikan_terakhir');
         $id_honorer = $this->input->post('id_honorer');
 
         $no_sk = $this->input->post('no_sk');
@@ -484,8 +488,7 @@ class DataPegawai extends CI_Controller
         $update_honorer = array(
             'jenis_ketenagaan' => $jenis_ketenagaan,
             // 'fk_id_honorer' => $id_honorer,
-            'jabatan_honorer'=> $jabatan_honorer,
-
+            'pendidikan_terakhir'=> $pendidikan_terakhir,
         );
         $input_skp = array(
             'no_skp' => $no_sk,

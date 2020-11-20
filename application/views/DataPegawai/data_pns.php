@@ -21,8 +21,7 @@
 	<!-- Main content -->
 	<div class="content">
 		<div class="container-fluid">
-
-
+		<?= $this->session->flashdata('message'); ?>
 			<div class="card">
 				<div class="card-header">
 				<a href="<?php echo base_url('DataPegawai/print_pns');?>"><button class="btn btn-md btn-success ml-0 m-2"><i class="fas fa-print"></i> Print to Excel</button></a>

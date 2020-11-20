@@ -22,10 +22,13 @@ class DataPensiun extends CI_Controller
 
         $data['pns']= $this->M_pegawai->data_pns();
 
+        /* 
         $data['pnsUtama']= $this->M_pegawai->pnsUtama();
         $data['pnsMadya']= $this->M_pegawai->pnsMadya();
         $data['pnsUmum']= $this->M_pegawai->pnsUmum();
+        */
 
+        $data['pnsSemua']= $this->M_pegawai->pnsSemua();
 
         $filterTh = $this->input->post('filter');
         

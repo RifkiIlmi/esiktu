@@ -100,6 +100,7 @@
        			 },
   	  		],
 		});
+    
 		$("#pmadya").DataTable({
 			"responsive": true,
 			"autoWidth": false,
@@ -112,6 +113,7 @@
        			 },
   	  		],
 		});
+    
 		$("#pumum").DataTable({
 			"responsive": true,
 			"autoWidth": false,
@@ -124,6 +126,7 @@
        			 },
   	  		],
 		});
+    
 		$("#cutipns").DataTable({
 			"responsive": true,
 			"autoWidth": false,
@@ -148,6 +151,7 @@
        			 },
   	  		],
 		});
+    
 		$("#kpangkat").DataTable({
 			"responsive": true,
 			"autoWidth": false,

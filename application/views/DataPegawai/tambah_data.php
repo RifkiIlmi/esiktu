@@ -44,23 +44,14 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>NIP <sup class="text-red">*Masukkan NiK jika honorer</sup></label>
+									<label>NIP <sup class="text-red">*Masukkan ID untuk honorer</sup></label>
 									<input type="number" name="NIP" class="form-control" placeholder="Enter ..." required>
 									<div class="invalid-feedback">
           							*Masukkan NIP dan NIK jika Honorer
         							</div>
 								</div>
 							</div>
-							<div class="col-sm-6">
-								<!-- text input -->
-								<div class="form-group">
-									<label>No. KTP</label>
-									<input type="text" name="No_KTP" class="form-control" placeholder="Enter ..." required>
-									<div class="invalid-feedback">
-          							*Nomor KTP harus diisi
-        							</div>
-								</div>
-							</div>
+						
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
@@ -92,7 +83,7 @@
 								</div>
 							</div>
 							<div class="a">
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<!-- radio -->
 									<label>Status Kepegawaian</label>
 									<div class="form-group">
@@ -108,12 +99,11 @@
 												id="honorer" name="kepegawaian">
 											<label for="honorer" class="custom-control-label">Honorer</label>
 										</div>
-
 									</div>
 								</div>
 							</div>
 						</div>
-
+<hr>
 				</div>
 				<div class="itu" id="show" style="display:none">
 					<div class="card-body">

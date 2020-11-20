@@ -40,16 +40,17 @@
 				<div class="card-header p-2">
 					<h3>Data Pegawai Yang pensiun Tahun <?= $filter ?></h3>
 					<ul class="nav nav-pills">
-						<li class="nav-item"><a class="nav-link active" href="#p_utama" data-toggle="tab">Pegawai
+						<!-- <li class="nav-item"><a class="nav-link active" href="#p_utama" data-toggle="tab">Pegawai
 								Utama</a></li>
 						<li class="nav-item"><a class="nav-link" href="#p_madya" data-toggle="tab">Pegawai Madya</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#p_umum" data-toggle="tab">Pegawai Umum/Muda</a>
+						</li> -->
+						<li class="nav-item"><a class="nav-link active" href="#p_umum" data-toggle="tab">List Pegawai</a>
 						</li>
 					</ul>
 				</div><!-- /.card-header -->
 				<div class="card-body">
 					<div class="tab-content">
+<!-- 					
 						<div class="active tab-pane" id="p_utama">
 							<table id="putama" class="table table-bordered table-striped text-center"
 								style="width:100%">
@@ -120,9 +121,9 @@
 									<?php endforeach; ?>
 								</tbody>
 							</table>
-						</div>
+						</div> -->
 
-						<div class="tab-pane" id="p_umum">
+						<div class="active tab-pane" id="p_umum">
 							<table id="pumum" class="table table-bordered table-striped text-center" style="width:100%">
 								<thead>
 									<tr>
@@ -135,7 +136,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php $no=0; foreach($pnsUmum as $item) : $no++ ?>
+									<?php $no=0; foreach($pnsSemua as $item) : $no++ ?>
 									<?php
 									$bday = new DateTime($item->tgl_lahir);
 									$diff = $yearNow->diff($bday);

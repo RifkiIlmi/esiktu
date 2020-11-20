@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 01, 2020 at 03:42 PM
+-- Generation Time: Nov 15, 2020 at 08:11 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -79,9 +79,8 @@ INSERT INTO `golongan` (`id_golongan`, `golongan`) VALUES
 CREATE TABLE `honorer` (
   `id_honorer` int(11) NOT NULL,
   `jenis_ketenagaan` varchar(45) NOT NULL,
-  `pegawai_NIP` varchar(11) NOT NULL,
+  `pegawai_NIP` varchar(20) NOT NULL,
   `fk_id_PNS` int(11) DEFAULT NULL,
-  `jabatan_honorer` varchar(100) NOT NULL,
   `pendidikan_terakhir` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -89,9 +88,10 @@ CREATE TABLE `honorer` (
 -- Dumping data for table `honorer`
 --
 
-INSERT INTO `honorer` (`id_honorer`, `jenis_ketenagaan`, `pegawai_NIP`, `fk_id_PNS`, `jabatan_honorer`, `pendidikan_terakhir`) VALUES
-(1, 'Tenaga K2', '1111', 1, '-', 'S1 Ekonomi'),
-(2, 'Tenaga BLUD', '2222', 1, '-', 'S1 Manejemen');
+INSERT INTO `honorer` (`id_honorer`, `jenis_ketenagaan`, `pegawai_NIP`, `fk_id_PNS`, `pendidikan_terakhir`) VALUES
+(1, 'Tenaga K2', '1111', 1, 'S1 Ekonomi'),
+(2, '', '2222', 1, 'S1 Manejemen'),
+(3, 'Kang Galon', '131313', 1, 'S1 Pendidikan Kimia');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ INSERT INTO `pangkat` (`id_pangkat`, `pangkat`) VALUES
 --
 
 CREATE TABLE `pegawai` (
-  `NIP` varchar(11) NOT NULL,
+  `NIP` varchar(20) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `No_KTP` varchar(20) NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
@@ -148,20 +148,21 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`, `akun`) VALUES
-('1111', 'Neli Aprilis, SKM', '1111', 'Pekanbaru', '2020-09-29', 'Manajemen', 'aktif'),
+('1111', 'Neli Aprilis, SKM', '1111', 'Pekanbaru', '2003-02-06', 'Manajemen', 'aktif'),
+('121212', 'admin', '-', '-', '0000-00-00', '-', 'aktif'),
 ('12312410', 'pegawai2', '12312410', 'Padang', '1987-11-25', 'Pelayanan', 'nonaktif'),
-('12345', 'pegawai1', '12345', 'Pekanbaru', '1982-09-01', 'Esselon', 'nonaktif'),
+('12345', 'pegawai1', '12345', 'Pekanbaru', '1982-09-01', 'Esselon', 'aktif'),
+('131313', 'pegawai3', '131313', 'Ntah', '1997-04-04', 'Pembantu', 'nonaktif'),
 ('19620906200', 'Drs.H. ARDIANUS, Apt, M.Kes', '1471080609620000', 'Padang', '1962-09-06', 'Esselon', 'nonaktif'),
 ('1965040219', 'dr. HAZNELLI JUITA, MM', '1471074204650000', 'Indragiri Hulu', '1965-04-19', 'Esselon', 'aktif'),
 ('19650530198', 'ZULMIATI, AMK', '1571017005650020', 'Pekanbaru', '1977-05-30', 'Pelayanan', 'nonaktif'),
 ('19660722199', 'dr. MUHAMMAD YUSUF, Sp.OG (K)', '1471012207660000', 'Sungei Pakning', '1966-07-22', 'Esselon', 'nonaktif'),
 ('19671111198', 'Ns. ELFA HENDERI, S.Kep', '1471081111640000', 'Lampung Selatan', '1967-11-11', 'Pelayanan', 'nonaktif'),
-('19721017200', 'dr. ELITA SARI', '1471085710720000', 'Perk.Sei.Lala', '1972-10-17', 'Esselon', 'nonaktif'),
+('19721017200', 'dr. ELITA SARI', '1471085710720000', 'Perk.Sei.Lala', '1972-10-17', 'Esselon', 'aktif'),
 ('19770525200', 'dr. WINDY ARIYANTI', '1471076505770000', 'Padang', '1977-05-25', 'Pelayanan', 'nonaktif'),
 ('19811119200', 'dr. ESI  LESTARI', '1471075911810040', 'Padang', '1981-11-19', 'Pelayanan', 'aktif'),
 ('19900716201', 'YULIA WARDANI, M.Psi', '1471075607900000', 'Pekanbaru', '1990-07-16', 'Pelayanan', 'nonaktif'),
-('2222', 'Suci Handayani, S.Sos', '2222', 'Sungei Pakning', '2020-10-09', 'Manajemen', 'aktif'),
-('admin', 'admin', '-', '-', '0000-00-00', '-', 'aktif');
+('2222', 'Suci Handayani, S.Sos', '2222', 'Sungei Pakning', '2020-10-09', 'Manajemen', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,8 @@ CREATE TABLE `pendidikan_formal` (
 INSERT INTO `pendidikan_formal` (`id_pendidikan_formal`, `pendidikan`, `PNS_id_PNS`) VALUES
 (1, 'SI Keperawatan', 9),
 (2, 'Magister Manajemen', 1),
-(3, 'UNRI / 2011 ', 1);
+(3, 'UNRI / 2011 ', 1),
+(4, 'SI Keperawatan', 2);
 
 -- --------------------------------------------------------
 
@@ -250,7 +252,7 @@ CREATE TABLE `pns` (
   `fk_id_pangkat` int(11) NOT NULL,
   `fk_id_golongan` int(11) NOT NULL,
   `fk_id_ruang` int(11) NOT NULL,
-  `fk_NIP` varchar(11) NOT NULL,
+  `fk_NIP` varchar(20) NOT NULL,
   `last_update_pangkat` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -260,7 +262,7 @@ CREATE TABLE `pns` (
 
 INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pangkat`, `jabatan`, `no_kerpeg`, `fk_id_pangkat`, `fk_id_golongan`, `fk_id_ruang`, `fk_NIP`, `last_update_pangkat`) VALUES
 (1, '47.793.750.2-216', '2016-04-01', '0000/KEP/AA/21400/16', '2016-03-11', 'Direktur Rs. Jiwa Tampan Provinsi Riau', '1011644', 3, 4, 3, '1965040219', '0000-00-00'),
-(2, '79.057.337.2-216', '2019-04-01', 'Kpts. 666/III/2019 ', '2019-03-29', 'Wakil Direktur Umum dan Keuangan', 'P 395599', 5, 4, 1, '19721017200', '0000-00-00'),
+(2, '79.057.337.2-216', '2019-04-01', 'Kpts. 666/III/2019 ', '1972-10-17', 'Wakil Direktur Umum dan Keuangan', 'P 395599', 5, 4, 4, '19721017200', '0000-00-00'),
 (3, '14.597.814.4-216', '2017-10-01', 'Kpts.806/IX/2017  \r\n', '2017-09-25', 'Wakil Direktur Medik dan Keperawatan', 'L 059167', 4, 4, 2, '19660722199', '0000-00-00'),
 (4, '14.545.641.4-216', '2014-04-01', 'Kpts.100/III/2014 ', '2014-03-03', 'Kepala Bidang Penunjang Medik dan Diklit', 'J.145097', 4, 4, 2, '19620906200', '0000-00-00'),
 (5, '68.062.152.1-216', '2020-04-01', 'Kpts. 00036/KEP/AA/15001/20', '2020-03-27', 'Dokter Madya', 'M 164097', 3, 4, 3, '19770525200', '0000-00-00'),
@@ -268,7 +270,7 @@ INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pan
 (7, '15.352.554.8-216', '2014-04-01', 'Kpts. 99/III/2014', '2014-03-03', 'Perawat Penyelia', 'E.060772', 6, 3, 4, '19650530198', '0000-00-00'),
 (8, '81.236.035.5-211', '2020-03-01', 'Kpts.426/II/2020 ', '2020-02-13', 'Calon Psikologi', '-', 8, 3, 2, '19900716201', '0000-00-00'),
 (9, '14.545.226.4-216', '2015-10-01', 'Kpts. 1217/IX/2015', '1967-11-11', 'Perawat Madya', 'E 630739', 5, 4, 1, '19671111198', '0000-00-00'),
-(10, '32131233', '2020-11-24', 'fa/f3/s/a', '2012-01-31', 'Dokter Gigi', '4145656432', 10, 2, 4, '12345', '0000-00-00'),
+(10, '32131233', '2020-11-24', 'fa/f3/s/a', '2012-01-31', 'Dokter Gigi', '4145656432', 9, 3, 1, '12345', '2020-11-15'),
 (11, 'fef.g..g..gh245', '2020-11-01', 'Kpts.100/III/2012', '2012-08-01', 'Perawat Penyelia', 'defsdf33', 7, 3, 1, '12312410', '0000-00-00');
 
 -- --------------------------------------------------------
@@ -306,6 +308,14 @@ CREATE TABLE `skp` (
   `fk_id_honorer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `skp`
+--
+
+INSERT INTO `skp` (`id_skp`, `no_skp`, `tgl_skp`, `fk_id_honorer`) VALUES
+(14, '2321321', '2020-11-11', 1),
+(15, '125547/sf/f', '2020-11-05', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -326,11 +336,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`, `pegawai_NIP`, `status`) VALUES
-(3, 'admin', 'admin', 'admin', 'admin', 1),
-(9, 'EsiLes', '19811119200', 'pegawai', '19811119200', 1),
-(10, '1111', '1111', 'pegawai', '1111', 1),
-(11, '2222', '2222', 'pegawai', '2222', 1),
-(12, '1965040219', '1965040219', 'pegawai', '1965040219', 1);
+(3, 'admin', 'admin', 'admin', '121212', 1),
+(9, 'EsiLes', '19811119200', 'user', '19811119200', 1),
+(10, '1111', '1111', 'user', '1111', 1),
+(11, '2222', '2222', 'user', '2222', 1),
+(12, '1965040219', '1965040219', 'user', '1965040219', 1),
+(13, '19721017200', '19721017200', 'user', '19721017200', 1),
+(14, '12345', '12345', 'user', '12345', 1);
 
 --
 -- Indexes for dumped tables
@@ -440,7 +452,7 @@ ALTER TABLE `golongan`
 -- AUTO_INCREMENT for table `honorer`
 --
 ALTER TABLE `honorer`
-  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_honorer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pangkat`
@@ -452,7 +464,7 @@ ALTER TABLE `pangkat`
 -- AUTO_INCREMENT for table `pendidikan_formal`
 --
 ALTER TABLE `pendidikan_formal`
-  MODIFY `id_pendidikan_formal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pendidikan_formal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pendidikan_j_t`
@@ -482,13 +494,13 @@ ALTER TABLE `ruang`
 -- AUTO_INCREMENT for table `skp`
 --
 ALTER TABLE `skp`
-  MODIFY `id_skp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_skp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

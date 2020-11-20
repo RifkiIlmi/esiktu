@@ -291,6 +291,7 @@ class DataPegawai extends CI_Controller
         if ($kepegawaian == 'PNS') {
             $data = $this->M_pegawai->input_pegawai($tambah_pegawai);
             $data = $this->M_pegawai->input_pns($tambah_pns);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Berhasil Di Tambahkan!</div>');
             redirect('DataPegawai/pns');
         }else {
             $data = $this->M_pegawai->input_pegawai($tambah_pegawai);
@@ -305,6 +306,7 @@ class DataPegawai extends CI_Controller
             );
 
             $data = $this->M_pegawai->input_skp($tambah_skp);
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Berhasil Di Tambahkan!</div>');
             redirect('DataPegawai/honorer');
             
         }
@@ -317,6 +319,7 @@ class DataPegawai extends CI_Controller
         $id= $this->uri->segment('3');
             // var_dump($id);
         $data = $this->M_pegawai->delete_pns($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data PNS Berhasil Di Hapus!</div>');
         redirect('DataPegawai/pns');
     }
     public function delete_honorer()
@@ -324,6 +327,7 @@ class DataPegawai extends CI_Controller
         $id= $this->uri->segment('3');
             // var_dump($id);
         $data = $this->M_pegawai->delete_honorer($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Honorer Berhasil Di Hapus!</div>');
         redirect('DataPegawai/honorer');
     }
     public function input_lengkap()
@@ -335,7 +339,6 @@ class DataPegawai extends CI_Controller
         $profesi = $this->input->post('profesi');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $tgl_lahir = $this->input->post('tgl_lahir');
-        
         
         $npwp = $this->input->post('npwp');
         $tmt_pangkat= $this->input->post('tmt_pangkat');
@@ -460,6 +463,7 @@ class DataPegawai extends CI_Controller
         );  
         $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
         $data = $this->M_pegawai->update_pns($update_pns,$id_PNS);
+        $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data PNS Berhasil Di Update!</div>');
         redirect('DataPegawai/selengkapnya/'.$NIP);
     }
     public function input_lengkap_honorer()
@@ -502,11 +506,13 @@ class DataPegawai extends CI_Controller
         if($no_sk == "" && $tgl_sk == ""){
             $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
             $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
+        $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Honorer Berhasil Di Update!</div>');
             redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);    
         }else{
             $data = $this->M_pegawai->input_skp($input_skp);
             $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);
             $data = $this->M_pegawai->update_honorer($update_honorer,$id_honorer);
+        $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Honorer Berhasil Di Update!</div>');
             redirect('DataPegawai/selengkapnya_honorer/'.$id_honorer.'/'.$NIP);
         }
         

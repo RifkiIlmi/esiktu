@@ -21,6 +21,7 @@
 	<!-- Main content -->
 
 	<section class="content">
+	<?= $this->session->flashdata('message'); ?>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card card-primary">

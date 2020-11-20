@@ -194,9 +194,40 @@
 			switch ($(this).val()) {
 				case "PNS":
 					$("#show").show("slow");
+					document.getElementById("a").disabled = true;
+					document.getElementById("b").disabled = true;
+					document.getElementById("c").disabled = true;
+					document.getElementById("d").disabled = true;
+					document.getElementById("e").disabled = true;
+					
+					document.getElementById("1").disabled = false;
+					document.getElementById("2").disabled = false;
+					document.getElementById("3").disabled = false;
+					document.getElementById("4").disabled = false;
+					document.getElementById("5").disabled = false;
+					document.getElementById("6").disabled = false;
+					document.getElementById("7").disabled = false;
+					document.getElementById("8").disabled = false;
+					document.getElementById("9").disabled = false;
 					break;
 				case "honorer":
 					$("#show1").show("slow");
+					document.getElementById("1").disabled = true;
+					document.getElementById("2").disabled = true;
+					document.getElementById("3").disabled = true;
+					document.getElementById("4").disabled = true;
+					document.getElementById("5").disabled = true;
+					document.getElementById("6").disabled = true;
+					document.getElementById("7").disabled = true;
+					document.getElementById("8").disabled = true;
+					document.getElementById("9").disabled = true;
+
+					document.getElementById("a").disabled = false;
+					document.getElementById("a").disabled = false;
+					document.getElementById("b").disabled = false;
+					document.getElementById("c").disabled = false;
+					document.getElementById("d").disabled = false;
+					document.getElementById("e").disabled = false;
 					break;
 			}
 		});

@@ -47,6 +47,11 @@
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-buttons/js/buttons.flash.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/jszip/jszip.min.js"></script>
+<script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="<?= base_url();?>public/assets/AdminLTE3/plugins/chart.js/Chart.min.js"></script>
@@ -86,14 +91,38 @@
 		$("#putama").DataTable({
 			"responsive": true,
 			"autoWidth": false,
+			dom: 'Bfrtip',
+			buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
 		$("#pmadya").DataTable({
 			"responsive": true,
 			"autoWidth": false,
+			dom: 'Bfrtip',
+			buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
 		$("#pumum").DataTable({
 			"responsive": true,
 			"autoWidth": false,
+			dom: 'Bfrtip',
+			buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
 		$("#cutipns").DataTable({
 			"responsive": true,
@@ -110,16 +139,28 @@
 		$("#dtgajipns").DataTable({
 			"responsive": true,
 			"autoWidth": false,
+			dom: "Bfrtip",
+    		buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
-		$('#example2').DataTable({
-			"paging": true,
-			"lengthChange": false,
-			"searching": false,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
+		$("#kpangkat").DataTable({
 			"responsive": true,
+			"autoWidth": false,
+			dom: 'Bfrtip',
+			buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
+		
 	});
 </script>
 

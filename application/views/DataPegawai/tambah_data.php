@@ -29,42 +29,57 @@
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
-					<form action=<?= base_url('DataPegawai\input_pegawai');?> method="POST" role="form">
+					<form class="needs-validation" action=<?= base_url('DataPegawai\input_pegawai');?> method="POST" role="form"  novalidate>
 						<div class="row">
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>Nama</label>
-									<input type="text" name="nama" class="form-control" placeholder="Enter ...">
+									<input type="text" name="nama" class="form-control" id="validationCustom01" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Nama Wajib Diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>NIP <sup class="text-red">*Masukkan ID untuk honorer</sup></label>
-									<input type="number" name="NIP" class="form-control" placeholder="Enter ...">
+									<input type="number" name="NIP" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Masukkan NIP dan NIK jika Honorer
+        							</div>
 								</div>
 							</div>
-							
+						
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>Profesi</label>
-									<input type="text" name="profesi" class="form-control" placeholder="Enter ...">
+									<input type="text" name="profesi" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Profesi harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>Tempat Lahir</label>
-									<input type="text" name="tempat_lahir" class="form-control" placeholder="Enter ...">
+									<input type="text" name="tempat_lahir" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Tempat lahir harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
 									<label>Tanggal Lahir</label>
-									<input type="date" name="tgl_lahir" class="form-control">
+									<input type="date" name="tgl_lahir" class="form-control" required>
+									<div class="invalid-feedback">
+          							*Tanggal Lahir harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="a">
@@ -98,41 +113,59 @@
 
 								<div class="form-group">
 									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
-									<input type="text" name="npwp" class="form-control" placeholder="Enter ...">
+									<input type="text" name="npwp" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*NPWP harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label>No. Kerpeg</label>
-									<input type="text" name="no_kerpeg" class="form-control" placeholder="Enter ...">
+									<input type="text" name="no_kerpeg" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*No kerpeg harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>Jabatan</label>
-									<input type="text" name="jabatan_pns" class="form-control" placeholder="Enter ...">
+									<input type="text" name="jabatan_pns" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*jabatan harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>TMT Pangkat</label>
-									<input type="date" name="tmt_pangkat" class="form-control" placeholder="Enter ...">
+									<input type="date" name="tmt_pangkat" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Tanggal Lahir harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>No SK Pangkat</label>
-									<input type="text" name="no_sk_pangkat" class="form-control" placeholder="Enter ...">
+									<input type="text" name="no_sk_pangkat" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*No SK Pangkat harus diisi
+        							</div>
 								</div>
 							</div>
 							<div class="col-sm-4">
 
 								<div class="form-group">
 									<label>Tanggal SK Pangkat</label>
-									<input type="date" name="tgl_sk_pangkat" class="form-control" placeholder="Enter ...">
+									<input type="date" name="tgl_sk_pangkat" class="form-control" placeholder="Enter ..." required>
+									<div class="invalid-feedback">
+          							*Tanggal SK Pangkat harus diisi
+        							</div>
 								</div>
 							</div>
 							
@@ -239,9 +272,27 @@
 					</form>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
-
 </div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

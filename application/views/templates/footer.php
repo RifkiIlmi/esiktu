@@ -93,25 +93,40 @@
 			"autoWidth": false,
 			dom: 'Bfrtip',
 			buttons: [
-				'excel'
-			]
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
+    
 		$("#pmadya").DataTable({
 			"responsive": true,
 			"autoWidth": false,
 			dom: 'Bfrtip',
 			buttons: [
-				'excel'
-			]
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
+    
 		$("#pumum").DataTable({
 			"responsive": true,
 			"autoWidth": false,
 			dom: 'Bfrtip',
 			buttons: [
-				'excel'
-			]
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
+    
 		$("#cutipns").DataTable({
 			"responsive": true,
 			"autoWidth": false,
@@ -127,18 +142,27 @@
 		$("#dtgajipns").DataTable({
 			"responsive": true,
 			"autoWidth": false,
-			dom: 'Bfrtip',
-			buttons: [
-				'excel'
-			]
+			dom: "Bfrtip",
+    		buttons: [
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
+    
 		$("#kpangkat").DataTable({
 			"responsive": true,
 			"autoWidth": false,
 			dom: 'Bfrtip',
 			buttons: [
-				'excel'
-			]
+        		{
+            	extend: "excel",    // Extend the excel button
+				className: 'btn btn-success',
+				text: 'Print to Excel',
+       			 },
+  	  		],
 		});
 		
 	});

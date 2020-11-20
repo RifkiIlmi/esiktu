@@ -76,8 +76,9 @@ class DataCuti extends CI_Controller
         $config['max_size']             = 1024; // 1MB
         // $config['max_width']            = 1024;
         // $config['max_height']           = 768;
-    
+        
         $this->load->library('upload', $config);
+        
         if($this->upload->do_upload("file")){
         $data1 = array('upload_data' => $this->upload->data());
         
@@ -101,7 +102,6 @@ class DataCuti extends CI_Controller
                 'alamat_cuti' => $this->input->post('alamat_cuti'),
                 'pegawai_NIP' => $this->input->post('NIP'),
                 'file'=>$file,
-
             ];
 
             $this->M_cuti->createCuti($data);
@@ -110,7 +110,7 @@ class DataCuti extends CI_Controller
             redirect('DataCuti/cuti_kerja');
         }
     }
-
+}
     function get_autocomplete(){
         if (isset($_GET['term'])) {
             $result = $this->M_pegawai->search_pegawai($_GET['term']);
@@ -124,7 +124,6 @@ class DataCuti extends CI_Controller
             }
         }
     }
-}
 
     public function update_cuti()
     {
@@ -193,6 +192,7 @@ class DataCuti extends CI_Controller
         }
         }
     }
+
     public function update_cuti_honorer()
     {
         $config['upload_path']          = './public/surat_cuti';
@@ -262,19 +262,6 @@ class DataCuti extends CI_Controller
     }
     
 
-    function get_autocomplete(){
-        if (isset($_GET['term'])) {
-            $result = $this->M_pegawai->search_pegawai($_GET['term']);
-            if (count($result) > 0) {
-                foreach ($result as $row)
-                    $arr_result[] = array(
-                        'label'  => $row->nama,
-                        'nip' => $row->NIP,
-                 );
-                    echo json_encode($arr_result);
-            }
-        }
-    }
     public function edit_cuti()
     {
         $id = $this->uri->segment(3);
@@ -287,6 +274,7 @@ class DataCuti extends CI_Controller
         $this->load->view('cutiPegawai/edit_cuti',$data);
         $this->load->view('templates/footer');
    }
+
    public function edit_cuti_honorer()
     {
         $id = $this->uri->segment(3);

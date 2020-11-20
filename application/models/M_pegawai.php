@@ -420,6 +420,14 @@ class M_pegawai extends CI_model
         return $query;
     }
 
+    public function pnsSemua()
+    {
+        $this->db->join('pegawai', 'pegawai.NIP=pns.fk_NIP');
+        // $this->db->where(array('tim.id_detail_surat' => $id));
+        $query = $this->db->get('pns')->result();
+        return $query;
+    }
+
     public function pnsUmum()
     {
         $this->db->not_like('jabatan', 'direktur', 'both');

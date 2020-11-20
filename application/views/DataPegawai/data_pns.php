@@ -34,7 +34,6 @@
 								<th>No</th>
 								<th>Nama</th>
 								<th>NIP</th>
-								<th>No.KTP</th>
 								<th>NPWP</th>
 								<th>Pangkat</th>
 								<th>tempat_lahir</th>
@@ -45,14 +44,12 @@
 							</tr>
 						</thead>
 						<tbody>
-
 							<?php  $no=0; foreach ($pns as  $value) : $no++; ?>
 							<tr>
 
 								<td><?= $no?></td>
 								<td><?= $value->nama?></td>
 								<td><?= $value->NIP?></td>
-								<td><?= $value->No_KTP?></td>
 								<td><?= $value->npwp?></td>
 								<td><?= $value->pangkat?></td>
 								<td><?= $value->tempat_lahir?></td>

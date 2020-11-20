@@ -36,7 +36,6 @@
 								<th>No</th>
 								<th>Nama</th>
 								<th>NIP</th>
-								<th>No.KTP</th>
 								<th>Jenis Ketenagaan</th>
                                 <th>PNS yang Mengangkat</th>
 								<th>Aksi</th>
@@ -54,7 +53,6 @@
 							<td><?= $no?></td>
 							<td><?= $value->nama?></td>
 							<td><?= $value->pegawai_NIP?></td>
-							<td><?= $value->No_KTP?></td>
                             <td><?= $value->jenis_ketenagaan?></td>
                             <td><?= $nama_PNS?></td>
 							

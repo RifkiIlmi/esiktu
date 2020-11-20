@@ -235,7 +235,6 @@ class DataPegawai extends CI_Controller
         $kepegawaian = $this->input->post('kepegawaian');
         $nama = $this->input->post('nama');
         $NIP = $this->input->post('NIP');
-        $KTP = $this->input->post('No_KTP');
         $profesi = $this->input->post('profesi');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $tgl_lahir = $this->input->post('tgl_lahir');
@@ -260,7 +259,6 @@ class DataPegawai extends CI_Controller
             //'id_surat_masuk'=>$id_surat_masuk,
             'nama'=>$nama,
             'NIP' =>$NIP,
-            'No_KTP'=>$KTP,
             'profesi'=>$profesi,
             'tempat_lahir'=>$tempat_lahir,
             'tgl_lahir'=>$tgl_lahir,
@@ -335,7 +333,6 @@ class DataPegawai extends CI_Controller
         $kepegawaian = $this->input->post('kepegawaian');
         $nama = $this->input->post('nama');
         $NIP = $this->input->post('NIP');
-        $KTP = $this->input->post('No_KTP');
         $profesi = $this->input->post('profesi');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $tgl_lahir = $this->input->post('tgl_lahir');
@@ -443,7 +440,6 @@ class DataPegawai extends CI_Controller
             //'id_surat_masuk'=>$id_surat_masuk,
             'nama'=>$nama,
             'NIP' =>$NIP,
-            'No_KTP'=>$KTP,
             'profesi'=>$profesi,
             'tempat_lahir'=>$tempat_lahir,
             'tgl_lahir'=>$tgl_lahir,
@@ -471,7 +467,6 @@ class DataPegawai extends CI_Controller
         $kepegawaian = $this->input->post('kepegawaian');
         $nama = $this->input->post('nama');
         $NIP = $this->input->post('NIP');
-        $KTP = $this->input->post('No_KTP');
         $profesi = $this->input->post('profesi');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $tgl_lahir = $this->input->post('tanggal_lahir');
@@ -486,7 +481,6 @@ class DataPegawai extends CI_Controller
             //'id_surat_masuk'=>$id_surat_masuk,
             'nama'=>$nama,
             'NIP' =>$NIP,
-            'No_KTP'=>$KTP,
             'profesi'=>$profesi,
             'tempat_lahir'=>$tempat_lahir,
             'tgl_lahir'=>$tgl_lahir,
@@ -498,10 +492,8 @@ class DataPegawai extends CI_Controller
         );
         $input_skp = array(
             'no_skp' => $no_sk,
- 
             'tgl_skp'=> $tgl_sk,
             'fk_id_honorer' => $id_honorer,
-
         );
         if($no_sk == "" && $tgl_sk == ""){
             $data = $this->M_pegawai->update_pegawai($update_pegawai,$NIP);

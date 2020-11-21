@@ -9,8 +9,8 @@
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Dashboard</li>
+						<li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
+						<li class="breadcrumb-item active">PNS</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -81,7 +81,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Default Modal</h4>
+				<h4 class="modal-title">Konfirmasi Penghapusan</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -93,7 +93,7 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
 				<a href="delete_pns/<?= $value->NIP?>"><button
-						type="button" class="btn btn-primary">Yakin!</button></a>
+						type="button" class="btn btn-danger">Yakin!</button></a>
 
 			</div>
 		</div>

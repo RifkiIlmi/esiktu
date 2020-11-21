@@ -73,18 +73,19 @@ class DataCuti extends CI_Controller
         $config['allowed_types']        = 'gif|jpg|png';
 
         // $config['overwrite']			= true;
-        $config['max_size']             = 1024; // 1MB
+        $config['max_size']             = 3072; // 1MB
         // $config['max_width']            = 1024;
         // $config['max_height']           = 768;
         
         $this->load->library('upload', $config);
         
         if($this->upload->do_upload("file")){
-        $data1 = array('upload_data' => $this->upload->data());
+        // $data1 = array('upload_data' => $this->upload->data());
+            $file= $this->upload->data('file_name');
+        }else{
+            echo $this->upload->display_errors();
+        }
         
-        $file= $data1['upload_data']['file_name'];
-        
-
         $tgl_mulai = $this->input->post('mulai_cuti');
         $tgl_akhir = $this->input->post('akhir_cuti');
         
@@ -109,8 +110,10 @@ class DataCuti extends CI_Controller
 
             redirect('DataCuti/cuti_kerja');
         }
+        
     }
-}
+
+
     function get_autocomplete(){
         if (isset($_GET['term'])) {
             $result = $this->M_pegawai->search_pegawai($_GET['term']);
@@ -131,7 +134,7 @@ class DataCuti extends CI_Controller
         $config['allowed_types']        = 'gif|jpg|png';
 
         // $config['overwrite']			= true;
-        $config['max_size']             = 1024; // 1MB
+        $config['max_size']             = 3072; // 1MB
         // $config['max_width']            = 1024;
         // $config['max_height']           = 768;
     
@@ -287,13 +290,16 @@ class DataCuti extends CI_Controller
         $this->load->view('cutiPegawai/edit_cuti_honorer',$data);
         $this->load->view('templates/footer');
    }
+
    public function delete_cuti()
    {
        $id= $this->uri->segment('3');
            // var_dump($id);
+           $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-ban"></i> Delete!</h5> Data Berhasil Dihapus!</div>');
        $data = $this->M_cuti->delete_cuti($id);
      
     }
+    
     public function print_cuti_pns()
     {
         $data['judul'] = 'Pegawai Cuti';
@@ -315,6 +321,7 @@ class DataCuti extends CI_Controller
 
         $this->load->view('cutiPegawai/print_cuti_pns',$data);
     }
+
     public function print_cuti_honorer()
     {
         $data['judul'] = 'Pegawai Cuti';
@@ -338,4 +345,3 @@ class DataCuti extends CI_Controller
     }
  
 }
-

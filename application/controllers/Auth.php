@@ -9,8 +9,8 @@ class Auth extends CI_Controller
         parent::__construct();
         // $this->load->model('model_surat', '', TRUE);
         // $this->load->model('model_tim', '', TRUE);
-        // $this->load->model('model_user', '', TRUE);
-        $this->load->helper(array('form', 'url'));
+        $this->load->model('M_users', '', TRUE);
+        $this->load->helper(array('form', 'url','Cookie', 'String'));
         $this->load->library('form_validation');
         $this->load->library('email');
     }
@@ -21,12 +21,29 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'SISTP - Login';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/login');
-            $this->load->view('templates/auth_footer');
+             // ambil cookie
+            $cookie = get_cookie('remember');
+
+            if ($this->session->userdata('logged') == 'aktif') {
+                redirect('Home');
+            } else if($cookie <> '') {
+                // cek cookie
+                $row = $this->M_users->get_by_cookie($cookie)->row_array();
+                // var_dump($row);
+                // die;
+                if ($row) {
+                    $this->_daftarkan_session($row);
+                } else {
+                   echo 'ak masuk cokie';
+                }
+            }else{
+                $data['judul'] = 'SISTP - Login';
+                $this->load->view('templates/auth_header', $data);
+                $this->load->view('auth/login');
+                $this->load->view('templates/auth_footer');
+            }
         } else {
-            // jika validasinya sukse
+            // jika validasinya sukses
             $this->_login();
         }
     }
@@ -35,6 +52,7 @@ class Auth extends CI_Controller
     {
         $username = $this->input->post('nip');
         $password = $this->input->post('password');
+        $remember = $this->input->post('remember');
 
         $user = $this->db->get_where('user', [
             'pegawai_NIP' => $username,
@@ -47,8 +65,17 @@ class Auth extends CI_Controller
             // jika user aktif
             if ($user['status'] == 1) {
                 if (password_verify($password, $user['password']) || $password == $user['password']) {
-
+                    if ($remember) {
+                        $key = random_string('alnum', 64);
+                        set_cookie('remember', $key, 3600*24*30); // set expired 30 hari kedepan
+                        // simpan key di database
+                        $update_key = array(
+                            'cookie' => $key
+                        );
+                        $this->M_users->update_cookie($update_key, $user['id_user']);
+                    }
                     $data = [
+                        'logged' => 'aktif',
                         'pegawai_nip' => $user['pegawai_NIP'],
                         'hak_akses' => $user['hak_akses'],
                     ];
@@ -56,7 +83,7 @@ class Auth extends CI_Controller
                     if ($user['hak_akses'] == 'admin') {
                         redirect('Home');
                     } else {
-                        redirect('HomeUser');
+                        redirect('Home');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
@@ -72,105 +99,24 @@ class Auth extends CI_Controller
         }
     }
 
-    private function _sendmail($type)
-    {
-        $config = [
-            'protocol'      => 'smtp',
-            'smtp_host'     => 'ssl://smtp.googlemail.com',
-            'smtp_user'     => 'puslitpen.LPPM@gmail.com',
-            'smtp_pass'     => 'puslitpen123',
-            'smtp_port'     => 465,
-            'mailtype'      => 'html',
-            'charset'       => 'utf-8',
-            'newline'       => "\r\n"
+    public function _daftarkan_session($row) {
+        // 1. Daftarkan Session
+        $sess = [
+            'logged' => 'aktif',
+            'pegawai_nip' => $row['pegawai_NIP'],
+            'hak_akses' => $row['hak_akses'],
         ];
-
-        $this->email->initialize($config);
-
-        $this->email->from('puslitpen.LPPM@gmail.com', 'LPPM Admin');
-        $this->email->to($this->input->post('email'));
-
-        if ($type == 'forgot') {
-            $this->email->subject('Reset Password');
-            $this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetPassword?email=' . $this->input->post('email') . '">Reset Password</a>');
-        }
-
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }
-    }
-
-    public function forgotPassword()
-    {
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-
-        if ($this->form_validation->run() == false) {
-            $data['judul'] = 'SISTP - Forgot Password';
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/forgotPass');
-            $this->load->view('templates/auth_footer');
-        } else {
-            $email = $this->input->post('email');
-            $user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-            if ($user) {
-                $this->session->set_userdata('reset_email', $email);
-                $this->_sendmail('forgot');
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Please check your email to reset your password!</div>');
-                redirect('auth/forgotPassword');
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-                redirect('auth/forgotPassword');
-            }
-        }
-    }
-
-    public function resetPassword()
-    {
-        // $email = $this->input->get('email');
-        $email = $this->session->userdata('reset_email');
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-        if ($user) {
-            // $this->session->set_userdata('reset_email', $email);
-            $this->changePassword();
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Reset password failed! Wrong email</div>');
-            redirect('auth');
-        } 
-    }
-
-    public function changePassword()
-    {
-        if (!$this->session->userdata['reset_email']) {
-            redirect('auth/blocked');
-        }
-
-        $data['judul'] = 'SISTP - Change Password';
-
-        $this->form_validation->set_rules('new_password1', 'New Password', 'trim|required|min_Length[3]|matches[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'trim|required|min_Length[3]|matches[new_password1]');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/forgotPass');
-            $this->load->view('templates/auth_footer');
-        } else {
-            $new_password = $this->input->post('new_password1');
-            $email = $this->session->userdata('reset_email');
-            // password ok/
-            $this->model_user->changeForgotPass($new_password, $email);
-            $this->session->unset_userdata('reset_email');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password changed!</div>');
-            redirect('auth');
-        }
+        // var_dump($sess);
+        // die;
+        $this->session->set_userdata($sess);
+        // 2. Redirect ke home
+        redirect('Home');
     }
 
     public function logout()
     {
+        delete_cookie('remember');
+        $this->session->unset_userdata('logged');
         $this->session->unset_userdata('pegawai_nip');
         $this->session->unset_userdata('hak_akses');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout</div>');

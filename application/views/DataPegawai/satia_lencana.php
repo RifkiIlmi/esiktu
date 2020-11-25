@@ -52,12 +52,11 @@
 									</tr>
 								</thead>
 								<tbody>
-                                <?php $no=0; foreach($pns as $item) : $no++ ?>
+                                <?php $no=0; foreach($pns as $item) : ?>
                                 <?php
                                     $year = date('Y', strtotime($item->tgl_sk_pangkat));
                                     $selisih = $filter - $year;
-                                    if($selisih%10 == 0 && $year != $filter)
-                                : ?>
+                                    if($selisih%10 == 0 && $year != $filter) : $no++ ?>
                                     <tr>
                                         <td><?= $no ?>.</td>
                                         <td><?= $item->nama ?></td>

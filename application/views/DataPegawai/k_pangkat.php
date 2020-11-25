@@ -55,14 +55,13 @@
 						</thead>
 						<tbody>
 
-							<?php  $no=0; foreach ($pns as  $value) : $no++; ?>
+							<?php  $no=0; foreach ($pns as  $value) : ?>
 							<?php
                                     $now = date('Y');
                                     $year = date('Y', strtotime($value->tgl_sk_pangkat));
                                     $lastTglPangkat = date('Y', strtotime($value->last_update_pangkat));
                                     $selisih = $filter - $year;
-                                    if($selisih%4 == 0 && $year != $filter)
-                            : ?>
+                                    if($selisih%4 == 0 && $year != $filter):$no++ ?>
 							<tr>
 								<td><?= $no?></td>
 								<td><?= $value->nama?></td>

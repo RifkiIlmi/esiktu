@@ -158,19 +158,22 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>Data SPK yg di input</label>
-											<?php foreach ($skp as  $value) :  ?>
-											<div class="card">
-												<div class="card card-primary card-outline">
-													<label>No SPK</label>
-													<input disabled type="text" name="no_sk" value="<?=$value->no_skp?>"
-														class="form-control tambah" placeholder="No SK">
-													<label>Tanggal SPK</label>
-													<input disabled type="date" name="tgl_sk"
-														value="<?=$value->tgl_skp?>" class="form-control tambah"
-														placeholder="tgl SK">
-												</div>
-											</div>
-											<?php endforeach ?>
+											<div class="table">
+								<table>
+								<tr>
+								<th>NO</th>
+								<th>No. SKP</th>
+								<th>Tanggal SK</th>
+								</tr>
+								
+								<?php $no = 0; foreach ($skp as  $value) : $no++; ?>
+								<tr>
+								<td><?=$no;  ?></td>
+								<td><?= $value->no_skp?></td>
+								<td><?= formaldate_indo($value->tgl_skp)?></td>
+								</tr>
+								<?php endforeach ?>
+								</table>
 										</div>
 									</div>
 								</div>

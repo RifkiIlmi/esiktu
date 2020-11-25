@@ -136,21 +136,26 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php $no=0; foreach($pnsSemua as $item) : $no++ ?>
+									<?php $no=0; foreach($pnsSemua as $item) : ?>
 									<?php
 									$bday = new DateTime($item->tgl_lahir);
 									$diff = $yearNow->diff($bday);
                                     $year = date('Y', strtotime($item->tgl_sk_pangkat));
 									$selisih = $filter - $year;
 									?>
-									<?php if($diff->y == 58):?>
+									<?php if($diff->y == 58 || $diff->y == 57): $no++?>
 									<tr>
 										<td><?= $no ?>.</td>
 										<td><?= $item->nama ?></td> 
 										<td><?= $item->NIP ?></td>
 										<td><?= $item->jabatan?></td>
 										<td><?= formaldate_indo($item->tgl_sk_pangkat) ?></td>
-										<td><?= $diff->y ?> Tahun</td>
+										<td>
+											<?= $diff->y ?> Tahun
+											<?php if($diff->y == 57):?>
+												<sup class="text-red">Pensiun Tahun Depan</sup>
+											<?php endif;?>
+										</td>
 									</tr>
 									<?php endif;?>
 									<?php endforeach; ?>

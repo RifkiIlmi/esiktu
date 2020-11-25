@@ -202,34 +202,6 @@
 						<?php endforeach ?>
 						
 					</div>
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label>Data Pendidikan Formal</label>
-								<?php foreach ($pendidikan_formal as  $value) :  ?>
-								<input disabled  type="text" name="123" value="<?= $value->pendidikan?>"class="form-control">
-								<?php endforeach?>
-							</div>
-						</div>
-
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label>Data Pendidikan Perjenjangan Teknis/Tahun</label>
-								<?php foreach ($pendidikan_j_t as  $value) :  ?>
-								<input disabled type="text" name="231" value="<?=$value->pelatihan?>"class="form-control" >
-								<?php endforeach?>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label>Data Pengalaman Kerja</label>
-								<?php foreach ($pengalaman_kerja as  $value) :  ?>
-								<input disabled type="text" name="222" value="<?=$value->pengalaman_kerja?>" class="form-control" >
-								<?php endforeach ?>
-							</div>
-						</div>
-						
-					</div>
 
 					<div class="row">
 						<div class="col-sm-4">

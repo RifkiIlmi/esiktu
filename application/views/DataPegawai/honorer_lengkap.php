@@ -173,7 +173,7 @@
 								<tr>
 								<td><?=$no;  ?></td>
 								<td><?= $value->no_skp?></td>
-								<td><?=$value->tgl_skp?></td>
+								<td><?=formaldate_indo($value->tgl_skp)?></td>
 								</tr>
 								<?php endforeach ?>
 								</table>

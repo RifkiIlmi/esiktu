@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Data Pegawai Cuti <?php echo $filter?></h1>
+					<h1 class="m-0 text-dark">Data Pegawai Cuti </h1>
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -23,9 +23,8 @@
 		<div class="container-fluid">
 
 			<?= $this->session->flashdata('message'); ?>
-			<a href="<?= base_url('DataCuti/tambahCuti');?>" class="btn btn-app">
-				<i class="fas fa-plus text-dark"></i>
-				<p class="text-dark">Tambah</p>
+			<a href="<?= base_url('DataCuti/tambahCuti');?>" class="btn btn-success ml-0 m-2">
+				Tambah Data Cuti
 			</a>
 
 			<?php echo form_open_multipart('DataCuti/cuti_kerja/', 'role="form" class="form" id="filter" '); ?>
@@ -51,7 +50,6 @@
 					</ul>
 				</div><!-- /.card-header -->
 				<div class="card-body">
-
 					<div class="tab-content">
 						<div class="active tab-pane" id="pns">
 							<div class="card-header">
@@ -74,7 +72,6 @@
 									</tr>
 								</thead>
 								<tbody>
-
 									<?php  $no=0; foreach ($cutiPns as  $value) : $no++; ?>
 									<tr>
 										<td><?= $no?></td>
@@ -97,7 +94,6 @@
 													class="far fa-trash-alt"></i></button>
 										</td>
 									</tr>
-
 									<?php endforeach ?>
 								</tbody>
 							</table>

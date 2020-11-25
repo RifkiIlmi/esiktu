@@ -166,7 +166,7 @@ class DataCuti extends CI_Controller
 
             $this->M_cuti->update_cuti($data,$id_cuti);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Berhasil Ditambahkan!</div>');
-            redirect('DataCuti/edit_cuti/'.$id_cuti);
+            redirect('DataCuti/cuti_kerja');
         }
         }else{
 
@@ -191,7 +191,7 @@ class DataCuti extends CI_Controller
 
             $this->M_cuti->update_cuti($data,$id_cuti);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5> Data Berhasil Ditambahkan!</div>');
-            redirect('DataCuti/edit_cuti/'.$id_cuti);
+            redirect('DataCuti/cuti_kerja');
         }
         }
     }

@@ -41,7 +41,6 @@
 										<th>No</th>
 										<th>Nama</th>
 										<th>NIP</th>
-										<th>No.KTP</th>
 										<th>Tempat Lahir</th>
 										<th>Tanggal Lahir</th>
 										<th>Hak Akses</th>
@@ -55,7 +54,6 @@
 										<td><?= $no?></td>
 										<td><?= $value->nama?></td>
 										<td><?= $value->NIP?></td>
-										<td><?= $value->No_KTP?></td>
 										<td><?= $value->tempat_lahir?></td>
 										<td><?= formaldate_indo($value->tgl_lahir) ?></td>
 										<td><?= $value->hak_akses?></td>

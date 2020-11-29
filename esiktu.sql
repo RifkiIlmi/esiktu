@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2020 at 08:11 PM
+-- Generation Time: Nov 29, 2020 at 01:16 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -45,9 +45,10 @@ CREATE TABLE `cuti` (
 
 INSERT INTO `cuti` (`id_cuti`, `jenis_cuti`, `alasan_cuti`, `mulai_cuti`, `akhir_cuti`, `alamat_cuti`, `file`, `pegawai_NIP`) VALUES
 (1, 'Melahirkan', 'aaaaaaaaaaaaaa', '2020-09-27', '2020-10-31', 'asd', '', '1965040219'),
-(2, 'Melahirkan', 'melahirkan', '2020-10-01', '2020-10-23', 'jl. lindung', '', '2222'),
-(3, 'Melahirkan', 'Lahiran', '2020-10-07', '2020-10-24', 'Jl. Lindungan', 'Screenshot_from_2020-09-15_22-03-57.png', '2222'),
-(4, 'Tahunan', 'yes', '2020-10-08', '2020-10-16', 'yes', 'Screenshot_from_2020-09-15_22-03-571.png', '2222');
+(4, 'Tahunan', 'yes', '2020-10-08', '2020-10-16', 'yes', 'Screenshot_from_2020-09-15_22-03-571.png', '2222'),
+(6, 'Sakit', 'qw', '2020-11-25', '2020-12-11', 'qw', 'girl_silhouette_lonely_164516_3840x2160.jpg', '19620906200'),
+(7, 'Besar', 'das', '2020-11-01', '2020-11-23', 'sad', 'magic_ball_library_columns_castle_63093_1920x1080.jpg', '44444'),
+(8, 'Alasan Penting', 'ASW', '2020-11-03', '2020-11-27', 'ASW', 'ships_sea_light_rain_69192_1920x1080_(another_copy).jpg', '1111');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ CREATE TABLE `honorer` (
 
 INSERT INTO `honorer` (`id_honorer`, `jenis_ketenagaan`, `pegawai_NIP`, `fk_id_PNS`, `pendidikan_terakhir`) VALUES
 (1, 'Tenaga K2', '1111', 1, 'S1 Ekonomi'),
-(2, '', '2222', 1, 'S1 Manejemen'),
+(2, 'Tenaga K1', '2222', 1, 'S1 Manejemen'),
 (3, 'Kang Galon', '131313', 1, 'S1 Pendidikan Kimia');
 
 -- --------------------------------------------------------
@@ -150,9 +151,7 @@ CREATE TABLE `pegawai` (
 INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `profesi`, `akun`) VALUES
 ('1111', 'Neli Aprilis, SKM', '1111', 'Pekanbaru', '2003-02-06', 'Manajemen', 'aktif'),
 ('121212', 'admin', '-', '-', '0000-00-00', '-', 'aktif'),
-('12312410', 'pegawai2', '12312410', 'Padang', '1987-11-25', 'Pelayanan', 'nonaktif'),
-('12345', 'pegawai1', '12345', 'Pekanbaru', '1982-09-01', 'Esselon', 'aktif'),
-('131313', 'pegawai3', '131313', 'Ntah', '1997-04-04', 'Pembantu', 'nonaktif'),
+('131313', 'pegawai3', '131313', 'Ntah', '1997-04-04', 'Pembantu', 'aktif'),
 ('19620906200', 'Drs.H. ARDIANUS, Apt, M.Kes', '1471080609620000', 'Padang', '1962-09-06', 'Esselon', 'nonaktif'),
 ('1965040219', 'dr. HAZNELLI JUITA, MM', '1471074204650000', 'Indragiri Hulu', '1965-04-19', 'Esselon', 'aktif'),
 ('19650530198', 'ZULMIATI, AMK', '1571017005650020', 'Pekanbaru', '1977-05-30', 'Pelayanan', 'nonaktif'),
@@ -162,7 +161,9 @@ INSERT INTO `pegawai` (`NIP`, `nama`, `No_KTP`, `tempat_lahir`, `tgl_lahir`, `pr
 ('19770525200', 'dr. WINDY ARIYANTI', '1471076505770000', 'Padang', '1977-05-25', 'Pelayanan', 'nonaktif'),
 ('19811119200', 'dr. ESI  LESTARI', '1471075911810040', 'Padang', '1981-11-19', 'Pelayanan', 'aktif'),
 ('19900716201', 'YULIA WARDANI, M.Psi', '1471075607900000', 'Pekanbaru', '1990-07-16', 'Pelayanan', 'nonaktif'),
-('2222', 'Suci Handayani, S.Sos', '2222', 'Sungei Pakning', '2020-10-09', 'Manajemen', 'aktif');
+('2222', 'Suci Handayani, S.Sos', '2222', 'Sungei Pakning', '1962-10-09', 'Manajemen', 'aktif'),
+('44444', 'pegawai4', '', 'Pekanbaru', '1963-11-11', 'Esselon', 'nonaktif'),
+('97654', '345678', '', 'tfuyu', '2020-11-19', 'Pelayanan', 'nonaktif');
 
 -- --------------------------------------------------------
 
@@ -270,8 +271,8 @@ INSERT INTO `pns` (`id_PNS`, `npwp`, `tmt_pangkat`, `no_sk_pangkat`, `tgl_sk_pan
 (7, '15.352.554.8-216', '2014-04-01', 'Kpts. 99/III/2014', '2014-03-03', 'Perawat Penyelia', 'E.060772', 6, 3, 4, '19650530198', '0000-00-00'),
 (8, '81.236.035.5-211', '2020-03-01', 'Kpts.426/II/2020 ', '2020-02-13', 'Calon Psikologi', '-', 8, 3, 2, '19900716201', '0000-00-00'),
 (9, '14.545.226.4-216', '2015-10-01', 'Kpts. 1217/IX/2015', '1967-11-11', 'Perawat Madya', 'E 630739', 5, 4, 1, '19671111198', '0000-00-00'),
-(10, '32131233', '2020-11-24', 'fa/f3/s/a', '2012-01-31', 'Dokter Gigi', '4145656432', 9, 3, 1, '12345', '2020-11-15'),
-(11, 'fef.g..g..gh245', '2020-11-01', 'Kpts.100/III/2012', '2012-08-01', 'Perawat Penyelia', 'defsdf33', 7, 3, 1, '12312410', '0000-00-00');
+(12, '645.654.654.7', '2020-01-13', 'Kpts. 00039/KEP/AA/9679/20', '2020-06-15', 'Dokter Umum', '54654', 5, 4, 1, '44444', '0000-00-00'),
+(13, '47.793.750.2-216', '2020-11-19', '5667', '2020-11-25', 'dsa', 'sdasd', 10, 3, 1, '97654', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -328,21 +329,22 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `hak_akses` varchar(45) NOT NULL,
   `pegawai_NIP` varchar(11) NOT NULL,
-  `status` int(2) NOT NULL DEFAULT 1
+  `status` int(2) NOT NULL DEFAULT 1,
+  `cookie` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`, `pegawai_NIP`, `status`) VALUES
-(3, 'admin', 'admin', 'admin', '121212', 1),
-(9, 'EsiLes', '19811119200', 'user', '19811119200', 1),
-(10, '1111', '1111', 'user', '1111', 1),
-(11, '2222', '2222', 'user', '2222', 1),
-(12, '1965040219', '1965040219', 'user', '1965040219', 1),
-(13, '19721017200', '19721017200', 'user', '19721017200', 1),
-(14, '12345', '12345', 'user', '12345', 1);
+INSERT INTO `user` (`id_user`, `username`, `password`, `hak_akses`, `pegawai_NIP`, `status`, `cookie`) VALUES
+(3, 'admin', 'admin', 'admin', '121212', 1, 'jOwp6Cd9s0D5RrTfysZLWe77VAcJNBnczhmnVN24KZXvXg29eHQkp1lJA35EFvUt'),
+(9, 'EsiLes', '19811119200', 'user', '19811119200', 1, ''),
+(10, '1111', '1111', 'user', '1111', 1, 'ruvQ8640lEI5qOKCGojhox6k8TILqURFdz19ZQsDpnHFLytEfBiDZbhJVrzu5VH7'),
+(11, '2222', '2222', 'user', '2222', 1, ''),
+(12, '1965040219', '1965040219', 'user', '1965040219', 1, ''),
+(13, '19721017200', '19721017200', 'user', '19721017200', 1, ''),
+(15, '131313', '131313', 'user', '131313', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -440,7 +442,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cuti`
 --
 ALTER TABLE `cuti`
-  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `golongan`
@@ -482,7 +484,7 @@ ALTER TABLE `pengalaman_kerja`
 -- AUTO_INCREMENT for table `pns`
 --
 ALTER TABLE `pns`
-  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_PNS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ruang`
@@ -500,7 +502,7 @@ ALTER TABLE `skp`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

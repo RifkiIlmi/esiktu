@@ -144,7 +144,7 @@ class DataCuti extends CI_Controller
         
         $file= $data1['upload_data']['file_name'];
         
-
+ 
         $tgl_mulai = $this->input->post('mulai_cuti');
         $tgl_akhir = $this->input->post('akhir_cuti');
         $id_cuti = $this->input->post('id_cuti');

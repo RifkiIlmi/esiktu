@@ -34,7 +34,10 @@ class Auth extends CI_Controller
                 if ($row) {
                     $this->_daftarkan_session($row);
                 } else {
-                   echo 'ak masuk cokie';
+                    $data['judul'] = 'SISTP - Login';
+                    $this->load->view('templates/auth_header', $data);
+                    $this->load->view('auth/login');
+                    $this->load->view('templates/auth_footer');
                 }
             }else{
                 $data['judul'] = 'SISTP - Login';

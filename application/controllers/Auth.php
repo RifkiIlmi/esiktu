@@ -25,7 +25,7 @@ class Auth extends CI_Controller
             $cookie = get_cookie('remember');
 
             if ($this->session->userdata('logged') == 'aktif') {
-                redirect('Home');
+                redirect('home');
             } else if($cookie <> '') {
                 // cek cookie
                 $row = $this->M_users->get_by_cookie($cookie)->row_array();
@@ -84,9 +84,9 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['hak_akses'] == 'admin') {
-                        redirect('Home');
+                        redirect('home');
                     } else {
-                        redirect('Home');
+                        redirect('home');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
@@ -113,7 +113,7 @@ class Auth extends CI_Controller
         // die;
         $this->session->set_userdata($sess);
         // 2. Redirect ke home
-        redirect('Home');
+        redirect('home');
     }
 
     public function logout()

@@ -346,7 +346,7 @@ class DataPegawai extends CI_Controller
         $fk_id_ruang = $this->input->post('ruang');
         $no_kerpeg = $this->input->post('no_kerpeg');
         $no_sk_pangkat = $this->input->post('no_sk_pangkat');
-        $id_PNS = $this->input->post('id');
+        $id_PNS = $this->input->post('id');  
         $pendidikan_formal = $this->input->post('a1');
         $pendidikan_j_t= $this->input->post('b1');
         $pengalaman_kerja = $this->input->post('c1');
@@ -447,7 +447,7 @@ class DataPegawai extends CI_Controller
         $update_pns = array (
             'npwp' => $npwp,
             'tmt_pangkat' => $tmt_pangkat,
-            'tgl_sk_pangkat' => $tgl_lahir,
+            'tgl_sk_pangkat' => $tgl_sk_pangkat,
             'jabatan' => $jabatan,
             'fk_id_pangkat' => $fk_id_pangkat,
             'fk_id_golongan' => $fk_id_golongan,

@@ -70,14 +70,7 @@
 
 										</div>
 									</div>
-									<div class="col-sm-4">
-										<!-- text input -->
-										<div class="form-group">
-											<label>No. KTP</label>
-											<input type="text" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control">
-										</div>
-									</div>
+									
 									<div class="col-sm-4">
 										<!-- text input -->
 										<div class="form-group">

@@ -52,14 +52,7 @@
 												class="form-control" placeholder="Enter ...">
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>No. KTP</label>
-											<input type="text" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control" placeholder="Enter ...">
-										</div>
-									</div>
+							
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">

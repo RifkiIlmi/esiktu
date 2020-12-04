@@ -23,7 +23,6 @@
 								<th>Nama</th>
 								<!-- <th>NIP</th> -->
 								<th>Tempat/ tanggal Lahir</th>
-								<th>No.KTP</th>
 								<th>Pejabat yang menandatangani SK</th>
                                 <th>Jenis Ketenagaan</th>
 								<th>Pendidikan</th>
@@ -43,7 +42,6 @@
 							<td><?= $no?></td>
 							<td><?= $value->nama?></td>
 							<td><?= $value->tempat_lahir?>/<?= $value->tgl_lahir?></td>
-							<td><?= $value->No_KTP?></td>
 							<td><?= $nama_PNS?></td>
                             <td><?= $value->jenis_ketenagaan?></td>
 							<td></td>

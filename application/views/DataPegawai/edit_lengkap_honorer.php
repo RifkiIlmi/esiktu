@@ -53,40 +53,30 @@
 											<?php $id = $value->NIP?>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>No. KTP</label>
-											<input type="text" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control" placeholder="Enter ...">
-
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>Profesi</label>
-											<input type="text" name="profesi" value="<?= $value->profesi?>"
-												class="form-control" placeholder="Enter ...">
-
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>Tempat Lahir</label>
-											<input type="text" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
-												class="form-control" placeholder="Enter ...">
-
-										</div>
-									</div>
+									
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">
 											<label>Tanggal Lahir</label>
 											<input type="date" name="tanggal_lahir" value="<?= $value->tgl_lahir?>"
 												class="form-control" placeholder="Enter ...">
+										</div>
+									</div>
 
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Tempat Lahir</label>
+											<input type="text" name="tempat_lahir" value="<?= $value->tempat_lahir?>"
+												class="form-control" placeholder="Enter ...">
+										</div>
+									</div>
+									
+									<div class="col-sm-4">
+										<!-- text input -->
+										<div class="form-group">
+											<label>Profesi</label>
+											<input type="text" name="profesi" value="<?= $value->profesi?>"
+												class="form-control" placeholder="Enter ...">
 										</div>
 									</div>
 

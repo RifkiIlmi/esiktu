@@ -55,24 +55,16 @@
 										<?php $id = $value->NIP?>
 								</div>
 							</div>
+							
+							
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>No. KTP</label>
-									<input disabled type="text" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
-										placeholder="Enter ...">
-										<input  type="hidden" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
-										placeholder="Enter ...">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<!-- text input -->
-								<div class="form-group">
-									<label>Profesi</label>
-									<input disabled type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
-										placeholder="Enter ...">
-										<input  type="hidden" name="profesi" value="<?= $value->profesi?>" class="form-control"
-										placeholder="Enter ...">
+									<label>Tanggal Lahir</label>
+									<input disabled type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+										class="form-control">
+										<input  type="hidden" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+										class="form-control">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -86,19 +78,26 @@
 								</div>
 							</div>
 							<div class="col-sm-6">
-								<!-- text input -->
 								<div class="form-group">
-									<label>Tanggal Lahir</label>
-									<input disabled type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
-										class="form-control">
-										<input  type="hidden" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
-										class="form-control">
+									<label>TMT Pangkat</label>
+									<input disabled type="date" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
+										class="form-control" placeholder="Enter ...">
+										<input  type="hidden" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
+										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
-
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Profesi</label>
+									<input disabled type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
+										placeholder="Enter ...">
+										<input  type="hidden" name="profesi" value="<?= $value->profesi?>" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4	">
+							<div class="col-sm-6">
 
 								<div class="form-group">
 									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
@@ -108,18 +107,8 @@
 										placeholder="Enter ...">
 								</div>
 							</div>
-							<div class="col-sm-4">
-
-								<div class="form-group">
-									<label>TMT Pangkat</label>
-									<input disabled type="date" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
-										class="form-control" placeholder="Enter ...">
-										<input  type="hidden" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
-										class="form-control" placeholder="Enter ...">
-								</div>
-							</div>
-							<div class="col-sm-4">
-
+							
+							<div class="col-sm-6">
 								<div class="form-group">
 									<label>Jabatan</label>
 									<input disabled type="text" name="jabatan" class="form-control" value="<?= $value->jabatan?>"

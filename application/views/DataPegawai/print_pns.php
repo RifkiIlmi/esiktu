@@ -20,7 +20,6 @@
 								<th>No</th>
 								<th>Nama</th>
 								<th>NIP</th>
-								<th>No.KTP</th>
 								<th>NPWP</th>
 								<th>Pangkat/golongan</th>
 								<th>TMT pangkagt</th>
@@ -44,7 +43,6 @@
 								<td><?= $no?></td>
 								<td><?= $value->nama?></td>
 								<td><?= $value->NIP?></td>
-								<td><?= $value->No_KTP?></td>
 								<td><?= $value->npwp?></td>
 								<td><?= $value->pangkat?>/<?= $value->golongan?><?= $value->ruang?></td>
 								<td><?= $value->tmt_pangkat?></td>

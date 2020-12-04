@@ -54,19 +54,12 @@
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
-									<label>No. KTP</label>
-									<input  type="text" name="No_KTP" value="<?= $value->No_KTP?>" class="form-control"
-										placeholder="Enter ...">
+									<label>Tanggal Lahir</label>
+									<input type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+										class="form-control">
 								</div>
 							</div>
-							<div class="col-sm-6">
-								<!-- text input -->
-								<div class="form-group">
-									<label>Profesi</label>
-									<input  type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
-										placeholder="Enter ...">
-								</div>
-							</div>
+							
 							<div class="col-sm-6">
 								<!-- text input -->
 								<div class="form-group">
@@ -75,35 +68,35 @@
 										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
+
 							<div class="col-sm-6">
-								<!-- text input -->
-								<div class="form-group">
-									<label>Tanggal Lahir</label>
-									<input type="date" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
-										class="form-control">
-								</div>
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-sm-4	">
-
-								<div class="form-group">
-									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
-									<input  type="text" name="npwp" value="<?= $value->npwp?>" class="form-control"
-										placeholder="Enter ...">
-								</div>
-							</div>
-							<div class="col-sm-4">
-
 								<div class="form-group">
 									<label>TMT Pangkat</label>
 									<input  type="date" name="tmt_pangkat" value="<?= $value->tmt_pangkat?>"
 										class="form-control" placeholder="Enter ...">
 								</div>
 							</div>
-							<div class="col-sm-4">
-
+							
+							<div class="col-sm-6">
+								<!-- text input -->
+								<div class="form-group">
+									<label>Profesi</label>
+									<input  type="text" name="profesi" value="<?= $value->profesi?>" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>NPWP (Nomor Pokok Wajib Pajak)</label>
+									<input  type="text" name="npwp" value="<?= $value->npwp?>" class="form-control"
+										placeholder="Enter ...">
+								</div>
+							</div>
+							
+							<div class="col-sm-6">
 								<div class="form-group">
 									<label>Jabatan</label>
 									<input  type="text" name="jabatan" class="form-control" value="<?= $value->jabatan?>"

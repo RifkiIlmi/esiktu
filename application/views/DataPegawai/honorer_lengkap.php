@@ -59,20 +59,10 @@
 								<div class="col-sm-6">
 									<!-- text input -->
 									<div class="form-group">
-										<label>No. KTP</label>
-										<input disabled type="text" name="No_KTP" value="<?= $value->No_KTP?>"
+										<label>Tanggal Lahir</label>
+										<input disabled type="date" name="tanggal_lahir" value="<?= $value->tgl_lahir?>"
 											class="form-control" placeholder="Enter ...">
-										<input type="hidden" name="No_KTP" value="<?= $value->No_KTP?>"
-											class="form-control" placeholder="Enter ...">
-									</div>
-								</div>
-                                <div class="col-sm-6">
-									<!-- text input -->
-									<div class="form-group">
-										<label>Profesi</label>
-										<input disabled type="text" name="profesi" value="<?= $value->profesi?>"
-											class="form-control" placeholder="Enter ...">
-										<input type="hidden" name="profesi" value="<?= $value->profesi?>"
+										<input type="hidden" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
 											class="form-control" placeholder="Enter ...">
 									</div>
 								</div>
@@ -86,13 +76,14 @@
 											class="form-control" placeholder="Enter ...">
 									</div>
 								</div>
-                                <div class="col-sm-6">
+
+								<div class="col-sm-4">
 									<!-- text input -->
 									<div class="form-group">
-										<label>Tanggal Lahir</label>
-										<input disabled type="date" name="tanggal_lahir" value="<?= $value->tgl_lahir?>"
+										<label>Profesi</label>
+										<input disabled type="text" name="profesi" value="<?= $value->profesi?>"
 											class="form-control" placeholder="Enter ...">
-										<input type="hidden" name="tgl_lahir" value="<?= $value->tgl_lahir?>"
+										<input type="hidden" name="profesi" value="<?= $value->profesi?>"
 											class="form-control" placeholder="Enter ...">
 									</div>
 								</div>

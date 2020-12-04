@@ -57,16 +57,7 @@
 											<?php $id = $value->NIP?>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<!-- text input -->
-										<div class="form-group">
-											<label>No. KTP</label>
-											<input disabled type="text" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control" placeholder="Enter ...">
-											<input type="hidden" name="No_KTP" value="<?= $value->No_KTP?>"
-												class="form-control" placeholder="Enter ...">
-										</div>
-									</div>
+									
 									<div class="col-sm-6">
 										<!-- text input -->
 										<div class="form-group">
@@ -373,16 +364,7 @@
 										class="form-control">
 								</div>
 							</div>
-							<div class="col-sm-4">
-								<!-- text input -->
-								<div class="form-group">
-									<label>No. KTP</label>
-									<input disabled type="text" name="No_KTP" value="<?= $honorer[0]->No_KTP ?>"
-										class="form-control">
-									<input type="hidden" name="No_KTP" value="<?= $honorer[0]->No_KTP ?>"
-										class="form-control">
-								</div>
-							</div>
+							
 							<div class="col-sm-4">
 								<!-- text input -->
 								<div class="form-group">

@@ -90,8 +90,7 @@
 									<tr>
 										<th>No</th>
 										<th>Nama</th>
-										<th>NIP</th>
-										<th>No.KTP</th>
+										<th>NIP</th> 
 										<th>tempat_lahir</th>
 										<th>tgl_lahir</th>
 										<th>Aksi</th>
@@ -104,7 +103,6 @@
 										<td><?= $no?></td>
 										<td><?= $value->nama?></td>
 										<td><?= $value->NIP ?></td>
-										<td><?= $value->No_KTP?></td>
 										<td><?= $value->tempat_lahir?></td>
 										<td><?= formaldate_indo($value->tgl_lahir)?></td>
 										<td>
